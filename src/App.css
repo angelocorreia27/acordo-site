@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  background-color: rgb(180, 174, 166);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: calc(8px + 2vmin);
+  box-shadow: -2px 0 10px 0 rgba(0,0,0,.38);
+  
 }
 
 .App-logo {
