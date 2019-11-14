@@ -8,7 +8,7 @@ import {rxLoadFile, rxPushArrangement, rxPushResetArrangement} from "../../store
 
 class __ extends Component {
     onDrop = (files) => {
-        const req = request.post(`${API.development}/thumbnail-generator/generate`);
+        const req = request.post(`${API.development}/generateSync`);
 
         this.props.rxPushResetArrangement();
         this.props.rxLoadFile({ fileResponse: null, isFileLoading: true });

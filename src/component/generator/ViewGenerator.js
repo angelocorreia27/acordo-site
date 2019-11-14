@@ -13,7 +13,7 @@ class ViewGenerator extends Component {
                 </DescriptionComponent>
 
                 <UploaderComponent/>
-
+                <>{console.log('teste')}</>
                 <FileGroupComponent />
 
                 <DescriptionComponent>
