@@ -1,11 +1,28 @@
-/* Draggable Element */
-
-.draggable--over {
-    background-color: #FFF7C6 !important;
-    border: 3px dashed #CCC;
+.App {
+  text-align: center;
 }
 
-.draggable--over * {
-    -webkit-transform: perspective(90rem) rotateX(60deg) translateY(.8rem);
-    transform: perspective(90rem) rotateX(60deg) translateY(.8rem)
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 24px;
+}
+
+.App-header {
+  background-color: #222;
+  
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 2em
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

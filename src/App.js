@@ -1,22 +1,42 @@
-import React from 'react';
-import {createStore} from "redux";
-import {Provider} from "react-redux";
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import combineReducers from "store/reducers";
-import RootComponent from "./RootComponent";
-import './App.css';
+import React, { Component } from 'react'
+// import logo from './logo.svg'
+import './App.css'
+import Routes from "./routes";
 
-const App = () => {
 
-    const store = createStore(combineReducers);
+class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { file: null, exampleSelected: 0 }
+    this.handleFile = this.handleFile.bind(this)
+    this.selectExample = this.selectExample.bind(this)
+    this.handleContent = this.handleContent.bind(this)
+  }
 
+  handleFile (file) {
+    this.setState({
+      file: file
+    })
+  }
+
+  handleContent (content) {
+    this.setState({
+      content: content
+    })
+  }
+
+  selectExample (number) {
+    this.setState({
+      exampleSelected: number
+    })
+  }
+
+  render () {
     return (
-        <Provider store={store}>
-            <Router>
-                <Route path="/" component={RootComponent} />
-            </Router>
-        </Provider>
-    );
-};
+       
+      <Routes/>);
 
-export default App;
+  }
+}
+
+export default App
