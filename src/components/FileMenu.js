@@ -4,6 +4,10 @@ import Dropzone from 'react-dropzone'
 import request from "superagent";
 import {API} from "../config/environment"
 
+
+//module.exports = require("./dropzone");
+//const acceptedFileTypes = 'application/docx'
+
 class FileMenu extends Component {
       constructor(props){
         super(props)
@@ -13,16 +17,6 @@ class FileMenu extends Component {
  onDrop = (files) => {
   const req = request.post(`${API.development}/generateSync`);
 
-  this.props.rxPushResetArrangement();
-  this.props.rxLoadFile({ fileResponse: null, isFileLoading: true });
-
-  req.attach("pdf_file", files[0])
-      .on('error', (err) => {
-          this.props.rxLoadFile({ fileResponse: {}, isFileLoading: null, isFileError: true })
-      })
-      .then(res => {
-          this.props.rxLoadFile({ fileResponse: res.body, isFileLoading: false })
-      });
 };
 
 
