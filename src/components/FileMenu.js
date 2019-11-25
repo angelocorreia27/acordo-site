@@ -1,14 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
-import {connect} from "react-redux";
 import Dropzone from 'react-dropzone'
 import request from "superagent";
 import {API} from "../config/environment"
-import {rxLoadFile, rxPushArrangement, rxPushResetArrangement} from "../store/actions/FileActions";
-import classNames from 'classnames';
-
-//module.exports = require("./dropzone");
-//const acceptedFileTypes = 'application/docx'
 
 class FileMenu extends Component {
       constructor(props){
@@ -41,15 +35,13 @@ class FileMenu extends Component {
          <center> <Link to="FileDrop">Iniciar agora</Link>
       <div>
                 <Dropzone accept="application/pdf" onDrop={this.onDrop} style={baseStyle}>
-                    
-                                    
+                          
                 </Dropzone>
        </div>
                 </center>
                 </div>
  
           )
-
   }
 
       
