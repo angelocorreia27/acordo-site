@@ -1,39 +1,37 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom';
+import {connect} from "react-redux";
 import Dropzone from 'react-dropzone'
 import request from "superagent";
 import {API} from "../config/environment"
-
-
+import {rxLoadFile, rxPushArrangement, rxPushResetArrangement} from "../store/actions/FileActions";
+import classNames from 'classnames';
 //module.exports = require("./dropzone");
 //const acceptedFileTypes = 'application/docx'
+
+
 
 class FileMenu extends Component {
       constructor(props){
         super(props)
+       
       }
-
-      
- onDrop = (files) => {
-  const req = request.post(`${API.development}/generateSync`);
-
-};
 
 
 
   render () {
-      
+    
     return (
- 
+
   <div>
-         <center> <Link to="FileDrop">Iniciar agora</Link>
-      <div>
-                <Dropzone accept="application/pdf" onDrop={this.onDrop} style={baseStyle}>
-                          
-                </Dropzone>
-       </div>
-                </center>
-                </div>
+       <center> <Link to="FileDrop">Iniciar agora</Link>
+      
+                <Dropzone accept='document/docx' onDrop={this.handledrop} multiple={false}   style={baseStyle}/>          
+    
+       
+        </center>
+        
+   </div>
  
           )
   }
