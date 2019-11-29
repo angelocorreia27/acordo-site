@@ -4,6 +4,7 @@ import './App.css'
 import Routes from "./routes";
 
 
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -11,7 +12,10 @@ class App extends Component {
     this.handleFile = this.handleFile.bind(this)
     this.selectExample = this.selectExample.bind(this)
     this.handleContent = this.handleContent.bind(this)
+    this.handleFile = this.handleFile.bind(this)
+
   }
+
 
   handleFile (file) {
     this.setState({

@@ -26,3 +26,77 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.warning {background-color: #ffd000;} /* Orange */
+.warning:hover {background: #e68a00;
+}
+
+.style {
+  margin:auto; 
+  max-width:300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the submit button  
+form.example button {
+  float: right;
+  width: 8%;
+  padding: 5px;
+  margin: 20px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders
+  cursor: pointer;
+}*/
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 3px;
+  padding-right: -20;
+  margin: -20px;
+  font-size: 15px;
+  border: 1px solid grey;
+  float: right;
+  width: 20%;
+  background: #f1f1f1;
+}
+
+.tbl2{
+  float: left;
+}
+.tbl3{
+  float: right;
+}
+.select{
+  padding: 10px;
+  float: right;
+  box-sizing: border-box;
+}
+
+.pagina{
+  padding: 12px;
+}
+.Check{
+  padding: 8px;
+}
+.mensage {
+  float: right;
+  padding-right: 850px 
+}
+.Button {
+  float: right;
+  padding-right: 890px;
+}
+.table {
+  float: center;
+}
+.App-header{
+  widows: 60%;
+}
+

@@ -3,10 +3,9 @@ import { BrowserRouter, Route, Switch} from "react-router-dom"
 import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
-import FileMenu from "./components/FileMenu"
-import FileDrop from "./components/FileDrop"
-import Editor from "./components/Editor"
-
+//import Rever from "./components/Rever"
+import Review from "./components/Review";
+import Rever from "./components/Rever";
 
 class Routes extends Component {
         constructor (props) {
@@ -43,10 +42,12 @@ return (
     <BrowserRouter>
     <Provider store={store}>
    <Switch>
+
+     <Route exact path="/" component={Rever}/>
+     <Route path="/Review" component={Review} />
      
-     <Route exact path="/" component= {FileMenu} />
-     <Route path="/FileDrop" component={()=>(<div><FileDrop onFile={this.handleFile} handleContent={this.handleContent} selectExample={this.selectExample}/><Editor file={this.state.file} content={this.state.content} exampleNumber={this.state.exampleSelected}/></div>)} /> 
-      </Switch>
+     
+    </Switch>
      </Provider>
      </BrowserRouter>
      

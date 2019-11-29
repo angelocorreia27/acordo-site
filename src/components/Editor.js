@@ -169,12 +169,14 @@ export default class Editor extends React.Component {
         <Row>
           <Col mdOffset={2} md={8} sm={12}>
             <CKeditorInline // header
+
               activeClass={headerEditor}
               suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
               events={{
                 'change': this.onChangeHeader,
                 'configLoaded': this.onCreateEditor.bind(this, 'header')
               }}
+
               
             >
               <p style={{'textAlign': 'right'}} >
