@@ -2,7 +2,7 @@ import CKEditor from 'react-ckeditor-component'
 import React from 'react'
 import request from 'request-promise-native'
 import { css } from 'emotion'
-import { Button, Grid, Row, Col } from 'react-bootstrap'
+import {Grid, Row, Col } from 'react-bootstrap'
 import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 import examples from './exapmples'
@@ -32,10 +32,10 @@ const footer = css`
   margin-top: 0px
 `
 
-const buttonStyle = css`
+/*const buttonStyle = css`
   font-size: x-large;
   margin-top: 50px;
-`
+`*/
 
 function htmlOptimization (html) {
   html = html.replace(/&quot;/g, '')

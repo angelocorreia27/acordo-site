@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Switch} from "react-router-dom"
 import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
-//import Rever from "./components/Rever"
-import Review from "./components/Review";
+import FileMenu from "./components/Inicio/FileMenu";
 import Rever from "./components/Rever";
+import Review from "./components/Review";
+
+
 
 class Routes extends Component {
         constructor (props) {
@@ -43,10 +45,8 @@ return (
     <Provider store={store}>
    <Switch>
 
-     <Route exact path="/" component={Rever}/>
-     <Route path="/Review" component={Review} />
-     
-     
+     <Route exact path="/" component={FileMenu}/>
+     <Route exact path="/Review" component={Review}/>
     </Switch>
      </Provider>
      </BrowserRouter>

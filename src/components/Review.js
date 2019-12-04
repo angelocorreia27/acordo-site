@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {Button,Table} from 'react-bootstrap';
 //import {Card} from 'reactstrap'
 
-class Review extends Component {
+class Review extends Component {
     constructor(props){
         super(props);
        

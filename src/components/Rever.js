@@ -7,11 +7,9 @@ import Review from "./Review"
 import {
     Card
   } from 'reactstrap';
-import Routes from "../routes";
 
-const enviar = ['Enviar lembretes automaticos']
 
-class Rever extends Component {
+class Rever extends Component {
     constructor(props){
         super(props)
         this.state = {
