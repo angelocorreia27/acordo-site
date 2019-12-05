@@ -1,8 +1,6 @@
-import React, {useCallback} from 'react'
-import useDropzone from 'react-dropzone'
+import React from 'react'
 import {Row,Tabs,Tab} from 'react-bootstrap'
-import Rever from "../Rever"
-import Review from '../Gerir/Review'
+import Review from '../gerir/Review'
 import MenuDropzone from '../MenuDropzone'
 
 const FileMenu = () => {

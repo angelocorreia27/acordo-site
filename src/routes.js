@@ -4,8 +4,9 @@ import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
-import Rever from "./components/Rever";
-import Review from "./components/Gerir/Review";
+import Rever from "./components/Rever"
+import Review from "./components/gerir/Review";
+import login from "./components/DocSign/login"
 
 
 
@@ -47,6 +48,9 @@ return (
 
      <Route exact path="/" component={Inicio}/>
      <Route exact path="/Review" component={Review}/>
+     <Route exact path="/login" component={login}/>
+
+
     </Switch>
      </Provider>
      </BrowserRouter>

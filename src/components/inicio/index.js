@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Nav, Navbar} from 'reactstrap';
+import {Link} from 'react-router-dom';
 import FileMenu from './FileMenu';
 class inicio extends Component {
     
@@ -8,8 +9,15 @@ class inicio extends Component {
     return (
     <Container>
     <Row>
-        <Col>nav left</Col>
-        <Col>nav rigth</Col>
+        <Col style={{backgroundColor: "lightblue" }}> 
+        
+           <Navbar className="NavBar" bg="primary" variant="dark">
+           <Nav className="Nav"><strong>  Signed in as: </strong> <a href="login">Login</a></Nav>
+        </Navbar>
+        
+
+</Col>
+        <Col></Col>
     </Row>
     <Row>
         <Col><FileMenu/></Col>
