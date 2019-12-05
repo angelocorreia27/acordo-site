@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom"
 import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
-import FileMenu from "./components/Inicio/FileMenu";
+import Inicio from "./components/inicio";
 import Rever from "./components/Rever";
 import Review from "./components/Review";
 
@@ -45,7 +45,7 @@ return (
     <Provider store={store}>
    <Switch>
 
-     <Route exact path="/" component={FileMenu}/>
+     <Route exact path="/" component={Inicio}/>
      <Route exact path="/Review" component={Review}/>
     </Switch>
      </Provider>
