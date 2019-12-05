@@ -10,6 +10,7 @@
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
     "ckeditor-full": "^4.7.3",
+    "client-oauth2": "^4.2.5",
     "debug": "^3.1.0",
     "emotion": "^9.0.1",
     "express": "^4.17.1",
