@@ -145,3 +145,9 @@ form.example input[type=text] {
   widows: 60%;
 }
 
+/*  Inicio da pagina Drop file */
+
+.Posicion-File {
+  background-image: url('/home/eliaslima/file');
+  margin-left: 200px;
+}

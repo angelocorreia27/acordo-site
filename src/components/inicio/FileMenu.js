@@ -2,7 +2,9 @@ import React, {useCallback} from 'react'
 import useDropzone from 'react-dropzone'
 import {Row,Tabs,Tab} from 'react-bootstrap'
 import Rever from "../Rever"
-import Review from '../Review'
+import Review from '../Gerir/Review'
+import MenuDropzone from '../MenuDropzone'
+
 const FileMenu = () => {
 
     return(
@@ -10,7 +12,7 @@ const FileMenu = () => {
     
     <Tabs defaultActiveKey="inicio" id="uncontrolled-tab-example">
                         <Tab eventKey="inicio" title="Inicio">
-                         <Rever/>    
+                         <MenuDropzone/>    
                         </Tab>
                         <Tab eventKey="gerir" title="Gerir">
                        <Review/>

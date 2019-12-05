@@ -5,7 +5,7 @@ import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
 import Rever from "./components/Rever";
-import Review from "./components/Review";
+import Review from "./components/Gerir/Review";
 
 
 
