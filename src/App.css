@@ -29,7 +29,7 @@
 
 
 .warning {background-color: #ffd000;
-border-bottom: 2px solid #e68a00;} /* Orange */
+border-bottom: 1px solid #e68a00;} /* Orange */
 .warning:hover {background: #e68a00;
 }
 
