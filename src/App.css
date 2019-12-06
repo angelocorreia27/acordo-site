@@ -28,7 +28,8 @@
 }
 
 
-.warning {background-color: #ffd000;} /* Orange */
+.warning {background-color: #ffd000;
+border-bottom: 1px solid #e68a00;} /* Orange */
 .warning:hover {background: #e68a00;
 }
 
@@ -145,3 +146,36 @@ form.example input[type=text] {
   widows: 60%;
 }
 
+/*  Inicio da pagina Drop file */
+
+.form{
+  background-origin: padding-box;
+  margin-top: -42px;
+  float: right;
+  width: 30%;
+  height: 20%;
+  color: white;
+  font-size: 15px;
+  margin-right: -40px;
+  cursor: pointer;
+}
+
+.search {
+  float: right;
+  background: #2196F3;
+  margin-right: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.Nav {
+  padding: 10px;
+  float: right;
+  padding: "10px";
+  font-family: Arial, Helvetica, sans-serif;
+  
+  }
+
+.NavBar{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  font-family: Arial, Helvetica, sans-serif;
+}
+ 
