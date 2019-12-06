@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
 import Rever from "./components/Rever";
 import Review from "./components/Review";
-
+import Auth from "./components/autentika"
 
 
 class Routes extends Component {
@@ -47,6 +47,7 @@ return (
 
      <Route exact path="/" component={Inicio}/>
      <Route exact path="/Review" component={Review}/>
+     <Route exact path="/auth/login" component={Auth}/>
     </Switch>
      </Provider>
      </BrowserRouter>

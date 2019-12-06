@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import FileMenu from './FileMenu';
+import NavRight from '../../layout/NavRight';
+
+
 class inicio extends Component {
     
     render(){
@@ -9,7 +12,7 @@ class inicio extends Component {
     <Container>
     <Row>
         <Col>nav left</Col>
-        <Col>nav rigth</Col>
+        <Col><NavRight/></Col>
     </Row>
     <Row>
         <Col><FileMenu/></Col>

@@ -1,10 +1,11 @@
 
+const oauth2 = () => {
 var config = require('config')
-function instance(){
 
-    var ClientOAuth2 = require('client-oauth2')
- 
-    var githubAuth = new ClientOAuth2({
+var ClientOAuth2 = require('client-oauth2')
+var storeNewToken= null;
+
+var githubAuth = new ClientOAuth2({
         clientId: config.ClientOAuth2,
         clientSecret: config.clientSecret,
         accessTokenUri: config.accessToken,
@@ -13,9 +14,9 @@ function instance(){
         scopes: config.scopes
     })
 
-}
 
-function validate(){
+
+    exports.validate =  function(){
 
     // Can also just pass the raw `data` object in place of an argument.
     var token = githubAuth.createToken('access token', 'optional refresh token', 'optional token type', { data: 'raw user data' })
@@ -35,7 +36,7 @@ function validate(){
     }) //=> { method, url, headers, ... }
 }
 
-function login(){
+exports.login = function (){
 
     var express = require('express')
     var app = express()
@@ -68,4 +69,4 @@ function login(){
             })
         })
     }
-module.exports = oauth2;
+}
