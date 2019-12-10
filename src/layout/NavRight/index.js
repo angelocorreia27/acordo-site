@@ -17,6 +17,7 @@ class NavRight extends Component {
 
         return (
             <Aux>
+            <div className="look-Screen">  
                 <ul className="navbar-nav ml-auto">
                 
                     <li className={this.props.rtlLayout ? 'm-r-15' : 'm-l-15'}>
@@ -31,16 +32,14 @@ class NavRight extends Component {
                                         <i className="feather icon-log-out"/>
                                     </a>
                                 </div>
-                                <ul className="pro-body">
+                                    <ul className="pro-body">
                                     <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-settings"/> Settings</a></li>
-                                    <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-user"/> Profile</a></li>
-                                    <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-mail"/> My Messages</a></li>
-                                    <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-lock"/> Lock Screen</a></li>
                                 </ul>
-                           
+                            
+
                     </li>
                 </ul>
-
+               </div>
             </Aux>
         );
     }

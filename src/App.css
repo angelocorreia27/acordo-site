@@ -29,9 +29,10 @@
 
 
 .warning {background-color: #ffd000;
-border-bottom: 1px solid #e68a00;} /* Orange */
+} /* Orange */
 .warning:hover {background: #e68a00;
 }
+p:hover{color: dodgerblue;}
 
 .style {
   margin:auto; 
@@ -162,10 +163,13 @@ form.example input[type=text] {
 
 .search {
   float: right;
-  background: #2196F3;
+
   margin-right: 40px;
   font-family: Arial, Helvetica, sans-serif;
+  color: rgb(71, 55, 223);
 }
+
+
 .Nav {
   padding: 10px;
   float: right;
@@ -178,4 +182,12 @@ form.example input[type=text] {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   font-family: Arial, Helvetica, sans-serif;
 }
- 
+.look-Screen{
+  float: right;
+}
+li{
+  list-style-type: none;
+}
+strong{
+    color: #888;
+}

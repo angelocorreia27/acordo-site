@@ -2,6 +2,8 @@ import React from 'react'
 import {Row,Tabs,Tab} from 'react-bootstrap'
 import Review from '../gerir/Review'
 import MenuDropzone from '../MenuDropzone'
+//var mountNode = document.getElementById('container');
+
 
 const FileMenu = () => {
 
@@ -10,9 +12,9 @@ const FileMenu = () => {
     
     <Tabs defaultActiveKey="inicio" id="uncontrolled-tab-example">
                         <Tab eventKey="inicio" title="Inicio">
-                         <MenuDropzone/>    
-                        </Tab>
-                        <Tab eventKey="gerir" title="Gerir">
+                       <MenuDropzone/>
+                       </Tab>
+                       <Tab eventKey="gerir" title="Gerir">
                        <Review/>
                         </Tab>
                         <Tab eventKey="modelo" title="Modelo" disabled>

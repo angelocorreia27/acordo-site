@@ -13,8 +13,8 @@ render(){
 <div className="page">
 
          <header>
-       <h3>Caixa de entrada</h3> 
-       
+       <h3>Caixa de entrada</h3>
+              
  <div className= "form">
   <Form inline>
       <FormControl type="text" placeholder="Caixa de entrada" className="mr-sm-2" />
@@ -40,6 +40,10 @@ render(){
       <div className="select">
     <select id="Mover" name="Mover">
       <option value="mover">Mover</option>
+      <option value="mover">Rencaminhar</option>
+      <option value="mover">Criar uma copia</option>
+      <option value="mover">Ver historico</option>
+      <option value="mover">Eliminar</option>
     </select>
     </div>
     </td>
@@ -52,6 +56,10 @@ render(){
       <div className="select">
     <select id="Mover" name="Mover">
       <option value="mover">Mover</option>
+      <option value="mover">Rencaminhar</option>
+      <option value="mover">Criar uma copia</option>
+      <option value="mover">Ver historico</option>
+      <option value="mover">Eliminar</option>
     </select>
     </div>
     </td>

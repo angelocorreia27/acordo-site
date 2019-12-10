@@ -4,16 +4,8 @@ import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
-<<<<<<< HEAD
 import Rever from "./components/Rever";
-import Review from "./components/Review";
 import Auth from "./components/autentika"
-=======
-import Rever from "./components/Rever"
-import Review from "./components/gerir/Review";
-import login from "./components/DocSign/login"
-
->>>>>>> d928456ea7bc287809f191e9752fe9f040ca4c94
 
 
 class Routes extends Component {
@@ -53,14 +45,9 @@ return (
    <Switch>
 
      <Route exact path="/" component={Inicio}/>
-     <Route exact path="/Review" component={Review}/>
-<<<<<<< HEAD
+  
      <Route exact path="/auth/login" component={Auth}/>
-=======
-     <Route exact path="/login" component={login}/>
-
-
->>>>>>> d928456ea7bc287809f191e9752fe9f040ca4c94
+    
     </Switch>
      </Provider>
      </BrowserRouter>

@@ -12,20 +12,10 @@ class inicio extends Component {
     return (
     <Container>
     <Row>
-<<<<<<< HEAD
-        <Col>nav left</Col>
+        <Col><h3>Pagina Inicial</h3></Col>
+        
+        
         <Col><NavRight/></Col>
-=======
-        <Col style={{backgroundColor: "lightblue" }}> 
-        
-           <Navbar className="NavBar" bg="primary" variant="dark">
-           <Nav className="Nav"><strong>  Signed in as: </strong> <a href="login">Login</a></Nav>
-        </Navbar>
-        
-
-</Col>
-        <Col></Col>
->>>>>>> d928456ea7bc287809f191e9752fe9f040ca4c94
     </Row>
     <Row>
         <Col><FileMenu/></Col>
