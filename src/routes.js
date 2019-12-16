@@ -6,7 +6,8 @@ import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
 import Rever from "./components/Rever";
 import Auth from "./components/autentika"
-
+import MenuDropzone from "./components/MenuDropzone";
+import Modelo from "./components/gerir/Modelo";
 
 class Routes extends Component {
         constructor (props) {
@@ -45,7 +46,8 @@ return (
    <Switch>
 
      <Route exact path="/" component={Inicio}/>
-  
+     <Route exact path="/" component={MenuDropzone}/>
+     <Route exact path="/Modelo" component={Modelo}/>
      <Route exact path="/auth/login" component={Auth}/>
     
     </Switch>

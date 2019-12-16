@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Nav, Navbar} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import { Container, Row, Col} from 'reactstrap';
+//import {Link} from 'react-router-dom';
 import FileMenu from './FileMenu';
 import NavRight from '../../layout/NavRight';
 
@@ -12,7 +12,7 @@ class inicio extends Component {
     return (
     <Container>
     <Row>
-        <Col><h3>Pagina Inicial</h3></Col>
+        <Col><h3>Home</h3></Col>
         
         
         <Col><NavRight/></Col>

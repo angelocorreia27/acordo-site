@@ -164,7 +164,7 @@ form.example input[type=text] {
 .search {
   float: right;
 
-  margin-right: 40px;
+  margin-right: 30px;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(71, 55, 223);
 }
@@ -190,4 +190,23 @@ li{
 }
 strong{
     color: #888;
+}
+
+.page {
+  margin-top: 60px;
+  margin-left: 40px;
+}
+
+
+/* Menu NavBar */
+.MenuNav{
+  float: left;
+  margin-left: -220px;
+
+  box-shadow: 10px;
+} 
+
+span{
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }

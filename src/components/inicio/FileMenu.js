@@ -1,9 +1,8 @@
 import React from 'react'
-import {Row,Tabs,Tab} from 'react-bootstrap'
+import {Row,Tabs,Tab,ButtonToolbar} from 'react-bootstrap'
 import Review from '../gerir/Review'
 import MenuDropzone from '../MenuDropzone'
-//var mountNode = document.getElementById('container');
-
+import Modelo from "../gerir/Modelo";
 
 const FileMenu = () => {
 
@@ -17,7 +16,8 @@ const FileMenu = () => {
                        <Tab eventKey="gerir" title="Gerir">
                        <Review/>
                         </Tab>
-                        <Tab eventKey="modelo" title="Modelo" disabled>
+                        <Tab eventKey="modelo" title="Modelo">
+                        <Modelo/>
                 
         </Tab>
     </Tabs>
