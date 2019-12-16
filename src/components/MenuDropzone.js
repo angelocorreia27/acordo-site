@@ -5,7 +5,7 @@ import AddModal from './AddModal';
 import axios from 'axios';
 import {Icon, message, Upload} from 'antd'
 
-
+ var accept = 'application/pdf';
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
@@ -53,7 +53,7 @@ handleChange = info => {
 
   onClickHandler = () => {
     const data = new FormData();
-    data.append('file', this.state.selectedFile);
+  //  data.append('file', this.state.selectedFile);
     axios.post("http://localhost:8000/negotiation/create", data, { 
        // receive two    parameter endpoint url ,form data
   "owner":"angelo",
@@ -74,24 +74,26 @@ render(){
   const upload = (
     <div>
     <Icon type={this.state.loading ? 'loading' : 'plus'} />
-    <div className="ant-upload-text">Upload File</div>      
+    <div className="ant-upload-text">Largue os seus ficheiros aqui</div>      
     </div>
   );
   const {imageUrl} = this.state;
     return (
     <center>
    
-    <div className="sub-hearder">
+  <div className="sub-hearder">
 
-      <br></br><br></br><br></br>
-   <Button href="/Modelo"> INICIAR AGORA</Button>
- <br></br><br></br><br></br>
- <br></br><br></br><br></br>
-  <Upload beforeUpload={beforeUpload} onChange={this.handleChange}>
-  {imageUrl ? <img src={imageUrl} style={{width: '100%' }} /> : upload}
+<Button onClick={this.onClickHandler}>Iniciar agora</Button>
+   <br></br><br></br>
+     <Upload 
+       beforeUpload={beforeUpload} 
+       onChange={this.handleChange}>
+  {imageUrl ? <img src={imageUrl} style={baseStyle} /> : upload}
 </Upload>
-   
-</div>
+
+
+     </div>
+
     </center>
   )}
 
@@ -99,3 +101,15 @@ render(){
 
 export default MenuDropzone;
 
+<div style={{ marginTop: 20 }}/>
+
+
+const baseStyle = {
+width: "80%",
+height: 120,
+padding: 30,
+borderWidth: 2,
+borderColor: '#666',
+borderStyle: 'dashed',
+borderRadius: 5
+};

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {Button,Table,Form, FormControl} from 'react-bootstrap';
-import { Icon, Card, Menu, Row, Col } from 'antd';
+import { Icon, Menu } from 'antd';
+import {Button, Form, FormControl, Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
 const { SubMenu } = Menu;
 
 
@@ -16,7 +16,7 @@ handleClick = e => {
 
 render(){
     return ( 
-    <Row>
+    <Row m={9}>
      <Col>
       <div className="MenuNav">
     
@@ -26,13 +26,16 @@ render(){
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           mode="inline"
-        ><SubMenu
+        >
+             <strong>ENVELOPES</strong>
+
+       <SubMenu
             key="sub1"
             title={
-            <span>
-                <Icon type="mail" />
-                <span> Caixa de entrada </span>
-              </span>
+            <span><Icon type="mail" /><span> <ul> <li icon="icon-sent"><a href="news.asp">Caixa de entrada</a></li> </ul> </span>
+              </span>                                   
+          
+              
             }
           >
           </SubMenu>
@@ -42,8 +45,7 @@ render(){
             key="sub2"
             title={
               <span>
-                <Icon type="appstore" />
-                <span> Enviado </span>
+                <Icon type="appstore" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">Enviado</a></li> </ul> </span>
               </span>
             }
           >
@@ -54,8 +56,7 @@ render(){
             key="sub4"
             title={
               <span>
-                <Icon type="carry-out"/>
-                <span> Rascunhos </span>
+                <Icon type="carry-out"/> <span> <ul><li icon="i"><a href="contact.asp">Rascunho</a></li></ul>  </span>
               </span>
             }
           >
@@ -66,8 +67,7 @@ render(){
             key="sub1"
             title={
               <span>
-                <Icon type="delete" />
-                <span> Eliminado </span>
+                <Icon type="delete" /> <span> <ul><li><a href="about.asp">Eliminado</a></li></ul> </span>
               </span>
             }
           >        
@@ -78,8 +78,8 @@ render(){
             key="sub1"
             title={
               <span>
-                <Icon type="mail" />
-                <span> PowerForms </span>
+                <Icon type="mail" /> <span> <span> <ul><li><a href="about.asp">PowerForms</a></li></ul> </span>
+                 </span>
               </span>
             }
           >

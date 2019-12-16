@@ -4,7 +4,7 @@ import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
-import Rever from "./components/Rever";
+//import Rever from "./components/Rever";
 import Auth from "./components/autentika"
 import MenuDropzone from "./components/MenuDropzone";
 import Modelo from "./components/gerir/Modelo";

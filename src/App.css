@@ -165,7 +165,7 @@ form.example input[type=text] {
   float: right;
 
   margin-right: 30px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica,Arial,sans-serif;
   color: rgb(71, 55, 223);
 }
 
@@ -180,7 +180,7 @@ form.example input[type=text] {
 
 .NavBar{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica,Arial,sans-serif;
 }
 .look-Screen{
   float: right;
@@ -194,19 +194,33 @@ strong{
 
 .page {
   margin-top: 60px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 
 /* Menu NavBar */
 .MenuNav{
   float: left;
-  margin-left: -220px;
-
+  margin-left: -280px;
+  margin-top: 100px;
+  color: white;
   box-shadow: 10px;
-} 
+  align-items: flex-start;
+  min-height: 28px;
+  background-color: #f1f1f1;
+  height: 900px;
+  width: 20%;
+  
+}
+
+/* close NavBar*/
 
 span{
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica,Arial,sans-serif;
 }
+
+.sub-hearder{
+  margin-top: 120px;
+}
+
