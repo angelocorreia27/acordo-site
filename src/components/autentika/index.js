@@ -5,10 +5,17 @@ import config from './config';
 import ClientOAuth2 from 'client-oauth2';
 import axios from 'axios';
 import { Icon } from 'antd';
+import Redirect from '../helper/Redirect';
 
-
-var http = require("http");
+//var token;
+//var storeNewToken;
 var autentikaAuth = null;
+var http = require("http");
+var port = 3000;
+var url = config.authorizationUri + '?response_type=code&client_id=' 
+    + config.client_id + '&scope=openid+email+profile' 
+    + '&state=YOUR_STATE&redirect_uri='+config.redirect_url;
+
 class Auth extends Component {
 
         constructor(props){
@@ -17,7 +24,7 @@ class Auth extends Component {
           email:'',
           token:''
         }
-  this.login();
+  //this.login();
   // this.createToken();
   // this.getToken();
   // this.postToken();
@@ -26,20 +33,19 @@ class Auth extends Component {
     }
     
     
-  login = () => {
+login = () => {
     
     var url = config.authorizationUri + '?response_type=code&client_id=' 
     + config.client_id + '&scope=openid+email+profile' 
-    + '&state=YOUR_STATE&redirect_uri=' + config.redirect_url;
+    + config.redirect_url + '&state=YOUR_STATE&redirect_uri=';
 
-
-    http.createServer(function (req, res) {
-        res.writeHead(301, {
-          Location: url
-        });
-       // res.write('Hello World!');
+        http.createServer(function (res, req) {
+        res.rawHeaders(301,{ "Location" : url});
         res.end();
-    }).listen(8000);}
+      
+    }).listen(port);
+      console.log();
+    }
 
     instance = () =>{
         autentikaAuth= new ClientOAuth2({
@@ -107,12 +113,13 @@ class Auth extends Component {
 
         return (
             <Aux>
+
+                <Redirect loc={url} />
                
-                <p>teste</p>
-         
             </Aux>
         );
     }
 }
 
 export default Auth;
+//  http://localhost:3000/auth/login?code=67bf2348-93e6-34ae-a6d3-63c321596ea2&state=YOUR_STATE&session_state=c0bb2a60e86f9be9a5fab759e7654b6d435dc9bd7c42cad695f8190b6f3143a4.YdeyiyrbjfHnWZuqzuqAvA
