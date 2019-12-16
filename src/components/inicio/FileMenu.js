@@ -17,7 +17,7 @@ const FileMenu = () => {
                        <Review/>
                         </Tab>
                         <Tab eventKey="modelo" title="Modelo">
-                        <Modelo/>
+                       
                 
         </Tab>
     </Tabs>

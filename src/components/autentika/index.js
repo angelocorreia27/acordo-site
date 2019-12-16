@@ -7,13 +7,8 @@ import axios from 'axios';
 import { Icon } from 'antd';
 
 
-//var token;
-//var storeNewToken;
-var autentikaAuth = null;
-
 var http = require("http");
-var port = 3000;
-
+var autentikaAuth = null;
 class Auth extends Component {
 
         constructor(props){
@@ -31,19 +26,20 @@ class Auth extends Component {
     }
     
     
-login = () => {
+  login = () => {
     
     var url = config.authorizationUri + '?response_type=code&client_id=' 
     + config.client_id + '&scope=openid+email+profile' 
-    + config.redirect_url + '&state=YOUR_STATE&redirect_uri=';
+    + '&state=YOUR_STATE&redirect_uri=' + config.redirect_url;
 
-        http.createServer(function (res, req) {
-        res.rawHeaders(301,{ "Location" : url});
+
+    http.createServer(function (req, res) {
+        res.writeHead(301, {
+          Location: url
+        });
+       // res.write('Hello World!');
         res.end();
-      
-    }).listen(port);
-      console.log();
-    }
+    }).listen(8000);}
 
     instance = () =>{
         autentikaAuth= new ClientOAuth2({
