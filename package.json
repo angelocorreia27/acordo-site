@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@syncfusion/ej2-react-base": "^17.3.27",
-    "@syncfusion/ej2-react-inputs": "^17.3.29",
     "Blob": "^0.10.0",
     "add": "^2.0.6",
     "antd": "^3.26.3",
