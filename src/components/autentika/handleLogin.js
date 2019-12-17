@@ -8,68 +8,69 @@ import Redirect from '../helper/Redirect';
 import queryString from 'query-string';
 
 
-var url = config.authorizationUri + '?response_type=code&client_id=' 
+var url = config.accessTokenUri + '?grant_type=authorization_code&code' 
     + config.client_id + '&scope=openid+email+profile' 
     + '&state=YOUR_STATE&redirect_uri='+config.redirect_url;
 
-let params = {};
-
+var paramToken;
+var headers;
+var Authorization;
+let querystring = require('querystring');
 class handleLogin extends Component {
-
+  
         constructor(props){
+        
         super();
         this.state={
           code:null,
           session_state:null,
           state:null
         }
+
   //this.login();
-  // this.createToken();
-  // this.getToken();
-  // this.postToken();
-  // this.getOpenToken();
+  //this.createToken();
+  this.getToken();
+ // this.postToken();
+ // this.getOpenToken();
 
     }
     
     componentDidMount () {
-
+      
       let url = this.props.location.search;
-      params = queryString.parse(url);
-      this.state.code = params.code;
-      this.state.session_state = params.session_state;
-      this.state.state = params.state;
+      url = queryString.parse(url);
+      this.state.code = url.code;
+      this.state.session_state = url.session_state;
+      this.state.state = url.state;
       console.log("state", this.state);
-    }
+      paramToken = querystring.stringify('grant_type=authorization_code&code='+this.state.code+'&redirect_uri='+config.redirect_url+'&scope=openid+email+profile');
+      Authorization = config.client_id + ':' + config.client_secret;
+     //  encodedData = data.toString('base64');
+     //  console.log(encodedData);
+          
+        
+       headers = { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic ' + Authorization.toBase64URI }
+       
 
-    createToken = ()  =>{
-        // Can also just pass the raw `data` object in place of an argument.
-        axios({
-        method: 'POST',
-        url: 'https://autentika.gov.cv/oauth2/token',
-        headers: {
-        'Authorization': 'Basic OGtqNVpETDU5RUxESUJzRkh3bFNKNDhKZzh3YTpNQ1F2MUh2VEY5RmVUX1FZMnJSZXpwY1V6SGNh',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }}).then(Response =>{
-        console.log(Response);});
-    
-    }
+      }
 
-    getToken = () =>{
+ 
+      getToken = () =>{
         // Can also just pass the raw `data` object in place of an argument.
-            axios({
-            method: 'GET',
-            url: 'https://autentika.gov.cv/oauth2/token',
-            headers: {
-                'Authorization': 'Basic OGtqNVpETDU5RUxESUJzRkh3bFNKNDhKZzh3YTpNQ1F2MUh2VEY5RmVUX1FZMnJSZXpwY1V6SGNh',
-                'Content-Type': 'application/x-www-form-urlencoded'
-              }}).then(Response =>{
+            axios.post(
+           
+             config.accessTokenUri,
+             paramToken,
+             {headers} 
+            
+            ).then(Response =>{
                 console.log(Response);});
               }        
 
         postToken = () =>{
             // Can also just pass the raw `data` object in place of an argument.
-                axios({
-                method: 'POST',
+                axios.post({
+              
                 url: 'https://autentika.gov.cv/oauth2/authorize',
                 headers: {
                     'Authorization': 'Basic OGtqNVpETDU5RUxESUJzRkh3bFNKNDhKZzh3YTpNQ1F2MUh2VEY5RmVUX1FZMnJSZXpwY1V6SGNh',
@@ -81,8 +82,8 @@ class handleLogin extends Component {
 
             getOpenToken = () =>{
                 // Can also just pass the raw `data` object in place of an argument.
-                    axios({
-                    method: 'GET',
+                    axios.get({
+                  
                     url: 'https://autentika.gov.cv/oauth2/userinfo?schema=openid',
                     headers: {
                         'Authorization': 'Basic OGtqNVpETDU5RUxESUJzRkh3bFNKNDhKZzh3YTpNQ1F2MUh2VEY5RmVUX1FZMnJSZXpwY1V6SGNh',
