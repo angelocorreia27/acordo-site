@@ -5,7 +5,8 @@ import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
 //import Rever from "./components/Rever";
-import Auth from "./components/autentika"
+import Auth from "./components/autentika";
+import handleLogin from './components/autentika/handleLogin';
 import MenuDropzone from "./components/MenuDropzone";
 import Modelo from "./components/gerir/Modelo";
 
@@ -48,7 +49,8 @@ return (
      <Route exact path="/" component={Inicio}/>
      <Route exact path="/" component={MenuDropzone}/>
      <Route exact path="/Modelo" component={Modelo}/>
-     <Route exact path="/auth/login" component={Auth}/>
+     <Route exact path="/auth" component={Auth}/>
+     <Route exact path="/auth/login" component={handleLogin}/>
     
     </Switch>
      </Provider>
