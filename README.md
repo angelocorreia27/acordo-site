@@ -2,6 +2,39 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+## How to use Redirect in React 
+
+/* Multiple Route : 
+<div> 
+<Route exact path="/auth/login" render={props =>
+   <Auth/>
+    <Inicio/>
+    <MenuDropzone/>
+  <div> 
+
+  <------------------------------>
+
+   <Route exact path="/auth/login" component={Auth}/>
+     { this.state.Auth && 
+      <Route exact path="/auth/login" components={{main: Inicio, slidebar: MenuDropzone}}/>
+      
+      }/>
+
+  <------------------------------->
+  
+   const { redirect } = this.state;
+
+      if (redirect) {
+        return (
+            <Aux>
+                
+                <Redirect loc={url} />
+               
+            </Aux>
+        )}
+        return <Inicio/>
+   */
+
 
 ## Table of Contents
 
