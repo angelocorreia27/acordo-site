@@ -1,0 +1,1 @@
+/home/eliaslima/acordo-site/ckeditor/skins/ckeditor.js

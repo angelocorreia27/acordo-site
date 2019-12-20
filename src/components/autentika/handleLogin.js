@@ -43,28 +43,27 @@ class handleLogin extends Component {
       this.state.session_state = url.session_state;
       this.state.state = url.state;
       console.log("state", this.state);
+      
       paramToken = querystring.stringify('grant_type=authorization_code&code='+this.state.code+'&redirect_uri='+config.redirect_url+'&scope=openid+email+profile');
-      Authorization = config.client_id + ':' + config.client_secret;
+      Authorization = config.client_id +':' + config.client_secret;
      //  encodedData = data.toString('base64');
      //  console.log(encodedData);
-          
-        
-       headers = { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic ' + Authorization.toBase64URI }
-       
+          headers = { 'Content-Type': 'application/x-www-form-urlencoded', 
+         'Authorization': 'Basic ' + Authorization.toBase64 }
 
       }
 
  
       getToken = () =>{
         // Can also just pass the raw `data` object in place of an argument.
-            axios.post(
+           axios.post(
            
              config.accessTokenUri,
              paramToken,
              {headers} 
             
             ).then(Response =>{
-                console.log(Response);});
+                console.log(Response.data);});
               }        
 
         postToken = () =>{

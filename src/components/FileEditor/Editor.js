@@ -2,12 +2,12 @@ import CKEditor from 'react-ckeditor-component'
 import React from 'react'
 import request from 'request-promise-native'
 import { css } from 'emotion'
-import {Grid, Row, Col } from 'react-bootstrap'
+import {Grid, Row, Col, Button } from 'react-bootstrap'
 import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 import examples from './exapmples'
 import Debug from 'debug'
-
+import axios from 'axios'
 const debug = Debug('editor')
 debug.enabled = true
 
@@ -78,6 +78,7 @@ export default class Editor extends React.Component {
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
     this.state = examples[0] // body footer header
+    this.onClickHandler = this.onClickHandler.bind(this)
     window.$ = $
   }
 
@@ -162,12 +163,37 @@ export default class Editor extends React.Component {
     // console.log('afterPaste event called with event info: ', evt)
   }
 
+  onClickHandler = () => {
+      //  const data = new FormData();
+       // data.append('file', this.state.selectedFile);
+        axios.post("http://localhost:8000/negotiation/create",{ 
+           // receive two    parameter endpoint url ,form data
+      "id":"1",
+      "title":"angelo",
+      "description":"title",
+      "owner": "angelo",
+      "doctype": "ficheiro"
+    
+       })
+     
+     .then(res => { // then print response status
+         console.log(res.statusText); 
+    
+      })
+     }
+
   render () {
     const noWarningMessagesRelatedToContentEditable = true
     return (
+      
+            
+    
       <Grid className={editorBlock}>
         <Row>
+        
           <Col mdOffset={2} md={8} sm={12}>
+
+ 
             <CKeditorInline // header
 
               activeClass={headerEditor}
@@ -179,6 +205,7 @@ export default class Editor extends React.Component {
 
               
             >
+              
               <p style={{'textAlign': 'right'}} >
                 <span style={{'color': '#999999'}}>
                   Edit header here
@@ -210,8 +237,9 @@ export default class Editor extends React.Component {
                   Edit footer here
                 </span>
               </p>
-            </CKeditorInline>
-          </Col>
+            </CKeditorInline> <br></br><Button className="btn-warning" onClick={this.onClickHandler} href="/Review"> Confirmar </Button>           
+          </Col> 
+
         </Row>
         <Row>
           <Col>

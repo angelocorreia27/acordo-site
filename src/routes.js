@@ -8,7 +8,11 @@ import Inicio from "./components/inicio";
 import Auth from "./components/autentika";
 import handleLogin from './components/autentika/handleLogin';
 import MenuDropzone from "./components/MenuDropzone";
-import Modelo from "./components/gerir/Modelo";
+import Editor from "./components/FileEditor/Editor";
+import SideMenu from "./components/FileEditor/SideMenu";
+import addDoc from "./components/DocSign/addDoc";
+import Rever from "./components/Rever";
+
 
 class Routes extends Component {
         constructor (props) {
@@ -48,9 +52,16 @@ return (
 
      <Route exact path="/" component={Inicio}/>
      <Route exact path="/" component={MenuDropzone}/>
-     <Route exact path="/Modelo" component={Modelo}/>
+     <Route exact path="/Editor" component={Editor}/>
+     
+     <Route exact path="/addDoc" component={addDoc}/>
+     <Route exact path="/Rever" component={Rever}/>
+      
+
      <Route exact path="/auth" component={Auth}/>
      <Route exact path="/auth/login" component={handleLogin}/>
+
+     
     
     </Switch>
      </Provider>
