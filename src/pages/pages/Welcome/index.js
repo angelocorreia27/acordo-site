@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {Button} from 'react-bootstrap'
  
  
 class Welcome extends Component {
@@ -9,12 +9,13 @@ class Welcome extends Component {
       user: []
    };
   
-  }
-
-Login = () => {
+   
+  
+ function login (){
   const username = localStorage.getItem('http://localhost:8000/auth/elias.lima') && this.setState({
 
-  user: JSON.parse(localStorage.getItem('user')),
+  user: JSON.parse(localStorage.getItem('person'))
+  
 });
 
 
@@ -36,20 +37,22 @@ Login = () => {
  
     if (username !== null) {
     return (
-
-        <p>{`Bem vindo ${username}`}</p>
-     
+    <div>       
+      <p>{`Bem vindo ${username}`}</p>
+    
+       </div>
+ 
     );
 
   }
-}
+}}
 
  render() {
    return (
    <div>
-
-     {this.Login()}
-   </div>)
+        <p>elias</p>
+      
+   </div>);
 
  }
 
