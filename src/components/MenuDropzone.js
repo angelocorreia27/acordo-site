@@ -1,9 +1,8 @@
 import React from 'react';
-//import Dropzone from 'react-dropzone';
 import {Button} from 'react-bootstrap';
 import axios from 'axios';
-import {Icon, message, Upload} from 'antd'
-import { request } from 'https';
+import {Icon, Upload} from 'antd'
+
 
 
 class MenuDropzone extends React.Component {
@@ -19,11 +18,11 @@ class MenuDropzone extends React.Component {
   }
 
 onClickButton = () => {
-  const data = new FormData() 
-  data.append('file', this.state.selectedFile);  
-  axios.post("http:localhost:8000/negotiation/upload", data,{ 
+  //const data = new FormData() 
+  //data.append('file', this.state.selectedFile);  
+  axios.post("http:localhost:8000/negotiation/upload",{ 
     "id":"1",
-    "FileData":"FileData"
+    "fileData":"FileData"
 
   }).then(res => { // then print response status
          console.log(res.statusText); 
@@ -32,7 +31,7 @@ onClickButton = () => {
      }
 
 viewData = () => {
-  window.open('addDoc.js', axios.post("http:localhost:8000/negotiation/upload"), 'height=250, width=250');
+  window.open('addDoc.js', axios.post("http:localhost:8000/negotiation/upload"));
 }
     
 
@@ -83,7 +82,7 @@ const baseStyle = {
 width: "100%",
 padding: 30,
 borderWidth: 2,
-borderColor: '#677',
+borderColor: '#666',
 borderStyle: 'dashed',
 borderRadius: 5
 };

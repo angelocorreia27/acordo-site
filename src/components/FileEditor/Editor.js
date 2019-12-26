@@ -32,10 +32,10 @@ const footer = css`
   margin-top: 0px
 `
 
-/*const buttonStyle = css`
+const buttonStyle = css`
   font-size: x-large;
   margin-top: 50px;
-`*/
+`
 
 function htmlOptimization (html) {
   html = html.replace(/&quot;/g, '')

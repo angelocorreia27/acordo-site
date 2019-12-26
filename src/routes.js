@@ -12,7 +12,9 @@ import Editor from "./components/FileEditor/Editor";
 import SideMenu from "./components/FileEditor/SideMenu";
 import addDoc from "./components/DocSign/addDoc";
 import Rever from "./components/Rever";
-
+import Login from "./layout/Login/index"
+import GlobalStyles from "./pages/pages/Welcome";
+import Welcome from "./pages/pages/Welcome";
 
 class Routes extends Component {
         constructor (props) {
@@ -59,7 +61,11 @@ return (
       
 
      <Route exact path="/auth" component={Auth}/>
+     
+     <Route exact path="/Welcome" component={Welcome}/>
+     
      <Route exact path="/auth/login" component={handleLogin}/>
+     <Route exact path="/index" component={Login}/>
 
      
     
