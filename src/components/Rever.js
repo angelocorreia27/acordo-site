@@ -1,19 +1,36 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import {Link} from "react-router-dom";
-import { Button, Form, Modal, Col, Row } from 'react-bootstrap'
-import {
-Card
-} from 'reactstrap';
+import { Form, Modal, Col, Row } from 'react-bootstrap'
 
 import AddModal from "./AddModal"
+import { Card, Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+
+const Example = (props) => {
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const toggle = () => setPopoverOpen(!popoverOpen);
+
+  return (
+    <div>
+      <Button id="Popover1" type="button">
+        Launch Popover
+      </Button>
+      <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
+        <PopoverHeader>Click and see me</PopoverHeader>
+        <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
+      </Popover>
+    </div>
+  );
+}
 
 
 class Rever extends Component {
+
 constructor(props){
 super(props)
 this.state = {
     value: '',
-    useState: '',
+    //useState: '',
     loading: 'warning',
     enviar: ['Enviar lembretes automaticos'], AddModalShow : false
 }
@@ -21,6 +38,7 @@ this.handleChange = this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
 this.onChange = this.onChange.bind(this);
 this.handleChecked = this.handleChecked.bind(this); // set this, because you need get methods from CheckBox 
+
 }
 
 handleChecked () {
@@ -73,22 +91,26 @@ return (
 
 <br></br>
 
-<input className="Check" type="checkbox" onChange={ this.handleChecked }/>      Enviar lembretes automaticos
-    
+<input className="Check" type="checkbox" onChange={ this.handleChecked }/> Enviar lembretes automaticos  
+
+<div>
+<Example/>
+</div>
+
 <br></br>
 <Card>
 
 </Card>
 <br></br>
-<div className = "Button">
-<Button>Voltar</Button> <Button href = "/Review" className="warning">Enviar</Button>
+<div className = "Btn-buttom">
+<Button className="">Voltar</Button> <Button href = "/Review" className="warning">Enviar</Button>
 </div> 
 
 
 </div>
 
 )
-}
-}
+
+}}
 
 export default Rever;

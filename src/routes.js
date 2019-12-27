@@ -4,15 +4,16 @@ import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import Inicio from "./components/inicio";
-//import Rever from "./components/Rever";
+import AddDestinatar from "./components/AddDestinatar";
 import MenuDropzone from "./components/MenuDropzone";
 import Editor from "./components/FileEditor/Editor";
 import SideMenu from "./components/FileEditor/SideMenu";
 import addDoc from "./components/DocSign/addDoc";
 import Rever from "./components/Rever";
-import Login from "./layout/Login/index"
-import GlobalStyles from "./pages/pages/Welcome";
+import Review from "./components/gerir/Review";
+import auth from "./components/auth/auth"
 import Welcome from "./pages/pages/Welcome";
+
 
 class Routes extends Component {
         constructor (props) {
@@ -56,12 +57,14 @@ return (
      
      <Route exact path="/addDoc" component={addDoc}/>
      <Route exact path="/Rever" component={Rever}/>
-      
+     <Route exact path="/Review" component={Review}/>
+     <Route exact path="/AddDestinatar" component={AddDestinatar}/>
+
 
      
      <Route exact path="/Welcome" component={Welcome}/>
      
-     <Route exact path="/index" component={Login}/>
+     <Route exact path="/auth" component={auth}/>
 
      
     

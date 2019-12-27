@@ -45,12 +45,14 @@ class Welcome extends Component {
     );
 
   }
-}}
+}
+<login/>
+}
 
  render() {
    return (
    <div>
-        <p>elias</p>
+       
       
    </div>);
 

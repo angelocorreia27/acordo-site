@@ -29,13 +29,17 @@ render(){
         >
              <strong>ENVELOPES</strong>
 
-       <SubMenu
+
+       <SubMenu className ="subMenu"
             key="sub1"
             title={
-            <span><Icon type="mail" /><span> <ul> <li icon="icon-sent"><a href="news.asp">Caixa de entrada</a></li> </ul> </span>
-              </span>                                   
-          
+            
+            <span>
               
+              <Icon type="mail" /> 
+              <ul> <li icon="icon-sent"><a href="news.asp">Caixa de entrada</a></li> </ul></span>
+                                                 
+
             }
           >
           </SubMenu>
@@ -105,7 +109,8 @@ render(){
       
                <FormControl type="text" placeholder="Caixa de entrada" className="mr-sm-2"/>
         
-               <Button className="search"variant="outline-success" icon="search">Search</Button>
+               <span>
+                <Icon type="search"/></span>  <Button className="search">Search</Button>
     
       </Form><br></br>
    

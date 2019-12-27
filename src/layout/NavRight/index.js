@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, useContext} from 'react';
 import {Dropdown} from 'react-bootstrap';
-import {Link} from 'react-router-dom'
 import Aux from "../../hoc/_Aux";
 import DEMO from "../../store/constant";
-
 import Avatar1 from '../../assets/images/user/avatar-1.jpg';
 import Avatar2 from '../../assets/images/user/avatar-2.jpg';
 import Avatar3 from '../../assets/images/user/avatar-3.jpg';
-import Welcome from '../../pages/pages/Welcome';
+
+
 
 
 class NavRight extends Component {
     state = {
         listOpen: false
-    };
+   } ;
 
     render() {
 
@@ -30,7 +29,9 @@ class NavRight extends Component {
                                 <div className="pro-head">
                                     <img src={Avatar2} className="img-radius" alt="User Profile"/>
                                     <span type="user">
-                                    <a href={Welcome} className="displayChatbox">user<i className="icon feather icon-mail"/></a>   
+                                    <a href={DEMO.BLANK_LINK} className="displayChatbox">
+                                    
+                                        <i className="icon feather icon-mail"/></a>   
                                     </span>
                                     <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">
                                         <i className="feather icon-log-out"/>

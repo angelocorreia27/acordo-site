@@ -144,7 +144,7 @@ form.example input[type=text] {
 }
 .Dialog{
   border: 1px solid #888;
-  width: 80%
+  width: 80%;
 
 }
 .table {
@@ -152,6 +152,13 @@ form.example input[type=text] {
 }
 .App-header{
   widows: 60%;
+}
+
+/* Pagina Adicionar destinatarios */
+.pagina2 {
+  
+  margin-top: 8%;
+  margin-left: 30% ;
 }
 
 /*  Inicio da pagina Drop file */
@@ -170,12 +177,15 @@ form.example input[type=text] {
 
 .search {
   float: right;
-
-  margin-right: 30px;
+  margin-right: 20%;
   font-family: Helvetica,Arial,sans-serif;
-  color: rgb(71, 55, 223);
+  background-color: rgb(203, 217, 228);
 }
 
+.search:hover {
+  
+  background-color: #2196F3;
+}
 
 .Nav {
   padding: 10px;
@@ -197,31 +207,56 @@ li{
 }
 
 .page {
-  margin-top: 50px;
-  margin-left: 20px;
+  margin-top: 80px;
+  margin-right: 5%;
+}
+
+/* Popover */
+.popover-title {
+  border: 2px dotted red;
+  
+}
+
+/* Popover Header */
+.popover-title {
+  background-color: #73AD21;
+  color: rgb(71, 55, 223);
+  font-size: 28px;
+  text-align:center;
+}
+
+/* Popover Body */
+.popover-content {
+  background-color: coral;
+  color: rgb(71, 55, 223);
+  padding: 25px;
 }
 
 
 /* Menu NavBar */
 .MenuNav{
   float: left;
-  margin-left: -180px;
-  margin-top: 100px;
-  color: white;
-  box-shadow: 10px;
+  margin-top: 122px;
+  color: rgb(10, 10, 10);
   align-items: flex-start;
-  min-height: 28px;
+  min-height: 30px;
+  border-radius: -10px -10px 10px 10px;
   background-color: #f1f1f1;
-  height: 500px;
-  width: 20%;
+  height: 490px;
+  width: 25%;
   
 }
 
 /* close NavBar*/
+.subMenu {
+  align-items: flex-start;
+}
+
 
 span{
   font-size: 16px;
   font-family: Helvetica,Arial,sans-serif;
+
 }
 
 .sub-hearder{
@@ -253,30 +288,4 @@ span{
   justify-items: flex-start;
   flex: 1;
   overflow-y: auto;
-}
-
-.ProgressBar {
-  width: 100%;
-  height: 8px;
-  background-color: rgb(183, 155, 229);
-  border-radius: 5px;
-}
-
-.Progress {
-  background-color: rgba(103, 58, 183, 1);
-  height: 100%;
-  margin: 0;
-  border-radius: 5px;
-}
-
-.CheckIcon {
-  opacity: 0.5;
-  margin-left: 32px;
-}
-
-.ProgressWrapper {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
 }
