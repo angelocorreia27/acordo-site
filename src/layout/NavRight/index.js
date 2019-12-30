@@ -10,8 +10,8 @@ import Cookies from 'js-cookie'
 class NavRight extends Component {
     state = {
         listOpen: false,
-        email: Cookies.get('email'),
-        setLoading: false
+        email: Cookies.get('email')
+
    } ;
 
       render() {

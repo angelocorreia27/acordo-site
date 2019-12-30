@@ -27,6 +27,10 @@ render(){
           defaultOpenKeys={['sub1']}
           mode="inline"
         >
+
+        <Button className="warning">INICIAR AGORA</Button><br></br><br></br>
+
+
              <strong>ENVELOPES</strong>
 
 
@@ -34,7 +38,7 @@ render(){
             key="sub1"
             title={
             
-            <span>
+            <span className="sub-envelopes">
               
               <Icon type="mail" /> 
               <ul> <li icon="icon-sent"><a href="news.asp">Caixa de entrada</a></li> </ul></span>
@@ -90,6 +94,70 @@ render(){
           
           </SubMenu>
     
+          <br></br>
+          <strong>Vistas Rapidas</strong>
+
+
+<SubMenu className ="subMenu"
+     key="sub1"
+     title={
+     
+     <span className="sub-envelopes">
+       
+       <Icon type="mail" /> 
+       <ul> <li icon="icon-sent"><a href="news.asp">Acao necessaria</a></li> </ul></span>
+                                          
+
+     }
+   >
+   </SubMenu>
+
+
+   <SubMenu
+     key="sub2"
+     title={
+       <span>
+         <Icon type="appstore" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">A aguardar por outros</a></li> </ul> </span>
+       </span>
+     }
+   >
+   </SubMenu>
+
+
+   <SubMenu
+     key="sub4"
+     title={
+       <span>
+         <Icon type="carry-out"/> <span> <ul><li icon="i"><a href="contact.asp">Expira em breve</a></li></ul>  </span>
+       </span>
+     }
+   >
+   
+   </SubMenu>
+
+   <SubMenu
+     key="sub1"
+     title={
+       <span>
+         <Icon type="delete" /> <span> <ul><li><a href="about.asp">Concluido</a></li></ul> </span>
+       </span>
+     }
+   >        
+   </SubMenu>
+
+
+   <SubMenu
+     key="sub1"
+     title={
+       <span>
+         <Icon type="mail" /> <span> <span> <ul><li><a href="about.asp">Falha na autenticacao</a></li></ul> </span>
+          </span>
+       </span>
+     }
+   >
+   
+   </SubMenu>
+              <strong>PASTAS</strong>
         </Menu>
     
     </div>
@@ -102,7 +170,7 @@ render(){
   
    <header>
            
-        <h3 style={{fontFamily: "Roboto, sans-serif" }}> Caixa de entrada </h3>
+        <h3 style={{fontSize: '28px', fontFamily: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif" }}> <strong>Caixa de entrada</strong></h3>
               
  <div className= "form">
       <Form inline>

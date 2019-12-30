@@ -78,6 +78,8 @@ form.example button {
   border: 1px solid grey;
   border-left: none; /* Prevent double borders*/
   cursor: pointer;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+
 }
 
 /* Style the search field */
@@ -90,7 +92,17 @@ form.example input[type=text] {
   float: right;
   width: 16%;
   background: #f1f1f1;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
 
+}
+th{
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+  font-weight: 700;
+  margin: 0;
+  }
+
+tr{
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
 }
 
 .tbl2{
@@ -106,13 +118,18 @@ form.example input[type=text] {
 }
 .pagina{
   padding: 12px;
+  margin-top: 3%;
+  margin-left: 25%;
+}
+.Btn-buttom {
+  padding-left: 30%;
 }
 .Check{
   padding: 8px;
 }
 .mensage {
   float: right;
-  padding-right: 850px 
+  padding-right: 35%; 
 }
 .Button {
   float: right;
@@ -227,10 +244,14 @@ ol, ul, li {
   padding-right: 20px;
   
 }
+
+.mr-sm-2 {
+  margin-right: 7px;
+}
 .search {
   margin-right: -5px;
   margin-top: -1%;
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
   background-color: rgb(203, 217, 228);
 }
 .search:hover {
@@ -244,13 +265,13 @@ Table{
   padding: 10px;
   float: right;
   padding: "10px";
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
   
   }
 
 .NavBar{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
 }
 .look-Screen{
   float: right;
@@ -262,6 +283,8 @@ li{
 .page {
   margin-top: 80px;
   margin-right: 5%;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+  
 }
 
 /* Popover */
@@ -289,31 +312,35 @@ li{
 /* Menu NavBar */
 
 .Menu{
-  margin-top: 25%;
+  margin-top: 18%;
   margin-left: 15%;
 }
 .MenuNav{
   float: left;
-  margin-top: 122px;
+  margin-top: 150px;
   color: rgb(10, 10, 10);
   align-items: flex-start;
   min-height: 30px;
   border-radius: -10px -10px 10px 10px;
-  background-color: #f1f1f1;
-  height: 490px;
-  width: 25%;
+  background-color: #ffffff;
+  height: 512px;
+  width: 18%;
   
 }
 
 /* close NavBar*/
 .subMenu {
   align-items: flex-start;
+
 }
 
+.sub-envelopes:hover{
+  background-color: #2196F3;
+}
 
 span{
   font-size: 16px;
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
 
 }
 
