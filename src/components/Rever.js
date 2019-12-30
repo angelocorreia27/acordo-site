@@ -1,26 +1,24 @@
 import React, {Component, useState} from "react";
 import {Link} from "react-router-dom";
-import { Form, Modal, Col, Row } from 'react-bootstrap'
-
+import { Button, OverlayTrigger, Form, Modal, Col, Row } from 'react-bootstrap'
 import AddModal from "./AddModal"
-import { Card, Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { Card, Tooltip} from 'reactstrap';
 
-const Example = (props) => {
-  const [popoverOpen, setPopoverOpen] = useState(false);
 
-  const toggle = () => setPopoverOpen(!popoverOpen);
+function renderTooltip(props) {
+  return <Tooltip {...props}>Simple tooltip</Tooltip>;
+}
 
-  return (
-    <div>
-      <Button id="Popover1" type="button">
-        Launch Popover
-      </Button>
-      <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
-        <PopoverHeader>Click and see me</PopoverHeader>
-        <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
-      </Popover>
-    </div>
-  );
+const Example = () => {
+
+    <OverlayTrigger
+      placement="right"
+      delay={{ show: 250, hide: 400 }}
+      overlay={renderTooltip}
+    >
+      <Button variant="success">Hover me to see</Button>
+    </OverlayTrigger>
+
 }
 
 

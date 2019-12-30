@@ -12,45 +12,57 @@ class dispatcher extends Component {
     constructor( props ){
         super();
         this.state = { ...props,
+          email: Cookies.get('email')
         };
-
 
       }
 
       componentWillMount(){
           // aqui criar os metodos para axio.get e axios.post
-      }      
-       axiosGet (){ 
-        var token = sessionStorage.getItem("token");
-          axios({
+          Cookies.getJSON('email') && this.setState({
+            email: JSON.parse(Cookies.getJSON('email')),
+            
+          })
+            
+       axiosGet = ()=>{ 
+         axios({
             method: 'GET',
-            headers: new Headers({
-              Authorization: 'Bearer' + sessionStorage.token
-            }),
+            headers: {
+              'Content-type': 'application/json',
+              'Authorization': 'Bearer ${token}'
+            },
           })
             .then((response) => response.json())
             .then(data => {
               this.setState({ data: data })
-              sessionStorage.setItem('token', data)
+              Cookies.getJSON('email', JSON.stringify(this.props.email));
+              Cookies.set('email', Date.now());
+              console.log(data);
             })
           
-        }
+        };
     
       axiosPost = () =>{
             // Can also just pass the raw `data` object in place of an argument.
-                axios({
+            let data = { email: email, password: password };
+            data = qs.stringify(data);
+    
+            axios({
                 method: 'POST',
+                headers: {
+                  'Content-type': 'application/json',
+                  'Authorization': 'Bearer ${token}'
+                },
                 body: JSON.stringify({
-                  email: 'myemail',
-                  password: 'mypassword',
-                  Authorization: 'myAdmin'
+                  email: '',
+                  password: ''                 
                 }),
                 headers: {'Accept' : 'application/json'}
               }).then(Response =>{
                     console.log(Response);});
                   }  
 
-      
+                }
 
       // nos componentes que chamam o dispatcher efectuar o callback
       render(){

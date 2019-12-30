@@ -52,6 +52,7 @@
     "request-promise-native": "^1.0.5",
     "stream-to-blob": "^1.0.0",
     "superagent": "^5.1.1",
+    "tooltip": "^1.6.1",
     "unit-to-px": "^1.0.2",
     "uploader": "0.0.3-3",
     "w3c-blob": "0.0.1"

@@ -20,7 +20,7 @@ render(){
      <Col>
       <div className="MenuNav">
     
-    <Menu
+    <Menu className="Menu"
           onClick={this.handleClick}
           style={{ width: 256 }}
           defaultSelectedKeys={['1']}
@@ -102,17 +102,14 @@ render(){
   
    <header>
            
-        <h3 style={{fontFamily: "Lucida Console"}}> Caixa de entrada </h3>
+        <h3 style={{fontFamily: "Roboto, sans-serif" }}> Caixa de entrada </h3>
               
  <div className= "form">
       <Form inline>
-      
-               <FormControl type="text" placeholder="Caixa de entrada" className="mr-sm-2"/>
-        
-               <span>
-                <Icon type="search"/></span>  <Button className="search">Search</Button>
+          <FormControl type="text" placeholder="Caixa de entrada" className="mr-sm-2"/>
+             <Button className="search">Search</Button>
     
-      </Form><br></br>
+      </Form>
    
     </div>
 

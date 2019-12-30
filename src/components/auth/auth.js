@@ -16,18 +16,19 @@ class auth extends Component {
       }
       componentWillMount(){
    
-        console.log('cookie', this.state.email);
+    console.log('cookie', this.state.email);
         // Caso o cookie não estar definido, faz o redirect para o login
      const session = Cookies.get("email");
     
     Cookies.set("session", session, {expires: 14});
     if (session === undefined) {
     //  this.props.history.push('/auth');
-
-   <Redirect to ="http://localhost:8000/auth"/> // colocar a variavel num ficheiro .env e carregar
-  //window.location = "http://localhost:8000/auth";
+         window.location = "http://localhost:8000/auth";
+             //   <Redirect to ="http://localhost:8000/auth"/> // colocar a variavel num ficheiro .env e carregar
+  
     } else {
-      return JSON.parse(session);
+
+      return JSON.stringify('cookies');
       
     }
 
