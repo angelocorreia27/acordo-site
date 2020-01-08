@@ -24,9 +24,9 @@ class auth extends Component {
      console.log(session);
         try {
       
-           if (!session.email) {
-            
-            window.location("http://localhost:8000/auth");
+           if (this.state === 'undefined') {
+            console.log(this.state);
+         //   window.location.href("http://localhost:8000/auth");
             
            // res.redirect('http://localhost:8000/auth');         
            }else {

@@ -11,18 +11,17 @@ import { stringify } from 'querystring';
 class NavRight extends Component {
     state = {
         listOpen: false,
-        email: Cookies.get('email'),
-        name: Cookies.get('name')   
+        email: Cookies.get('email')
    } ;
 
    handleNameChange(name) {
     
-    Cookies.set('name', name, { path: '/' });
-    this.setState({ name });
+   // Cookies.set('name', name, { path: '/' });
+   // this.setState({ name });
   }
 
       render() {
-         const name = this.state.name;
+    //    const getEmail = this.state.email;
         return (
             
             <Aux>
@@ -44,14 +43,11 @@ class NavRight extends Component {
                                 </i>
                                 
                                 <span type="user">
-                                    <a href={DEMO.BLANK_LINK} className="displayChatbox">
-
-                                       <i className="icon feather icon-mail"/></a>   
+                                    <a href={DEMO.BLANK_LINK} className="displayChatbox">{Cookies.get('email')}<i className="icon feather icon-mail"/></a>   
                                     </span>
                                     
-                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">
-                                    
-                                    {this.handleNameChange(name)}                                  
+                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">                                   
+                                                                      
                                     <i className="feather icon-log-out"/></a></div>
                                     <ul className="pro-body">
                                     <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-settings"/> Settings</a></li>

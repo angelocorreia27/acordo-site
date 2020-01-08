@@ -77,7 +77,7 @@ class MenuDropzone extends React.Component {
   fileUpload = () => {
     console.log("fileUpload");
 
-    const data = new FormData() 
+  const data = new FormData() 
   const paramBodyUpload = 'id='+paramBodyCreate.id+'&dataType=file&file=' + this.state.selectedFile;
   data.append('file', this.state.selectedFile, this.state.selectedFile.name);
   console.log("test" + this.state.selectedFile);
@@ -94,14 +94,16 @@ onChangeHandler=event=>{
 
 
   const data = new FormData() 
-  data.append('id', id)
-  data.append('dataType','file')
-  data.append('file',event.target.files[0])
 
   
   data.append('owner', id) // id do utilizador em sessao
   data.append('title','title'),
   data.append('description','description')
+
+
+  data.append('id', id)
+  data.append('dataType','file')
+  data.append('file',event.target.files[0])
 
 
   const url = config.serverUrl+'negotiation/upload'

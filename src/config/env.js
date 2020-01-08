@@ -9,5 +9,5 @@ export const PROTOCOL = {
 
 export const config = {
     development: `${PROTOCOL.http}://${PROTOCOL.developmentServerName}:${PROTOCOL.developmentPort}`,
-    serverUrl: 'http://10.4.9.73:8000/'
+    serverUrl: 'http://localhost:8000/'
 };
