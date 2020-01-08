@@ -10,8 +10,7 @@ class Welcome extends Component {
    };
   
    
-  
- function login (){
+  function login (){
   const username = localStorage.getItem('http://localhost:8000/auth/elias.lima') && this.setState({
 
   user: JSON.parse(localStorage.getItem('person'))

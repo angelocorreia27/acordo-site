@@ -6,15 +6,20 @@ import Avatar1 from '../../assets/images/user/avatar-1.jpg';
 import Avatar2 from '../../assets/images/user/avatar-2.jpg';
 import Avatar3 from '../../assets/images/user/avatar-3.jpg';
 import Cookies from 'js-cookie'
+import { stringify } from 'querystring';
 
 class NavRight extends Component {
     state = {
         listOpen: false,
-        email: Cookies.get('email')
+        email: Cookies.get('email'),
+        user: []
 
    } ;
 
       render() {
+        var getEmail = this.state.email;
+       // Cookies.set('session');
+      //  Cookies.getItem("email");
 
         return (
             
@@ -42,7 +47,7 @@ class NavRight extends Component {
                                        <i className="icon feather icon-mail"/></a>   
                                     </span>
                                     
-                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">{Cookies.getJSON('session')}<i className="feather icon-log-out"/></a></div>
+                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">{getEmail}<i className="feather icon-log-out"/></a></div>
                                     <ul className="pro-body">
                                     <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-settings"/> Settings</a></li>
                                 </ul>

@@ -23,56 +23,55 @@ class dispatcher extends Component {
             email: JSON.parse(Cookies.getJSON('email')),
             
           })
-            
-       axiosGet = ()=>{ 
-         axios({
+            this.axiosGet();
+            this.axiosPost();
+      }    
+       axiosGet = (headers, body)=>{ 
+        try{
+           axios({
             method: 'GET',
-            headers: {
-              'Content-type': 'application/json',
-              'Authorization': 'Bearer ${token}'
-            },
+            headers: headers,
+            body: body
+          
           })
             .then((response) => response.json())
             .then(data => {
               this.setState({ data: data })
               Cookies.getJSON('email', JSON.stringify(this.props.email));
-              Cookies.set('email', Date.now());
               console.log(data);
-            })
-          
+            });
+          }catch (err) {
+            debug(err)
+          }
         };
     
-      axiosPost = () =>{
+      axiosPost = (headers, body) =>{
             // Can also just pass the raw `data` object in place of an argument.
             let data = { email: email, password: password };
             data = qs.stringify(data);
-    
-            axios({
+            try {
+                axios({
                 method: 'POST',
-                headers: {
-                  'Content-type': 'application/json',
-                  'Authorization': 'Bearer ${token}'
-                },
-                body: JSON.stringify({
-                  email: '',
-                  password: ''                 
-                }),
-                headers: {'Accept' : 'application/json'}
+                headers: headers,
+                body: body                 
+              
               }).then(Response =>{
-                    console.log(Response);});
-                  }  
+                    console.log(Response.data);
+                
+                   });
+                
+                }catch (err) {
+                  debug(err)
+                } 
 
-                }
+      }
 
       // nos componentes que chamam o dispatcher efectuar o callback
       render(){
         return (
-          <div>
-          {this.axiosGet()}
-          </div>
+          <div>teste...</div>
           );
-
-          
+         
 
       }
            

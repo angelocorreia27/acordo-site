@@ -9,5 +9,5 @@ export const PROTOCOL = {
 
 export const API = {
     development: `${PROTOCOL.http}://${PROTOCOL.developmentServerName}:${PROTOCOL.developmentPort}`,
-    production: `${PROTOCOL.http}://${PROTOCOL.productionServerName}:${PROTOCOL.productionPort}`,
+    production: 'http://10.4.9.73:8000/'
 };

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import { Button, OverlayTrigger, Form, Modal, Col, Row } from 'react-bootstrap'
 import AddModal from "./AddModal"
 import { Card, Tooltip} from 'reactstrap';
-
+import axios from "axios";
 
 const text = <span>prompt text</span>;
 
@@ -43,7 +43,14 @@ onChange() {
 return (<Link to="Review" />)
 }
 
-handleOnClick = () => {
+handleEndpoint = () => {
+  axios.post("http://localhost:8000/negotiation/send ", {
+    "email": "elias.lima@nosi.cv",
+    "message": "teste" 
+  })
+  .then(function (response) {
+    console.log(response);
+  })
 }
 
 render(){
@@ -86,7 +93,7 @@ return (
 </Card>
 <br></br>
 <div className = "Btn-buttom">
-<Button className="">Voltar</Button> <Button href = "/Review" className="warning">Enviar</Button>
+<Button className="">Voltar</Button> <Button onSubmit={this.handleChange} href= "/Review" className="warning">Enviar</Button>
 </div> 
 
 </div>

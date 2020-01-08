@@ -7,12 +7,13 @@ import Inicio from "./components/inicio";
 import AddDestinatar from "./components/AddDestinatar";
 import MenuDropzone from "./components/MenuDropzone";
 import Editor from "./components/FileEditor/Editor";
-import SideMenu from "./components/FileEditor/SideMenu";
+//import SideMenu from "./components/FileEditor/SideMenu";
 import addDoc from "./components/DocSign/addDoc";
 import Rever from "./components/Rever";
 import Review from "./components/gerir/Review";
 import auth from "./components/auth/auth"
 import Welcome from "./pages/pages/Welcome";
+import index from "./components/viewer";
 
 
 class Routes extends Component {
@@ -42,7 +43,6 @@ handleFile (file) {
   }
 
 
-
 render () {
   const store = createStore(combineReducers);
 
@@ -55,12 +55,12 @@ return (
      <Route exact path="/" component={MenuDropzone}/>
      <Route exact path="/Editor" component={Editor}/>
      
-     <Route exact path="/addDoc" component={addDoc}/>
+    
      <Route exact path="/Rever" component={Rever}/>
      <Route exact path="/Review" component={Review}/>
      <Route exact path="/AddDestinatar" component={AddDestinatar}/>
-
-
+     <Route exact path="/addDoc" component={addDoc}/>
+     <Route exact path="/index" component={index}/> 
      
      <Route exact path="/Welcome" component={Welcome}/>
      

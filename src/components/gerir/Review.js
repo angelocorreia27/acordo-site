@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Icon, Menu } from 'antd';
 import {Button, Form, FormControl, Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
+import axios from 'axios';
 const { SubMenu } = Menu;
 
 
@@ -13,6 +14,19 @@ class Review extends Component {
 handleClick = e => {
   console.log('click ', e);
 };
+
+/* Por fazer alteracao desta funcao */
+onClickButton = () => { 
+  axios.post("http:localhost:8000/negotiation/upload",{ 
+    "id":"1",
+    "fileData":"FileData"
+
+  }).then(res => { // then print response status
+         console.log(res.statusText); 
+    
+      })
+     }
+
 
 render(){
     return ( 
@@ -28,8 +42,8 @@ render(){
           mode="inline"
         >
 
-        <Button className="warning">INICIAR AGORA</Button><br></br><br></br>
-
+<Button className="warning" onClick={this.onClickButton} href="/Editor">Iniciar agora</Button><br></br><br></br>
+           
 
              <strong>ENVELOPES</strong>
 
@@ -104,7 +118,7 @@ render(){
      
      <span className="sub-envelopes">
        
-       <Icon type="mail" /> 
+       <Icon type="exclamation-circle" /> 
        <ul> <li icon="icon-sent"><a href="news.asp">Acao necessaria</a></li> </ul></span>
                                           
 
@@ -117,7 +131,7 @@ render(){
      key="sub2"
      title={
        <span>
-         <Icon type="appstore" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">A aguardar por outros</a></li> </ul> </span>
+         <Icon type="clock-circle" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">A aguardar por outros</a></li> </ul> </span>
        </span>
      }
    >
@@ -128,7 +142,7 @@ render(){
      key="sub4"
      title={
        <span>
-         <Icon type="carry-out"/> <span> <ul><li icon="i"><a href="contact.asp">Expira em breve</a></li></ul>  </span>
+         <Icon type="warning"/> <span> <ul><li icon="i"><a href="contact.asp">Expira em breve</a></li></ul>  </span>
        </span>
      }
    >
@@ -139,7 +153,7 @@ render(){
      key="sub1"
      title={
        <span>
-         <Icon type="delete" /> <span> <ul><li><a href="about.asp">Concluido</a></li></ul> </span>
+         <Icon type="check" /> <span> <ul><li><a href="about.asp">Concluido</a></li></ul> </span>
        </span>
      }
    >        
@@ -150,7 +164,7 @@ render(){
      key="sub1"
      title={
        <span>
-         <Icon type="mail" /> <span> <span> <ul><li><a href="about.asp">Falha na autenticacao</a></li></ul> </span>
+         <Icon type="warning" /> <span> <span> <ul><li><a href="about.asp">Falha na autenticacao</a></li></ul> </span>
           </span>
        </span>
      }
@@ -170,7 +184,7 @@ render(){
   
    <header>
            
-        <h3 style={{fontSize: '28px', fontFamily: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif" }}> <strong>Caixa de entrada</strong></h3>
+        <h3 style={{fontSize: '24px', fontFamily: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif" }}> <strong>Caixa de entrada</strong></h3>
               
  <div className= "form">
       <Form inline>

@@ -1,8 +1,8 @@
 import React from 'react'
-import {Row,Tabs,Tab,ButtonToolbar} from 'react-bootstrap'
+import {Tabs,Tab } from 'react-bootstrap'
 import Review from '../gerir/Review'
 import MenuDropzone from '../MenuDropzone'
-import Modelo from "../gerir/Modelo";
+
 
 const FileMenu = () => {
 

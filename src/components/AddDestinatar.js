@@ -40,7 +40,7 @@ return (
 <p>Depois de um envelope ter sido enviado para todos os destinatários e os documentos assinados, cada destinatário irá receber uma cópia concluída.</p>
 
 
-    <Button type="bottom"> Voltar </Button>  <Button className="warning" type="bottom"> Seguinte</Button>
+    <Button type="bottom"> Voltar </Button>  <Button className="warning" type="bottom"> Seguinte </Button>
    
           </Col>
        </Row>

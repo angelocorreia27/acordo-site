@@ -2,12 +2,14 @@ import CKEditor from 'react-ckeditor-component'
 import React from 'react'
 import request from 'request-promise-native'
 import { css } from 'emotion'
-import {Grid, Row, Col, Button } from 'react-bootstrap'
+import {Grid, Row, Col, Button} from 'react-bootstrap'
 import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 import examples from './exapmples'
 import Debug from 'debug'
 import axios from 'axios'
+import uuid from 'uuid/v4'
+
 const debug = Debug('editor')
 debug.enabled = true
 
@@ -32,10 +34,10 @@ const footer = css`
   margin-top: 0px
 `
 
-const buttonStyle = css`
+/*const buttonStyle = css`
   font-size: x-large;
   margin-top: 50px;
-`
+`*/
 
 function htmlOptimization (html) {
   html = html.replace(/&quot;/g, '')
@@ -66,7 +68,17 @@ function sendDocumentAndGetLink (document) {
 
 export default class Editor extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
+    this.state = {
+            personInfo: {
+              id: ''
+            },
+            negotiation:{
+              id:uuid()
+            }
+          }
+    this.submitCreate = this.submitCreate.bind(this)
+
     this.updateContent = this.updateContent.bind(this)
     this.onChange = this.onChange.bind(this)
     this.onChangeHeader = this.onChangeHeader.bind(this)
@@ -75,12 +87,32 @@ export default class Editor extends React.Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.onCreateEditor = this.onCreateEditor.bind(this)
     this.setEditorsContent = this.setEditorsContent.bind(this)
+    
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
     this.state = examples[0] // body footer header
-    this.onClickHandler = this.onClickHandler.bind(this)
     window.$ = $
   }
+
+  submitCreate= () => {
+    const paramHeaders = {hearders: {'Content-type': 'application/json'}}
+    const paramBody = {
+       id: uuid(),
+       owner: uuid(), // id do utilizador em sessao
+       title:"title",
+       docType: "text",
+       description:"description"
+     }
+     
+     const url = "http://localhost:8000/negotiation/create";
+     
+     axios.post(url, paramBody, paramHeaders
+       ).then(function(res){
+          console.log(res.statusText);
+   
+       })
+   }
+
 
   updateContent (newContent) {
     this.setState({
@@ -163,37 +195,13 @@ export default class Editor extends React.Component {
     // console.log('afterPaste event called with event info: ', evt)
   }
 
-  onClickHandler = () => {
-      //  const data = new FormData();
-       // data.append('file', this.state.selectedFile);
-        axios.post("http://localhost:8000/negotiation/create",{ 
-           // receive two    parameter endpoint url ,form data
-      "id":"1",
-      "title":"angelo",
-      "description":"title",
-      "owner": "angelo",
-      "doctype": "ficheiro"
-    
-       })
-     
-     .then(res => { // then print response status
-         console.log(res.statusText); 
-    
-      })
-     }
-
+  
   render () {
     const noWarningMessagesRelatedToContentEditable = true
     return (
-      
-            
-    
       <Grid className={editorBlock}>
         <Row>
-        
           <Col mdOffset={2} md={8} sm={12}>
-
- 
             <CKeditorInline // header
 
               activeClass={headerEditor}
@@ -205,7 +213,6 @@ export default class Editor extends React.Component {
 
               
             >
-              
               <p style={{'textAlign': 'right'}} >
                 <span style={{'color': '#999999'}}>
                   Edit header here
@@ -223,23 +230,8 @@ export default class Editor extends React.Component {
         </Row>
         <Row activeClass={footer}>
           <Col mdOffset={2} md={8} sm={12}>
-            <CKeditorInline // footer
-              activeClass={footerEditor}
-              suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
-              events={{
-                'change': this.onChangeFooter,
-                'configLoaded': this.onCreateEditor.bind(this, 'footer')
-              }}
-             
-            >
-              <p style={{'textAlign': 'right'}} >
-                <span style={{'color': '#999999'}}>
-                  Edit footer here
-                </span>
-              </p>
-            </CKeditorInline> <br></br><Button className="btn-warning" onClick={this.onClickHandler} href="/Review"> Confirmar </Button>           
-          </Col> 
-
+            <Button className="btn-warning" onClick={this.submitCreate} >Confirmar</Button>           
+          </Col>
         </Row>
         <Row>
           <Col>

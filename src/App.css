@@ -199,8 +199,8 @@ tr{
 .header__user-avatar {
 	display: inline-block;
 	position: relative;
-	width: 32px;
-	height: 32px;
+	width: 42px;
+	height: 42px;
 	margin: 0 5px;
 	border-radius: 50%;
 	vertical-align: middle;
@@ -317,7 +317,7 @@ li{
 }
 .MenuNav{
   float: left;
-  margin-top: 150px;
+  margin-top: 140px;
   color: rgb(10, 10, 10);
   align-items: flex-start;
   min-height: 30px;
@@ -357,6 +357,10 @@ span{
   text-align: left;
   overflow: hidden;
   margin-top: 80px;
+}
+.ant-upload-drag-icon{
+  margin-top: 20%;
+  margin-left: 45%;
 }
 
 .Content {

@@ -15,14 +15,17 @@ const Preview = ({ meta }) => {
 }
 
 const CustomPreview = () => {
-  const getUploadParams = () => ({ url: 'https://httpbin.org/post' })
+  const getUploadParams = () => ({ url: 'http://localhost:8000/negotiation/create' })
 
   const handleSubmit = (files, allFiles) => {
     console.log(files.map(f => f.meta))
     allFiles.forEach(f => f.remove())
   }
 
+
+  
   return (
+    
     <Dropzone
       
       getUploadParams={getUploadParams}
@@ -103,7 +106,7 @@ render(){
 <Container>
   <Row>
       <Grid>
-        <h2>Adicionar documentos</h2>  
+        <h2> Adicionar documentos</h2>  
           </Grid>
     <Col>
     <div className="Upload">
@@ -133,7 +136,7 @@ export default addDoc;
 
 const baseStyle = {
 width: "100%",
-height: 120,
+height: 100,
 padding: 30,
 borderWidth: 2,
 borderColor: '#666',
