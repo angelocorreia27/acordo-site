@@ -12,7 +12,7 @@ class dispatcher extends Component {
     constructor( props ){
         super();
         this.state = { ...props,
-          email: Cookies.get('email')
+          email: Cookies.get('email')        
         };
 
       }
@@ -22,10 +22,7 @@ class dispatcher extends Component {
           Cookies.getJSON('email') && this.setState({
             email: JSON.parse(Cookies.getJSON('email')),
             
-          })
-            this.axiosGet();
-            this.axiosPost();
-      }    
+           
        axiosGet = (headers, body)=>{ 
         try{
            axios({
@@ -43,7 +40,7 @@ class dispatcher extends Component {
           }catch (err) {
             debug(err)
           }
-        };
+        },
     
       axiosPost = (headers, body) =>{
             // Can also just pass the raw `data` object in place of an argument.
@@ -64,9 +61,11 @@ class dispatcher extends Component {
                   debug(err)
                 } 
 
-      }
-
-      // nos componentes que chamam o dispatcher efectuar o callback
+      
+    },
+   })
+  }
+  // nos componentes que chamam o dispatcher efectuar o callback
       render(){
         return (
           <div>teste...</div>

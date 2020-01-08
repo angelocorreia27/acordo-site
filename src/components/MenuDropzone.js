@@ -3,15 +3,16 @@ import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import {Icon, message, Upload} from 'antd'
 import uuid from 'uuid/v4'
-
-let data = new FormData()
-
+import {config} from "../config/env"
+let data = new FormData();
+let id = uuid();
 const props = {
   name: 'file',
-  action: 'http://localhost:8000/negotiation/upload',
-  body: data,
+  dataType: 'file',
+  id:id,
+  action: 'http://10.4.9.73:8000/negotiation/upload',
   headers: {
-        authorization: 'multipart/form-data',
+        'Content-Type': 'multipart/form-data',
   },
   onChange(info) {
     if (info.file.status !== 'uploading') {
@@ -25,6 +26,20 @@ const props = {
   },
 };
 
+const paramHeaders = {hearders: {'Content-type': 'application/json'}}
+const uploadHeaders = {hearders: {'Content-type': 'multipart/form-data'}}
+
+const paramBodyCreate = { 
+  id: id,
+  owner: uuid(), // id do utilizador em sessao
+  title:"title",
+  docType: "text",
+  description:"description"
+}
+
+// paramBodyUpload do tipo multiform-data
+
+
 class MenuDropzone extends React.Component {
   constructor(props) {
     super(props);
@@ -33,43 +48,70 @@ class MenuDropzone extends React.Component {
       loading: false,
       personInfo: {
         id: ''
-
       },
       negotiation:{
         id:uuid()
       }
     }
     
- this.submitUpload = this.submitUpload.bind(this);
+ //this.submitUpload = this.submitUpload.bind(this);
+ this.fileCreate = this.fileCreate.bind(this);
+ this.fileUpload = this.fileUpload.bind(this);
+
  // this.viewData = this.viewData.bind(this);
+ 
 }
 
-submitUpload= () => { 
-  const urlCreate = "http://localhost:8000/negotiation/create";
-  const urlUpload = "http://localhost:8000/negotiation/upload";
+  // Post Endpoints Create
+  fileCreate = () => {
+    console.log("thifileCreate");
+  axios.post('http://localhost:8000/negotiation/create', paramBodyCreate, paramHeaders
+    ).then(function(res){
+       console.log(res.statusText);
 
-
-  const paramHeaders = {hearders: {'Content-type': 'application/json'}}
-  const uploadHeaders = {hearders: {'Content-type': 'multipart/form-data'}}
-
-  const paramBodyCreate = {
-     id: this.state.negotiation.id,
-     owner: uuid(), // id do utilizador em sessao
-     title:"title",
-     docType: "text",
-     description:"description"
-   }
+    })
+//  this.fileUpload();
+  } 
+  // Post Endpoints Upload 
   
-  const paramBodyUpload = {
-   id: this.state.negotiation.id,
-   dataType: 'file'
-  }   
-   
-   axios.post(urlCreate, paramBodyCreate, paramHeaders).then(function(res){
-    console.log(res.statusText); })   
-   
-  // axios.post(urlUpload, paramBodyUpload, uploadHeaders, data).then(res => { // then print response status  console.log(res.statusText); })
+  fileUpload = () => {
+    console.log("fileUpload");
+
+    const data = new FormData() 
+  const paramBodyUpload = 'id='+paramBodyCreate.id+'&dataType=file&file=' + this.state.selectedFile;
+  data.append('file', this.state.selectedFile, this.state.selectedFile.name);
+  console.log("test" + this.state.selectedFile);
+  axios.post('http://localhost:8000/negotiation/upload', paramBodyUpload, uploadHeaders
+    ).then(res => { // then print response status  
+      console.log(res.statusText); 
+      console.log(res.data);
+  })
       
+}
+
+onChangeHandler=event=>{
+  console.log(event.target.files[0])
+
+
+  const data = new FormData() 
+  data.append('id', id)
+  data.append('dataType','file')
+  data.append('file',event.target.files[0])
+
+  
+  data.append('owner', id) // id do utilizador em sessao
+  data.append('title','title'),
+  data.append('description','description')
+
+
+  const url = config.serverUrl+'negotiation/upload'
+  console.log(url);
+  axios.post(url, data, uploadHeaders
+    ).then(res => { // then print response status  
+      console.log(res.statusText); 
+      console.log(res.data);
+  })
+
 }
 
  render(){
@@ -93,13 +135,11 @@ submitUpload= () => { 
 <Button className="warning"  href="/Editor"> Iniciar agora </Button>
 
     <br></br><br></br>
-    <Upload style={baseStyle} onClick={this.submitUpload}>
-    
-   <Button>
-      <Icon type="upload" /> Click to Upload
-    </Button>
+   
 
-      </Upload>
+    
+   <input type="file" name="file" onChange={this.onChangeHandler}/>
+
   </div>
 
 

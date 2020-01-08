@@ -21,16 +21,16 @@ class auth extends Component {
       // Caso o cookie não estar definido, faz o redirect para o login
      // Cookies.set  ("session", session, {expires: 14});
       var session = this.state.email;
-
-      async function cliendApp(req, res){
-
+     console.log(session);
         try {
       
            if (!session.email) {
-                        
-            res.redirect('/auth');         
+            
+            window.location("http://localhost:8000/auth");
+            
+           // res.redirect('http://localhost:8000/auth');         
            }else {
-             res.redirect("http://localhost:3000/");
+          //   res.redirect("http://localhost:3000/");
                
            }
       }  catch (e) {
@@ -38,12 +38,12 @@ class auth extends Component {
            return JSON.stringify('cookies');
          } 
           
-      } 
+     
 }
 
         render(){
         return (
-               <session>teste...</session>        
+               <session>test...</session>        
         );
            
 

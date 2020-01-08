@@ -12,15 +12,17 @@ class NavRight extends Component {
     state = {
         listOpen: false,
         email: Cookies.get('email'),
-        user: []
-
+        name: Cookies.get('name')   
    } ;
 
-      render() {
-        var getEmail = this.state.email;
-       // Cookies.set('session');
-      //  Cookies.getItem("email");
+   handleNameChange(name) {
+    
+    Cookies.set('name', name, { path: '/' });
+    this.setState({ name });
+  }
 
+      render() {
+         const name = this.state.name;
         return (
             
             <Aux>
@@ -47,7 +49,10 @@ class NavRight extends Component {
                                        <i className="icon feather icon-mail"/></a>   
                                     </span>
                                     
-                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">{getEmail}<i className="feather icon-log-out"/></a></div>
+                                    <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">
+                                    
+                                    {this.handleNameChange(name)}                                  
+                                    <i className="feather icon-log-out"/></a></div>
                                     <ul className="pro-body">
                                     <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-settings"/> Settings</a></li>
                                 </ul>

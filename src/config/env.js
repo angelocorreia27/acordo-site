@@ -7,7 +7,7 @@ export const PROTOCOL = {
     productionServerName: "vectorai.postprincipal.com",
 };
 
-export const API = {
+export const config = {
     development: `${PROTOCOL.http}://${PROTOCOL.developmentServerName}:${PROTOCOL.developmentPort}`,
-    production: 'http://10.4.9.73:8000/'
+    serverUrl: 'http://10.4.9.73:8000/'
 };
