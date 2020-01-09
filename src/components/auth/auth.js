@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router'
-import axios from "axios";
 import { cpus } from 'os';
 
 // isto deve ser chamado somente para acções que requerem login
@@ -19,31 +17,28 @@ class auth extends Component {
     
       console.log('cookie', this.state.email);
       // Caso o cookie não estar definido, faz o redirect para o login
-     // Cookies.set  ("session", session, {expires: 14});
+     // Cookies.set  ("session", session, {expires: 14}); http://localhost:8000/auth
       var session = this.state.email;
-     console.log(session);
+      console.log(session);
+
+      async function auth(req, res){
         try {
-      
-           if (this.state === 'undefined') {
-            console.log(this.state);
-         //   window.location.href("http://localhost:8000/auth");
-            
-           // res.redirect('http://localhost:8000/auth');         
-           }else {
-          //   res.redirect("http://localhost:3000/");
-               
-           }
-      }  catch (e) {
+        console.log('session: '+req.session.user.userName);
+        if(!req.session.user) {
+            res.redirect('/auth/login');
+        } else {
+            res.render('account', {user: req.session.user});
+        }
+    }catch (e) {
           
            return JSON.stringify('cookies');
-         } 
-          
+         }    
      
-}
+}}
 
         render(){
         return (
-               <session>test...</session>        
+               <session></session>        
         );
            
 

@@ -4,7 +4,8 @@ import axios from 'axios';
 import {Icon, message, Upload} from 'antd'
 import uuid from 'uuid/v4'
 import {config} from "../config/env"
-let data = new FormData();
+//let data = new FormData();
+
 let id = uuid();
 const props = {
   name: 'file',
@@ -26,8 +27,8 @@ const props = {
   },
 };
 
-const paramHeaders = {hearders: {'Content-type': 'application/json'}}
-const uploadHeaders = {hearders: {'Content-type': 'multipart/form-data'}}
+const paramHeaders = {hearders: {'Content-type': 'application/json'}, withCredentials: true}
+const uploadHeaders = {hearders: {'Content-type': 'multipart/form-data'}, withCredentials: true}
 
 const paramBodyCreate = { 
   id: id,

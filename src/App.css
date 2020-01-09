@@ -1,380 +1,380 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 24px;
-}
-
-.App-header {
-  background-color: #222;
-  
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 2em
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
-.warning {background-color: #ffd000;
- } /* Orange */
-.warning:hover {
-  background: #e68a00;
-}
-.btn-warning{
-  margin-left: 1050px;
-  background-color: #ffd000;
-  padding-top: 10px;
-}
-.btnIniciar-warning {background: #ffd000;
-}
-
-.primary{
-  background: #2196F3;
-}
-.sucess{
-  background: rgb(30, 233, 3);
-}
-.warning {background-color: #ffd000;
-} /* Orange */
-.warning:hover {
- background: #e68a00;
-}
-.danger{
-  background: rgb(230, 34, 34);
-}
-.btnIniciar-warning:hover{background: #e68a00;}
-
-.style {
-  margin:auto; 
-  max-width:300px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/*Style the submit button */ 
-form.example button {
-  float: right;
-  width: 8%;
-  padding: 5px;
-  margin: 20px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders*/
-  cursor: pointer;
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-
-}
-
-/* Style the search field */
-form.example input[type=text] {
-  padding: 3px;
-  margin-top: -20px;
-  margin-right: 60px;
-  font-size: 15px;
-  border: 1px solid grey;
-  float: right;
-  width: 16%;
-  background: #f1f1f1;
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-
-}
-th{
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-  font-weight: 700;
-  margin: 0;
+    text-align: center;
   }
-
-tr{
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-}
-
-.tbl2{
-  float: left;
-}
-.tbl3{
-  float: right;
-}
-.select{
-  padding: 10px;
-  float: right;
-  box-sizing: border-box;
-}
-.pagina{
-  padding: 12px;
-  margin-top: 3%;
-  margin-left: 25%;
-}
-.Btn-buttom {
-  padding-left: 30%;
-}
-.Check{
-  padding: 8px;
-}
-.mensage {
-  float: right;
-  padding-right: 35%; 
-}
-.Button {
-  float: right;
-  padding-right: 850px;
-}
-
-.butFooter {background-color: white;}
-.butFooter:hover {background: rgb(58, 94, 255);}
-
-.Jumbotron{
-  width: 60%;
-  height: 20%;
-}
-/* The Modal */
-.modal-content {
- 
-  background-color: #fefefe;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  float: left;
-  margin-top: 325px;
-  margin-left: -450px;
-}
-
-
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-header {
-  padding: 2px 16px;
-  color: white;
-  margin-bottom: 100px;
-}
-.Dialog{
-  border: 1px solid #888;
-  width: 80%;
-
-}
-.table {
-  float: center;
-}
-.App-header{
-  widows: 60%;
-}
-
-/* Pagina Adicionar destinatarios */
-.pagina2 {
   
-  margin-top: 8%;
-  margin-left: 30% ;
-}
-
-/*  Inicio da pagina Drop file */
-
-.header__user-avatar {
-	display: inline-block;
-	position: relative;
-	width: 42px;
-	height: 42px;
-	margin: 0 5px;
-	border-radius: 50%;
-	vertical-align: middle;
-}
-
-.dropdown__toggle-button {
-	display: block;
-	position: relative;
-	width: 100%;
-}
-.dropdown__toggle-button .fa-caret-down {
-	position: absolute;
-	top: 50%;
-	right: -10px;
-}
-.dropdown__menu {
-	position: absolute;
-	top: 100%;
-	right: -15px;
-	box-shadow: 0 2px 16px 0 rgba(0,0,0,0.1);
-	opacity: 0;
-	visibility: hidden;
-	z-index: -9999;
-	width: auto;
-	min-width: 11rem;
-	background-color: #f5f5f5;
-}
-.dropdown__menu li {
-	display: block;
-}
-ul {
-	list-style: none;
-}
-ol, ul, li {
-	margin: 0;
-	padding: 0;
-}
-
-.form {
-  float: right;
-  padding-right: 20px;
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 24px;
+  }
   
-}
-
-.mr-sm-2 {
-  margin-right: 7px;
-}
-.search {
-  margin-right: -5px;
-  margin-top: -1%;
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-  background-color: rgb(203, 217, 228);
-}
-.search:hover {
+  .App-header {
+    background-color: #222;
+    
+    padding: 20px;
+    color: white;
+  }
   
-  background-color: #2196F3;
-}
-Table{
-  margin-top: 8%;
-}
-.Nav {
-  padding: 10px;
-  float: right;
-  padding: "10px";
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+  .App-title {
+    font-size: 2em
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  
+  .warning {background-color: #ffd000;
+   } /* Orange */
+  .warning:hover {
+    background: #e68a00;
+  }
+  .btn-warning{
+    margin-left: 1050px;
+    background-color: #ffd000;
+    padding-top: 10px;
+  }
+  .btnIniciar-warning {background: #ffd000;
+  }
+  
+  .primary{
+    background: #2196F3;
+  }
+  .sucess{
+    background: rgb(30, 233, 3);
+  }
+  .warning {background-color: #ffd000;
+  } /* Orange */
+  .warning:hover {
+   background: #e68a00;
+  }
+  .danger{
+    background: rgb(230, 34, 34);
+  }
+  .btnIniciar-warning:hover{background: #e68a00;}
+  
+  .style {
+    margin:auto; 
+    max-width:300px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /*Style the submit button */ 
+  form.example button {
+    float: right;
+    width: 8%;
+    padding: 5px;
+    margin: 20px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders*/
+    cursor: pointer;
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
   
   }
-
-.NavBar{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-}
-.look-Screen{
-  float: right;
-}
-li{
-  list-style-type: none;
-}
-
-.page {
-  margin-top: 80px;
-  margin-right: 5%;
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
   
-}
-
-/* Popover */
-.popover-title {
-  border: 2px dotted red;
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 3px;
+    margin-top: -20px;
+    margin-right: 60px;
+    font-size: 15px;
+    border: 1px solid grey;
+    float: right;
+    width: 16%;
+    background: #f1f1f1;
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
   
-}
-
-/* Popover Header */
-.popover-title {
-  background-color: #73AD21;
-  color: rgb(71, 55, 223);
-  font-size: 28px;
-  text-align:center;
-}
-
-/* Popover Body */
-.popover-content {
-  background-color: coral;
-  color: rgb(71, 55, 223);
-  padding: 25px;
-}
-
-
-/* Menu NavBar */
-
-.Menu{
-  margin-top: 18%;
-  margin-left: 15%;
-}
-.MenuNav{
-  float: left;
-  margin-top: 140px;
-  color: rgb(10, 10, 10);
-  align-items: flex-start;
-  min-height: 30px;
-  border-radius: -10px -10px 10px 10px;
-  background-color: #ffffff;
-  height: 512px;
-  width: 18%;
+  }
+  th{
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+    font-weight: 700;
+    margin: 0;
+    }
   
-}
-
-/* close NavBar*/
-.subMenu {
-  align-items: flex-start;
-
-}
-
-.sub-envelopes:hover{
-  background-color: #2196F3;
-}
-
-span{
-  font-size: 16px;
-  font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
-
-}
-
-.sub-hearder{
-  margin-top: 120px;
-}
-
-
-.Upload {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: flex-start;
-  text-align: left;
-  overflow: hidden;
-  margin-top: 80px;
-}
-.ant-upload-drag-icon{
-  margin-top: 20%;
-  margin-left: 45%;
-}
-
-.Content {
-  display: flex;
-  flex-direction: row;
-  padding-top: 16px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.Files {
-  margin-left: 32px;
-  align-items: flex-start;
-  justify-items: flex-start;
-  flex: 1;
-  overflow-y: auto;
-}
+  tr{
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+  }
+  
+  .tbl2{
+    float: left;
+  }
+  .tbl3{
+    float: right;
+  }
+  .select{
+    padding: 10px;
+    float: right;
+    box-sizing: border-box;
+  }
+  .pagina{
+    padding: 12px;
+    margin-top: 3%;
+    margin-left: 25%;
+  }
+  .Btn-buttom {
+    padding-left: 30%;
+  }
+  .Check{
+    padding: 8px;
+  }
+  .mensage {
+    float: right;
+    padding-right: 35%; 
+  }
+  .Button {
+    float: right;
+    padding-right: 850px;
+  }
+  
+  .butFooter {background-color: white;}
+  .butFooter:hover {background: rgb(58, 94, 255);}
+  
+  .Jumbotron{
+    width: 60%;
+    height: 20%;
+  }
+  /* The Modal */
+  .modal-content {
+   
+    background-color: #fefefe;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    float: left;
+    margin-top: 325px;
+    margin-left: -450px;
+  }
+  
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    padding: 2px 16px;
+    color: white;
+    margin-bottom: 100px;
+  }
+  .Dialog{
+    border: 1px solid #888;
+    width: 80%;
+  
+  }
+  .table {
+    float: center;
+  }
+  .App-header{
+    widows: 60%;
+  }
+  
+  /* Pagina Adicionar destinatarios */
+  .pagina2 {
+    
+    margin-top: 8%;
+    margin-left: 30% ;
+  }
+  
+  /*  Inicio da pagina Drop file */
+  
+  .header__user-avatar {
+      display: inline-block;
+      position: relative;
+      width: 42px;
+      height: 42px;
+      margin: 0 5px;
+      border-radius: 50%;
+      vertical-align: middle;
+  }
+  
+  .dropdown__toggle-button {
+      display: block;
+      position: relative;
+      width: 100%;
+  }
+  .dropdown__toggle-button .fa-caret-down {
+      position: absolute;
+      top: 50%;
+      right: -10px;
+  }
+  .dropdown__menu {
+      position: absolute;
+      top: 100%;
+      right: -15px;
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.1);
+      opacity: 0;
+      visibility: hidden;
+      z-index: -9999;
+      width: auto;
+      min-width: 11rem;
+      background-color: #f5f5f5;
+  }
+  .dropdown__menu li {
+      display: block;
+  }
+  ul {
+      list-style: none;
+  }
+  ol, ul, li {
+      margin: 0;
+      padding: 0;
+  }
+  
+  .form {
+    float: right;
+    padding-right: 20px;
+    
+  }
+  
+  .mr-sm-2 {
+    margin-right: 7px;
+  }
+  .search {
+    margin-right: -5px;
+    margin-top: -1%;
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+    background-color: rgb(203, 217, 228);
+  }
+  .search:hover {
+    
+    background-color: #2196F3;
+  }
+  Table{
+    margin-top: 8%;
+  }
+  .Nav {
+    padding: 10px;
+    float: right;
+    padding: "10px";
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+    
+    }
+  
+  .NavBar{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+  }
+  .look-Screen{
+    float: right;
+  }
+  li{
+    list-style-type: none;
+  }
+  
+  .page {
+    margin-top: 80px;
+    margin-right: 5%;
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+    
+  }
+  
+  /* Popover */
+  .popover-title {
+    border: 2px dotted red;
+    
+  }
+  
+  /* Popover Header */
+  .popover-title {
+    background-color: #73AD21;
+    color: rgb(71, 55, 223);
+    font-size: 28px;
+    text-align:center;
+  }
+  
+  /* Popover Body */
+  .popover-content {
+    background-color: coral;
+    color: rgb(71, 55, 223);
+    padding: 25px;
+  }
+  
+  
+  /* Menu NavBar */
+  
+  .Menu{
+    margin-top: 18%;
+    margin-left: 15%;
+  }
+  .MenuNav{
+    float: left;
+    margin-top: 140px;
+    color: rgb(10, 10, 10);
+    align-items: flex-start;
+    min-height: 30px;
+    border-radius: -10px -10px 10px 10px;
+    background-color: #ffffff;
+    height: 512px;
+    width: 18%;
+    
+  }
+  
+  /* close NavBar*/
+  .subMenu {
+    align-items: flex-start;
+  
+  }
+  
+  .sub-envelopes:hover{
+    background-color: #2196F3;
+  }
+  
+  span{
+    font-size: 16px;
+    font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
+  
+  }
+  
+  .sub-hearder{
+    margin-top: 120px;
+  }
+  
+  
+  .Upload {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+    overflow: hidden;
+    margin-top: 80px;
+  }
+  .ant-upload-drag-icon{
+    margin-top: 20%;
+    margin-left: 45%;
+  }
+  
+  .Content {
+    display: flex;
+    flex-direction: row;
+    padding-top: 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .Files {
+    margin-left: 32px;
+    align-items: flex-start;
+    justify-items: flex-start;
+    flex: 1;
+    overflow-y: auto;
+  }  
