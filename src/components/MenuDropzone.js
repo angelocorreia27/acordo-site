@@ -34,7 +34,7 @@ const paramBodyCreate = {
   id: id,
   owner: uuid(), // id do utilizador em sessao
   title:"title",
-  docType: "text",
+  dataType: "text",
   description:"description"
 }
 
@@ -91,20 +91,19 @@ class MenuDropzone extends React.Component {
 }
 
 onChangeHandler=event=>{
+  event.preventDefault();
   console.log(event.target.files[0])
 
 
-  const data = new FormData() 
+  const data = new FormData(); 
 
   
-  data.append('owner', id) // id do utilizador em sessao
-  data.append('title','title'),
-  data.append('description','description')
-
-
-  data.append('id', id)
-  data.append('dataType','file')
-  data.append('file',event.target.files[0])
+  data.append('owner', id); // id do utilizador em sessao
+  data.append('title', 'title');
+  data.append('description', 'description');
+  data.append('id', id);
+  data.append('dataType', 'ficheiro');
+  data.append('fileData', event.target.files[0]);
 
 
   const url = config.serverUrl+'negotiation/upload'

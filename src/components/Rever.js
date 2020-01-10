@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import { Button} from 'react-bootstrap'
+import { Button, OverlayTrigger} from 'react-bootstrap'
 import AddModal from "./AddModal"
-import { Card, Tooltip} from 'reactstrap';
+import { Card, Tooltip, ButtonToolbar} from 'reactstrap';
 import axios from "axios";
 
 
@@ -18,7 +18,8 @@ this.state = {
 this.handleChange = this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
 this.onChange = this.onChange.bind(this);
-this.handleChecked = this.handleChecked.bind(this); // set this, because you need get methods from CheckBox 
+this.handleChecked = this.handleChecked.bind(this);
+// set this, because you need get methods from CheckBox 
 
 }
 
@@ -78,7 +79,7 @@ return (
 
 <br></br>
 
-<input className="Check" type="checkbox" onClick={ this.handleEndpoint}/> Enviar lembretes automaticos  
+<input className="Check" type="checkbox" onClick={this.handleEndpoint}/> Enviar lembretes automaticos  
 
 <div>
 
@@ -90,7 +91,7 @@ return (
 </Card>
 <br></br>
 <div className = "Btn-buttom">
-<Button className="">Voltar</Button> <Button onSubmit={this.handleChange} href= "/Review" className="warning">Enviar</Button>
+<Button href="/FileMenu">Voltar</Button> <Button onSubmit={this.handleChange} href= "/Review" className="warning">Enviar</Button>
 </div> 
 
 </div>

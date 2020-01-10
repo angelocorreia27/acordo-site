@@ -1,6 +1,4 @@
 import React from 'react';
-import './default.css';
-import './fonts.css';
 
 
 
@@ -9,7 +7,9 @@ constructor(props){
  super(props);
 
 }
+
 render() {
+
 	  return (
 		<div>
 		 
@@ -102,7 +102,7 @@ render() {
 			</div>
 		  </div>
 		  <div id="copyright" className="container">
-			<p>Copyright (c) 2013 Sitename.com. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+			<p>Copyright (c) 2020 Acordo.com. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
 		  </div>
 		</div>
 	  );

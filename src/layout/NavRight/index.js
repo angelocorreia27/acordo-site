@@ -14,14 +14,10 @@ class NavRight extends Component {
         email: Cookies.get('email')
    } ;
 
-   handleNameChange(name) {
-    
-   // Cookies.set('name', name, { path: '/' });
-   // this.setState({ name });
-  }
-
+  
       render() {
-    //    const getEmail = this.state.email;
+   const getEmail = localStorage.setItem('session',JSON.stringify(this.state.email));
+   
         return (
             
             <Aux>
@@ -43,7 +39,7 @@ class NavRight extends Component {
                                 </i>
                                 
                                 <span type="user">
-                                    <a href={DEMO.BLANK_LINK} className="displayChatbox">{Cookies.get('email')}<i className="icon feather icon-mail"/></a>   
+                                    <a href={DEMO.BLANK_LINK} className="displayChatbox">{getEmail}<i className="icon feather icon-mail"/></a>   
                                     </span>
                                     
                                     <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">                                   

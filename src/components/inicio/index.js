@@ -14,10 +14,10 @@ class inicio extends Component {
     <Container>
     <Row>
     <Col><Auth loc="teste"/></Col> 
-        <Col><Home/></Col>
+        <Col><NavRight/></Col>
         
         
-        <Col></Col>
+        <Col><FileMenu/></Col>
     </Row>
     <Row>
         <Col></Col>

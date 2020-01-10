@@ -11,9 +11,10 @@ class auth extends Component {
         this.state = { ...props,
             email: Cookies.get('email')
         };
-      
+
       }
-      componentWillMount(){ 
+  
+    componentWillMount(){ 
     
       console.log('cookie', this.state.email);
       // Caso o cookie não estar definido, faz o redirect para o login
@@ -21,24 +22,27 @@ class auth extends Component {
       var session = this.state.email;
       console.log(session);
 
-      async function auth(req, res){
-        try {
-        console.log('session: '+req.session.user.userName);
-        if(!req.session.user) {
-            res.redirect('/auth/login');
-        } else {
-            res.render('account', {user: req.session.user});
-        }
+      try{
+        console.log("test" + username);
+         const username = Cookies.getItem('email') && this.setState({
+         user: JSON.parse(Cookies.getItem('person'))
+                          
+      });
+     
+      if(username!=undefined){
+        <p>{`Bem vindo ${username}`}</p>
+      }
     }catch (e) {
           
            return JSON.stringify('cookies');
          }    
      
-}}
+        }
 
         render(){
         return (
-               <session></session>        
+          
+          <session>test...</session>         
         );
            
 

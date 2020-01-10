@@ -281,7 +281,7 @@
   }
   
   .page {
-    margin-top: 80px;
+    margin-top: 50px;
     margin-right: 5%;
     font-family: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif";
     
@@ -317,7 +317,7 @@
   }
   .MenuNav{
     float: left;
-    margin-top: 140px;
+    margin-top: 50px;
     color: rgb(10, 10, 10);
     align-items: flex-start;
     min-height: 30px;
