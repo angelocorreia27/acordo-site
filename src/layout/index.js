@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-
 class home extends React.Component {
 constructor(props){
  super(props);
@@ -12,26 +11,20 @@ render() {
 
 	  return (
 		<div>
-		 
-		  <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-		  <title />
-		  <meta name="keywords" content />
-		  <meta name="description" content />
-		  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" />
-		  <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-          <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
 		  <div id="header-wrapper">
 			<div id="header" className="container">
 			  <div id="logo">
 				<h1><a href="#">ACORDO</a></h1>
-			  </div>``
+			  </div>
 			  <div id="menu">
 				<ul>
-				  <li className="current_page_item"><a href="#" accessKey={1} title>Homepage</a></li>
-				  <li><a href="#" accessKey={2} title>Our Clients</a></li>
-				  <li><a href="#" accessKey={3} title>About Us</a></li>
-				  <li><a href="#" accessKey={4} title>Careers</a></li>
-				  <li><a href="#" accessKey={5} title>Contact Us</a></li>
+				  <li className="current_page_item"><a href="#" accessKey={1} title>Início</a></li>
+				  <li><a href="#" accessKey={2} title>Gerir</a></li>
+				  <li><a href="#" accessKey={3} title>Modelo</a></li>
+				  { //<li><a href="#" accessKey={4} title>Careers</a></li>
+					}
+				  {//<li><a href="#" accessKey={5} title>Contact Us</a></li>
+					}
 				</ul>
 			  </div>
 			</div>
@@ -44,11 +37,11 @@ render() {
 				<h2>Welcome to our website</h2>
 				<span className="byline">Mauris vulputate dolor sit amet nibh</span> </div>
 				<p>This is <strong>Uprightness</strong>, a free, fully standards-compliant CSS template designed by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attributions 3.0</a> license, so you are pretty much free to do whatever you want with it (even use it commercially) provided you keep the links in the footer intact. Aside from that, have fun with it :) </p>
-				<a href="#" className="button-p">Etiam posuere</a> </div>
+				<a href="/Editor" className="button-p">Propor um acordo</a> </div>
 			  <div id="sidebar">
 				<div id="stwo-col">
 				  <div className="sbox2">
-					<h2>Etiam rhoncus</h2>
+					<h2>Últimos acordos</h2>
 					<ul className="style2">
 					  <li><a href="#">Semper quis egetmi dolore</a></li>
 					  <li><a href="#">Quam turpis feugiat dolor</a></li>
@@ -107,4 +100,5 @@ render() {
 		</div>
 	  );
 	}
-  }export default home;
+  }
+  export default home;

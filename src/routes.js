@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch} from "react-router-dom"
 import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
-import Inicio from "./components/inicio";
 import AddDestinatar from "./components/AddDestinatar";
 import MenuDropzone from "./components/MenuDropzone";
 import Editor from "./components/FileEditor/Editor";
@@ -13,7 +12,7 @@ import Rever from "./components/Rever";
 import Review from "./components/gerir/Review";
 import auth from "./components/auth/auth"
 import Welcome from "./pages/pages/Welcome";
-import index from "./components/viewer";
+import index from "./layout";
 
 
 class Routes extends Component {
@@ -51,8 +50,15 @@ return (
     <Provider store={store}>
    <Switch>
 
-     <Route exact path="/" component={Inicio}/>
-     <Route exact path="/" component={MenuDropzone}/>
+     <Route exact path="/" component={index}/> 
+     <Route exact path="/gerir" component={index}/> 
+     <Route exact path="/modelo" component={index}/> 
+
+     
+     {//<Route exact path="/" component={Inicio}/>
+     }
+     {//<Route exact path="/" component={MenuDropzone}/>
+     }
      <Route exact path="/Editor" component={Editor}/>
      
     
@@ -60,7 +66,7 @@ return (
      <Route exact path="/Review" component={Review}/>
      <Route exact path="/AddDestinatar" component={AddDestinatar}/>
      <Route exact path="/addDoc" component={addDoc}/>
-     <Route exact path="/index" component={index}/> 
+     
      
      <Route exact path="/Welcome" component={Welcome}/>
      
