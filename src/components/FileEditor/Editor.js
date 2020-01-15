@@ -9,6 +9,7 @@ import examples from './exapmples'
 import Debug from 'debug'
 import axios from 'axios'
 import uuid from 'uuid/v4'
+import Footer from '../../pages';
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -235,9 +236,10 @@ export default class Editor extends React.Component {
         </Row>
         <Row>
           <Col>
-          
+             
           </Col>
         </Row>
+        <Footer></Footer>
       </Grid>
     )
   }

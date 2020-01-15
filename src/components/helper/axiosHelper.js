@@ -1,4 +1,4 @@
-import config from '../../../config';
+import * as env from '../../env';
 import axios from 'axios';
 
   export default {
@@ -15,10 +15,10 @@ import axios from 'axios';
           console.log('get error ', error);
           // redirect to login if user doesn't have session
           if(error.response.status ==401)
-            window.location.replace(config.server.serverProtocol
-              +config.server.serverHost + ':'
-              +config.server.serverPort
-              +config.server.serverAuth);
+            window.location.replace(env.httpProtocol
+              +env.serverHost + ':'
+              +env.serverPort
+              +env.serverAuth);
 
       });
   },
@@ -34,10 +34,10 @@ import axios from 'axios';
               console.log('post error ', error);
               // redirect to login if user doesn't have session
               if(error.response.status ==401)
-                window.location.replace(config.server.serverProtocol
-                  +config.server.serverHost + ':'
-                  +config.server.serverPort
-                  +config.server.serverAuth);
+                window.location.replace(env.httpProtocol
+                  +env.serverHost + ':'
+                  +env.serverPort
+                  +env.serverAuth);
           });
     }
   

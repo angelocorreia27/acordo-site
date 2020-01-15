@@ -293,7 +293,10 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 {
 	position: relative;
 	height: 150px;
-	background: #2372DE;
+
+}
+#header-wrapper{
+	background: #2372DE url(/images/bg01.png) repeat;
 }
 
 /*********************************************************************************/

@@ -55,14 +55,15 @@
     "tooltip": "^1.6.1",
     "unit-to-px": "^1.0.2",
     "uploader": "0.0.3-3",
-    "w3c-blob": "0.0.1"
+    "w3c-blob": "0.0.1",
+    "dotenv": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build&&gh-pages -d buildt"
+    "deploy": "npm run build&&gh-pages -d busildt"
   },
   "proxy": "http://10.4.9.73:8000/",
   "devDependencies": {

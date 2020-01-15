@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom"
-import {createStore} from "redux";
-import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
+
 import AddDestinatar from "./components/AddDestinatar";
 import Editor from "./components/FileEditor/Editor";
 //import SideMenu from "./components/FileEditor/SideMenu";
@@ -11,7 +10,7 @@ import Rever from "./components/Rever";
 import Review from "./components/gerir/Review";
 import auth from "./components/auth/auth"
 import Welcome from "./pages/pages/Welcome";
-import index from "./layout";
+import index from "./pages";
 
 
 class Routes extends Component {
@@ -42,11 +41,10 @@ handleFile (file) {
 
 
 render () {
-  const store = createStore(combineReducers);
 
 return (
     <BrowserRouter>
-    <Provider store={store}>
+      
    <Switch>
 
      <Route exact path="/" component={index}/> 
@@ -74,7 +72,6 @@ return (
      
     
     </Switch>
-     </Provider>
      </BrowserRouter>
      
  );
