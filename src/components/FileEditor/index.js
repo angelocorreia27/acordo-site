@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropzone from '../FileEditor/Dropzone';
+import Editor from './Editor';
 import MenuHeader from '../../pages/MenuHeader';
 import Footer from '../../pages/Footer';
 
@@ -10,7 +10,7 @@ render() {
 	  return (
 		  <div>
               <MenuHeader></MenuHeader>
-              <Dropzone></Dropzone>
+              <Editor></Editor>
               <Footer></Footer>
 		  </div>
 	  );

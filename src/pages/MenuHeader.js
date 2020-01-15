@@ -12,9 +12,9 @@ render() {
 				</div>
 				<div id="menu">
 					<ul>
-					<li className="current_page_item"><a href="#" accessKey={1} title>Início</a></li>
-					<li><a href="#" accessKey={2} title>Gerir</a></li>
-					<li><a href="#" accessKey={3} title>Modelo</a></li>
+					<li className="current_page_item"><a href="/" accessKey={1} title>Início</a></li>
+					<li><a href="/Gerir" accessKey={2} title>Gerir</a></li>
+					<li><a href="/Modelo" accessKey={3} title>Modelo</a></li>
 					</ul>
 				</div>
 				</div>

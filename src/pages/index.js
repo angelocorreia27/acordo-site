@@ -23,7 +23,7 @@ render() {
 							<p><strong>Acordo, </strong>consiste numa plataforma para criação documentos ou declarações escrita
 							, com um caracter comprovativo, de forma a garantir a integridade 
 							,autenticidade, confidencialidade e não repudio.  </p>
-							<a href="/Editor" className="button-p">Propor um acordo</a>
+							<a href="/Inicio" className="button-p">Propor um acordo</a>
 						</div>
 						<div id="sidebar">
 							<LastAgreements></LastAgreements>

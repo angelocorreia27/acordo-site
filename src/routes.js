@@ -2,16 +2,15 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom"
 import {Provider} from "react-redux";
 
-import AddDestinatar from "./components/AddDestinatar";
-import Editor from "./components/FileEditor/Editor";
+//import AddDestinatar from "./components/AddDestinatar";
+import Editor from "./components/FileEditor";
 //import SideMenu from "./components/FileEditor/SideMenu";
 import addDoc from "./components/DocSign/addDoc";
-import Rever from "./components/Rever";
-import Review from "./components/gerir/Review";
+//import Rever from "./components/Rever";
+//import Review from "./components/gerir/Review";
 import auth from "./components/auth/auth"
-import Welcome from "./pages/pages/Welcome";
 import index from "./pages";
-
+import Inicio from './components/inicio';
 
 class Routes extends Component {
         constructor (props) {
@@ -48,6 +47,7 @@ return (
    <Switch>
 
      <Route exact path="/" component={index}/> 
+     <Route exact path="/inicio" component={Inicio}/> 
      <Route exact path="/gerir" component={index}/> 
      <Route exact path="/modelo" component={index}/> 
 
@@ -56,17 +56,8 @@ return (
      }
      {//<Route exact path="/" component={MenuDropzone}/>
      }
-     <Route exact path="/Editor" component={Editor}/>
-     
-    
-     <Route exact path="/Rever" component={Rever}/>
-     <Route exact path="/Review" component={Review}/>
-     <Route exact path="/AddDestinatar" component={AddDestinatar}/>
-     <Route exact path="/addDoc" component={addDoc}/>
-     
-     
-     <Route exact path="/Welcome" component={Welcome}/>
-     
+     <Route exact path="/editor" component={Editor}/>
+     <Route exact path="/addDoc" component={addDoc}/>     
      <Route exact path="/auth" component={auth}/>
 
      

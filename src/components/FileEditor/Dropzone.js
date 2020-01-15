@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import {Icon, message, Upload} from 'antd'
 import uuid from 'uuid/v4'
-import {config} from "../config/env"
+import * as env from '../../env';
 //let data = new FormData();
 
 let id = uuid();
@@ -41,7 +41,7 @@ const paramBodyCreate = {
 // paramBodyUpload do tipo multiform-data
 
 
-class MenuDropzone extends React.Component {
+class Dropzone extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -106,9 +106,7 @@ onChangeHandler=event=>{
   data.append('fileData', event.target.files[0]);
 
 
-  const url = config.serverUrl+'negotiation/upload'
-  console.log(url);
-  axios.post(url, data, uploadHeaders
+  axios.post('negotiation/upload', data, uploadHeaders
     ).then(res => { // then print response status  
       console.log(res.statusText); 
       console.log(res.data);
@@ -150,7 +148,7 @@ onChangeHandler=event=>{
 
 }
 
-export default MenuDropzone;
+export default Dropzone;
 
 <div style={{ marginTop: 20 }}/>
 
