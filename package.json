@@ -64,6 +64,7 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build&&gh-pages -d buildt"
   },
+  "proxy": "http://10.4.9.73:8000/",
   "devDependencies": {
     "gh-pages": "^1.1.0"
   }

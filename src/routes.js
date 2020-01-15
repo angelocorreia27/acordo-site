@@ -4,7 +4,6 @@ import {createStore} from "redux";
 import combineReducers from "./store/reducers";
 import {Provider} from "react-redux";
 import AddDestinatar from "./components/AddDestinatar";
-import MenuDropzone from "./components/MenuDropzone";
 import Editor from "./components/FileEditor/Editor";
 //import SideMenu from "./components/FileEditor/SideMenu";
 import addDoc from "./components/DocSign/addDoc";

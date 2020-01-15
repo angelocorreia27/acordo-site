@@ -82,7 +82,7 @@ class MenuDropzone extends React.Component {
   const paramBodyUpload = 'id='+paramBodyCreate.id+'&dataType=file&file=' + this.state.selectedFile;
   data.append('file', this.state.selectedFile, this.state.selectedFile.name);
   console.log("test" + this.state.selectedFile);
-  axios.post('http://localhost:8000/negotiation/upload', paramBodyUpload, uploadHeaders
+  axios.post('negotiation/upload', paramBodyUpload, uploadHeaders
     ).then(res => { // then print response status  
       console.log(res.statusText); 
       console.log(res.data);
