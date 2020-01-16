@@ -30,9 +30,10 @@ onClickButton = () => { 
 
 render(){
     return ( 
-    <Row m={9}>
+
+        <Row m={9}>
      <Col>
-      <div className="MenuNav">
+     <div className="MenuNav"> 
     
     <Menu className="Menu"
           onClick={this.handleClick}
@@ -42,10 +43,10 @@ render(){
           mode="inline"
         >
 
-<Button className="warning" onClick={this.onClickButton} href="/Editor">Iniciar agora</Button><br></br><br></br>
+<Button className= "buttnovo" onClick={this.onClickButton} href="/inicio">Novo</Button><br></br><br></br>
            
 
-             <strong>ENVELOPES</strong>
+             <strong>Acordos</strong>
 
 
        <SubMenu className ="subMenu"
@@ -55,7 +56,7 @@ render(){
             <span className="sub-envelopes">
               
               <Icon type="mail" /> 
-              <ul> <li icon="icon-sent"><a href="news.asp">Caixa de entrada</a></li> </ul></span>
+              <ul> <li icon="icon-sent"><a href="news.asp">Recebidos</a></li> </ul></span>
                                                  
 
             }
@@ -67,7 +68,7 @@ render(){
             key="sub2"
             title={
               <span>
-                <Icon type="appstore" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">Enviado</a></li> </ul> </span>
+                <Icon type="appstore" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">Enviados</a></li> </ul> </span>
               </span>
             }
           >
@@ -95,18 +96,6 @@ render(){
           >        
           </SubMenu>
 
-
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-                <Icon type="mail" /> <span> <span> <ul><li><a href="about.asp">PowerForms</a></li></ul> </span>
-                 </span>
-              </span>
-            }
-          >
-          
-          </SubMenu>
     
           <br></br>
           <strong>Vistas Rapidas</strong>
@@ -119,7 +108,7 @@ render(){
      <span className="sub-envelopes">
        
        <Icon type="exclamation-circle" /> 
-       <ul> <li icon="icon-sent"><a href="news.asp">Acao necessaria</a></li> </ul></span>
+       <ul> <li icon="icon-sent"><a href="news.asp">Ação necessaria</a></li> </ul></span>
                                           
 
      }
@@ -159,19 +148,6 @@ render(){
    >        
    </SubMenu>
 
-
-   <SubMenu
-     key="sub1"
-     title={
-       <span>
-         <Icon type="warning" /> <span> <span> <ul><li><a href="about.asp">Falha na autenticacao</a></li></ul> </span>
-          </span>
-       </span>
-     }
-   >
-   
-   </SubMenu>
-              <strong>PASTAS</strong>
         </Menu>
     
     </div>
@@ -184,12 +160,11 @@ render(){
   
    <header>
            
-        <h3 style={{fontSize: '24px', fontFamily: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif" }}> <strong>Caixa de entrada</strong></h3>
+        <h3 style={{fontSize: '24px', fontFamily: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif" }}> <strong>Gestão de acordos</strong></h3> <br></br>
               
  <div className= "form">
       <Form inline>
-          <FormControl type="text" placeholder="Caixa de entrada" className="mr-sm-2"/>
-             <Button className="search">Search</Button>
+          <FormControl type="text" placeholder="Gestao de acordos" className="mr-sm-2"/><Button className="search">Search</Button>
     
       </Form>
    
@@ -333,7 +308,6 @@ render(){
     </Col>
 
 </Row>
-
     )
     
     }

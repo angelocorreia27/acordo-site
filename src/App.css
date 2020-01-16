@@ -1,0 +1,212 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 24px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 2em
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  
+  .warning {background-color: #ffd000;
+  } /* Orange */
+  .warning:hover {background: #e68a00;
+  }
+  p:hover{color: dodgerblue;}
+  
+  .style {
+    margin:auto; 
+    max-width:300px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /*Style the submit button */ 
+  form.example button {
+    float: right;
+    width: 8%;
+    padding: 5px;
+    margin: 20px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders*/
+    cursor: pointer;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 3px;
+    margin-top: -20px;
+    margin-right: 60px;
+    font-size: 15px;
+    border: 1px solid grey;
+    float: right;
+    width: 16%;
+    background: #f1f1f1;
+  
+  }
+  
+  .tbl2{
+    float: left;
+  }
+  .tbl3{
+    float: right;
+  }
+  .select{
+    padding: 10px;
+    float: right;
+    box-sizing: border-box;
+  }
+  .pagina{
+    padding: 12px;
+  }
+  .Check{
+    padding: 8px;
+  }
+  .mensage {
+    float: right;
+    padding-right: 850px 
+  }
+  .Button {
+    float: right;
+    padding-right: 850px;
+  }
+  
+  .butFooter {background-color: white;}
+  .butFooter:hover {background: rgb(58, 94, 255);}
+  
+  .Jumbotron{
+    width: 60%;
+    height: 20%;
+  }
+  /* The Modal */
+  .modal-content {
+   
+    background-color: #fefefe;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    float: left;
+    margin-top: 325px;
+    margin-left: -450px;
+  }
+  
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    padding: 2px 16px;
+    color: white;
+    margin-bottom: 100px;
+  }
+  .Dialog{
+    border: 1px solid #888;
+    width: 80%
+  
+  }
+  .table {
+    float: center;
+  }
+  .App-header{
+    widows: 60%;
+  }
+  
+  /*  Inicio da pagina Drop file */
+  
+  .form{
+    background-origin: padding-box;
+    margin-top: -42px;
+    float: right;
+    width: 30%;
+    height: 20%;
+    color: white;
+    font-size: 15px;
+    margin-right: -40px;
+    cursor: pointer;
+  }
+  
+  .search {
+    float: right;
+  
+    margin-right: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(71, 55, 223);
+  }
+  
+  
+  .Nav {
+    padding: 10px;
+    float: right;
+    padding: "10px";
+    font-family: Arial, Helvetica, sans-serif;
+    
+    }
+  
+  .NavBar{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .look-Screen{
+    float: right;
+  }
+  li{
+    list-style-type: none;
+  }
+  strong{
+      color: #888;
+  }
+  
+  .page {
+    margin-top: 60px;
+    margin-left: 40px;
+  }
+  
+  
+  /* Menu NavBar */
+  .MenuNav{
+    float: left;
+    margin-left: -220px;
+  
+    box-shadow: 10px;
+  } 
+  
+  span{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }

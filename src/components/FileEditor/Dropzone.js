@@ -4,7 +4,32 @@ import axios from 'axios';
 import {Icon, message, Upload} from 'antd'
 import uuid from 'uuid/v4'
 import * as env from '../../env';
-//let data = new FormData();
+import {useDropzone} from 'react-dropzone';
+
+function DropzoneWithoutDrag() {
+  const {getRootProps, getInputProps, acceptedFiles} = useDropzone({noDrag: true});
+  const files = acceptedFiles.map(file => <li key={file.path}>{file.path}</li>);
+
+  return (
+    <section className="container">
+      <div {...getRootProps({className: 'dropzone'})}>
+        <input {...getInputProps()} />
+        <p style= {baseStyle}>Arraste e solte alguns arquivos aqui ou clique para selecionar os arquivos</p>
+        
+      </div>
+      <aside>
+        
+        <ul>{files}</ul>
+      </aside>
+    </section>
+  );
+  }
+  
+
+
+
+
+
 
 let id = uuid();
 const props = {
@@ -115,30 +140,20 @@ onChangeHandler=event=>{
 }
 
  render(){
-  const upload = (
-    <div>
- 
-        <div className="ant-upload-text">Largue os seus ficheiros aqui</div>
-        <br></br><br></br>
-        <Icon type={this.state.loading ? 'loading' : 'file-add'} />
- 
-    </div>
 
-    
-  );
     return (
 
     <center>
              
   <div className="sub-hearder">
 
-<Button className="warning"  href="/Editor"> Iniciar agora </Button>
+<Button className="buttnovo" href="/Editor"> Iniciar edição </Button>
 
     <br></br><br></br>
    
-
-    
+   <DropzoneWithoutDrag/>
    <input type="file" name="file" onChange={this.onChangeHandler}/>
+
 
   </div>
 
