@@ -11,6 +11,9 @@ import addDoc from "./components/DocSign/addDoc";
 import auth from "./components/auth/auth"
 import index from "./pages";
 import Inicio from './components/inicio';
+import Modelo from './components/Modelo';
+import Gerir from './components/gerir';
+
 
 class Routes extends Component {
         constructor (props) {
@@ -48,8 +51,8 @@ return (
 
      <Route exact path="/" component={index}/> 
      <Route exact path="/inicio" component={Inicio}/> 
-     <Route exact path="/gerir" component={index}/> 
-     <Route exact path="/modelo" component={index}/> 
+     <Route exact path="/gerir" component={Gerir}/> 
+     <Route exact path="/modelo" component={Modelo}/> 
 
      
      {//<Route exact path="/" component={Inicio}/>
