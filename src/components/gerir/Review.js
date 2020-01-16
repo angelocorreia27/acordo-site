@@ -30,11 +30,6 @@ onClickButton = () => { 
 
 render(){
     return ( 
-<<<<<<< HEAD
-=======
-    <div>
-      	  
->>>>>>> pagina acordo
     <Row m={9}>
      <Col>
       <div className="MenuNav">
