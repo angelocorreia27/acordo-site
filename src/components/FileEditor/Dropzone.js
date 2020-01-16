@@ -164,10 +164,10 @@ onChangeHandler=event=>{
 }
 
 export default Dropzone;
-{
+/*{
 <div style={{ marginTop: 20 }}/>
 
-}
+}*/
 const baseStyle = {
 width: "100%",
 padding: 30,

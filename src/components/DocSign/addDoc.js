@@ -99,7 +99,7 @@ class addDoc extends React.Component {
 
 
 render(){
- const { imageUrl } = this.state;
+ //const { imageUrl } = this.state;
     
     return(
       
@@ -130,9 +130,9 @@ render(){
 
 }
 export default addDoc;
-{
+/*{
 <div style={{ marginTop: 20 }}/>
-}
+}*/
 
 const baseStyle = {
 width: "100%",
