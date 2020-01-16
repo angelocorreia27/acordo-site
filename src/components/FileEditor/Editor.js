@@ -9,6 +9,7 @@ import examples from './exapmples'
 import Debug from 'debug'
 import axios from 'axios'
 import uuid from 'uuid/v4'
+import { Left, Right } from 'react-bootstrap/lib/Media'
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -229,8 +230,8 @@ export default class Editor extends React.Component {
           </Col>
         </Row>
         <Row activeClass={footer}>
-          <Col mdOffset={2} md={8} sm={12}>
-            <Button className="btn-warning" onClick={this.submitCreate} >Confirmar</Button>           
+          <Col mdOffset={2} md={8} sm={12}><br></br>
+            <Button className="btn-warning" style= {{float: "Right"}}onClick={this.submitCreate} >Confirmar</Button>           
           </Col>
         </Row>
         <Row>

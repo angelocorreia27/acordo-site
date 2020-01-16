@@ -1,0 +1,40 @@
+{
+    "client": {
+    "ClientName":"john",
+    "Name":"Doe",
+    "ClientStreet":"ASA",
+    "Street":"ASA",
+    "ClientCity":"rating", 
+    "Phone": "key"
+},
+
+"sender": {
+     "SenderName":"Joe",
+     "Name":"Doe",
+     "ClientStreet":"ASA",
+     "Street":"ASA",
+     "ClientCity":"rating", 
+     "Phone": "key"
+},
+
+"deliverables": {
+       "Name": "john",
+       "Email": "john@gmail.com"
+       
+      },
+
+"payments": {
+       "Name": "Labor",
+       "Price": "$0.00",
+       "QTY": "1",
+       "Subtotal": "$0.00"
+},
+
+"acceptance": {
+     "ClientSignature": "Plate Wiring",
+     "Date": "20/02/19",
+     "ProviderSignature": "",
+     "Data": ""
+}
+
+}

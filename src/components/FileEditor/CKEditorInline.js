@@ -8,6 +8,7 @@ const defaultScriptUrl = 'ckeditor/ckeditor.js'
 class CKEditorInline extends React.Component {
   constructor (props) {
     super(props)
+
     // Bindings
     this.onLoad = this.onLoad.bind(this)
 

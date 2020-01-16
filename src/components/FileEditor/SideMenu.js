@@ -36,7 +36,14 @@ class SideMenu extends Component {
     return (
       <div className={className} >
         <div className={menuClass} >
-          <br/>
+          <div>Select example:</div>
+          <br />
+          <Button onClick={this.handleButton} value='0' className={buttonStyle}> Appolo </Button>
+          <br />
+          <Button value='1' onClick={this.handleButton} className={buttonStyle}> MDN docs </Button>
+          <br />
+          <Button value='2' onClick={this.handleButton} className={buttonStyle}> 2.docx </Button>
+          <br />
           <Button value='3' onClick={this.handleButton} className={buttonStyle}> Clear content </Button>
         </div>
       </div>

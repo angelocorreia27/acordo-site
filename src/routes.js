@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom"
-import {Provider} from "react-redux";
 import Editor from "./components/FileEditor";
 
 import addDoc from "./components/DocSign/addDoc";

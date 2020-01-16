@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from 'antd/lib/card/Grid';
 import { Container, Row, Col } from 'reactstrap';
-import Dropzone from 'react-dropzone';
+//import Dropzone from 'react-dropzone';
 //import { Progress, Upload, Icon } from 'antd';
 //import axios from 'axios';
 
@@ -24,8 +24,8 @@ const CustomPreview = () => {
 
 
   
-  return (
-    
+  return 
+  /*  
     <Dropzone
       
       getUploadParams={getUploadParams}
@@ -36,8 +36,8 @@ const CustomPreview = () => {
       disabled={files => files.some(f => ['preparing', 'getting_upload_params', 'uploading'].includes(f.meta.status))}
       style={baseStyle}
 
-    />
-  )
+    /> */
+  
 }
 
 
