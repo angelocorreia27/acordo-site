@@ -30,7 +30,8 @@ class auth extends Component {
       });
      
       if(username!=undefined){
-        <p>{`Bem vindo ${username}`}</p>
+       
+
       }
     }catch (e) {
           

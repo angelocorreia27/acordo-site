@@ -130,9 +130,9 @@ render(){
 
 }
 export default addDoc;
-
+{
 <div style={{ marginTop: 20 }}/>
-
+}
 
 const baseStyle = {
 width: "100%",
