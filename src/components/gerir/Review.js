@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { Icon, Menu } from 'antd';
 import {Button, Form, FormControl, Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import axios from 'axios';
+import Footer from './../../pages/Footer';
+import MenuHeader from './../../pages/MenuHeader';
 const { SubMenu } = Menu;
 
 
@@ -30,6 +32,10 @@ onClickButton = () => { 
 
 render(){
     return ( 
+    <div>
+      	     <MenuHeader></MenuHeader>
+
+
     <Row m={9}>
      <Col>
       <div className="MenuNav">
@@ -333,7 +339,8 @@ render(){
     </Col>
 
 </Row>
-
+<Footer></Footer>
+</div>
     )
     
     }

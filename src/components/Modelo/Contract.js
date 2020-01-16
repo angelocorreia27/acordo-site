@@ -1,114 +1,79 @@
-import React, {useState} from 'react'
-import ReactJsonDynamicForms from 'react-json-dynamic-forms'
-import { Form, Col } from 'react-bootstrap'
+import React from 'react'
+//import { Form } from 'react-bootstrap'
 import Footer from './Footer';
 import MenuHeader from './MenuHeader';
-
-const metaData = {
-
-client: {
-    ClientName:"john",
-    Name:"Doe",
-    ClientStreet:"ASA",
-    Street:"ASA",
-    ClientCity:"rating", 
-    Phone: "key",
-},
-
-sender: {
-     SenderName:"Joe",
-     Name:"Doe",
-     ClientStreet:"ASA",
-     Street:"ASA",
-     ClientCity:"rating", 
-     Phone: "key",
-},
-
-deliverables: {
-       Name: "john",
-       Email: "john@gmail.com",
-       
-      },
-
-payments: {
-       Name: "Labor",
-       Price: "$0.00",
-       QTY: "1",
-       Subtotal: "$0.00"
-},
-
-acceptance: {
-     ClientSignature: "Plate Wiring",
-     Date: "20/02/19",
-     ProviderSignature: "",
-     Data: ""
-},
-
-}
-
-const [dados, setDados] = useState(metaData)
-
-const handleInputChange = e => {
-    const {name, value}= e.target
-    setDados ({...dados, [name]:value, [value]:value})
-      
-  } 
-
+import { Container, Header, Grid, Form } from 'semantic-ui-react';
+import { Document, Page } from 'react-pdf';
 
 class Contract extends React.Component {
       constructor(props){
           super(props);
-        
-        this.onChange = this.onChange.bind(this);
+         this.state = {
+            numPages: null,
+            pageNumber: 1,
+         } 
+  
+    }
+    onFileChange = (event) => {
+      this.setState({
+        file: event.target.files[0]
+      });
     }
 
+    onDocumentLoadSuccess = ({ numPages }) => {
+      this.setState({ numPages });
+    }
+
+    nextPage = () => {
+ 
+      const currentPageNumber = this.state.pageNumber;
+      let nextPageNumber;
+   
+      if (currentPageNumber + 1 > this.state.numPages) {
+        nextPageNumber = 1;
+      } else {
+        nextPageNumber = currentPageNumber + 1;
+      }
+   
+      this.setState({
+        pageNumber: nextPageNumber
+      });
+       
+  }
                   
    
     render(){
-
+      const { pageNumber, numPages } = this.state;
         return (
             <div>
             <MenuHeader>   </MenuHeader>
 
-                <body>
-                    
-                <Form.Row>
-
-<Col md={6}>
-
- <Form.Group>
-    <Form.Label>Sender.Name</Form.Label>
-    <Form.Control id="campo1" className="mb-2 mr-5" type="text" name="name" value={dados.name} onChange={handleInputChange}/>
- </Form.Group>
-
- <Form.Group>
-    <Form.Label>Name</Form.Label>
-    <Form.Control id="campo1" className="mb-2 mr-5" type="text" name="name" value={dados.name} onChange={handleInputChange}/>
- </Form.Group>
-
- <Form.Group>
-    <Form.Label>[Sender.Street]</Form.Label>
-    <Form.Control id="campo1" className="mb-2 mr-5" type="text" name="name" value={dados.name} onChange={handleInputChange}/>
- </Form.Group>
-
- <Form.Group>
-    <Form.Label>Street</Form.Label>
-    <Form.Control id="campo1" className="mb-2 mr-5" type="text" name="name" value={dados.name} onChange={handleInputChange}/>
- </Form.Group>
-
- <Form.Group>
-    <Form.Label>[Sender.City], [Sender.State] [Sender.Zip]</Form.Label>
-    <Form.Control id="campo1" className="mb-2 mr-5" type="text" name="name" value={dados.name} onChange={handleInputChange}/>
- </Form.Group>
-
-</Col>
-
-
- </Form.Row> 
-                    
-                 </body> 
+   <body>
+   <div>
+   <Container>
+       <br />
+       <Header textAlign="center">PDF Preview</Header>
+       <Form>
+         <input type="file" onChange={this.onFileChange}>
+         </input>
+       </Form>
+       <Grid centered columns={2}>
+         <Grid.Column textAlign="center" onClick={this.nextPage}>
+ 
+           <Document file={this.state.file} 
+                     onLoadSuccess={this.onDocumentLoadSuccess} 
+                     noData={<h4>Please select a file</h4>}>
+             <Page pageNumber={pageNumber} />
+           </Document>
+ 
+           {this.state.file ? <p>Page {pageNumber} of {numPages}</p> : null}
+         </Grid.Column>
+       </Grid>
+     </Container>
+      </div>
+   </body>
                 <Footer></Footer>         
-                </div>
+            </div>                 
                 
             
         )        
