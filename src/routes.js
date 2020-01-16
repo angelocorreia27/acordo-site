@@ -11,7 +11,7 @@ import addDoc from "./components/DocSign/addDoc";
 import auth from "./components/auth/auth"
 import index from "./pages";
 import Inicio from './components/inicio';
-import Modelo from './components/Modelo';
+import Modelo from './components/modelo';
 import Gerir from './components/gerir';
 
 

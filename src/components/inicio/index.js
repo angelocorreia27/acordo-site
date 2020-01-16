@@ -9,7 +9,7 @@ render() {
 
 	  return (
 		  <div>
-              <MenuHeader></MenuHeader>
+              <MenuHeader hearderName="inicio"></MenuHeader>
               <Dropzone></Dropzone>
               <Footer></Footer>
 		  </div>

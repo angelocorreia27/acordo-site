@@ -9,7 +9,7 @@ render() {
 
 	  return (
 		  <div>
-              <MenuHeader></MenuHeader>
+              <MenuHeader hearderName="modelo"></MenuHeader>
               <Footer></Footer>
 		  </div>
 	  );
