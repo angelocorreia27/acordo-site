@@ -1,23 +1,41 @@
 import React from 'react';
-import {Card} from 'react-bootstrap';
+import {Card, Button, Table} from 'react-bootstrap';
 
 class ModelCard extends React.Component {
     constructor(props){
        super(props);
-    }
-
+       
+       }
+    
+  
     render(){
         return (
-            <Card bg="primary" text="white" style={{ width: '18rem' }}>
-            <Card.Header>Header</Card.Header>
-            <Card.Body>
-              <Card.Title>Primary Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk
-                of the card's content.
-              </Card.Text>
-            </Card.Body>
-          </Card>
+
+<Card bg="dark" text="white" style= {{width: '40rem'}}>
+    <Card.Header><h4>Transportation Services Agreement</h4></Card.Header>
+    <Card.Body>
+      <Card.Title><h6>Client Point of Contact</h6></Card.Title>
+      <Card.Text>
+    	      <Table>
+            <thead>
+            <tr>
+               [Client.Name]
+               <br></br>
+               Name<br></br>
+               [Client.Street]                [Client.Email]<br></br>
+                StreetEmail<br></br>
+               [Client.City], [Client.State] [Client.Zip]          [Client.Phone]<br></br>
+               City, State, Zip                                     Phone
+            </tr>
+            </thead>
+            </Table>
+      </Card.Text>
+      <Card.Text></Card.Text>
+    </Card.Body>
+  </Card>  
+  
            )
-    }
+    
+}
+
 }export default ModelCard;

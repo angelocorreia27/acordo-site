@@ -11,6 +11,7 @@ import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 
+
 const debug = Debug('editor')
 debug.enabled = true
 
@@ -191,9 +192,11 @@ export default class Editor extends React.Component {
   render () {
     const noWarningMessagesRelatedToContentEditable = true
     return (
-      <Container className={editorBlock}>
+      <div className="editorBlook">
+        <Container className={editorBlock}>
         <Row>
-          <Col mdOffset={2} md={8} sm={12}>
+          
+         { /* <Col mdOffset={2} md={8} sm={12}>
             <CKeditorInline // header
 
               activeClass={headerEditor}
@@ -203,13 +206,15 @@ export default class Editor extends React.Component {
                 'configLoaded': this.onCreateEditor.bind(this, 'header')
               }}
             >
-              <p style={{'textAlign': 'right'}} >
+             /* <p style={{'textAlign': 'right'}} >
                 <span style={{'color': '#999999'}}>
                   Edit header here
-                </span>
+            </span> 
               </p>
+
             </CKeditorInline>
           </Col>
+            */}
         </Row>
         <Row>
           <Col mdOffset={2} md={8} sm={12}>
@@ -227,11 +232,13 @@ export default class Editor extends React.Component {
         </Row>
         <Row activeClass={footer}>
           <Col mdOffset={2} md={8} sm={12}><br></br>
-            <Button className="btn-warning" style= {{float: "Right"}}onClick={this.onButtonClick} >Confirmar</Button>           
+            <Button className="primary" style= {{float: "Right"}}onClick={this.onButtonClick} >Confirmar</Button>           
           </Col>
         </Row>
        
       </Container>
+      </div>
+
     )
   }
 }

@@ -13,7 +13,7 @@ class Contract extends React.Component {
    
     render(){
 
-        return 
+        return (<section>Contract...</section>)
 }  
 
 }export default Contract;
