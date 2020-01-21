@@ -17,7 +17,7 @@
     "posthtml-render": "^1.1.1",
     "pretty": "^2.0.0",
     "react": "^16.12.0",
-    "react-bootstrap": "^0.32.4",
+    "react-bootstrap": "^1.0.0-beta.5",
     "react-ckeditor-component": "^1.0.7",
     "react-dom": "^16.12.0",
     "react-dropzone": "^10.2.1",
@@ -34,9 +34,10 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build&&gh-pages -d busildt"
   },
-  "proxy": "http://10.4.9.73:8000/",
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "react-dev-utils": "^9.0.4",
+    "react-to-print": "^2.1.1"
   },
   "browserslist": {
     "production": [

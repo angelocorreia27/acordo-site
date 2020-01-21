@@ -52,8 +52,8 @@ const props = {
   },
 };
 
-const paramHeaders = {hearders: {'Content-type': 'application/json'}, withCredentials: true}
-const uploadHeaders = {hearders: {'Content-type': 'multipart/form-data'}, withCredentials: true}
+const paramHeaders = {headers: {'Content-type': 'application/json'}, withCredentials: true}
+const uploadHeaders = {headers: {'Content-type': 'multipart/form-data'}, withCredentials: true}
 
 const paramBodyCreate = { 
   id: id,
@@ -130,8 +130,12 @@ onChangeHandler=event=>{
   data.append('dataType', 'ficheiro');
   data.append('fileData', event.target.files[0]);
 
+  const url = env.httpProtocol
+  +env.serverHost
+  +':'+env.serverPort
+  +'/negotiation/upload';
 
-  axios.post('negotiation/upload', data, uploadHeaders
+  axios.post(url, data, uploadHeaders
     ).then(res => { // then print response status  
       console.log(res.statusText); 
       console.log(res.data);

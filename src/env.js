@@ -5,7 +5,7 @@ dotenv.config();
 export const httpProtocol = process.env.HTTPPROTOCOL || 'http://';
 
 // Server values
-export const serverHost = process.env.SERVERHOST || '10.4.9.73';
+export const serverHost = process.env.SERVERHOST || 'localhost';
 export const serverPort = process.env.SERVERPORT || '8000';
 export const serverAuth = process.env.SERVERAUTH || '/auth';
 

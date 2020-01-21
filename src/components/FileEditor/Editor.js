@@ -2,14 +2,17 @@ import CKEditor from 'react-ckeditor-component'
 import React from 'react'
 import request from 'request-promise-native'
 import { css } from 'emotion'
-import {Grid, Row, Col, Button} from 'react-bootstrap'
+import {Container,Row, Col, Button} from 'react-bootstrap'
 import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 import examples from './exapmples'
 import Debug from 'debug'
 import axios from 'axios'
 import uuid from 'uuid/v4'
-import { Left, Right } from 'react-bootstrap/lib/Media'
+//import { Left, Right } from 'react-bootstrap/lib/Media'
+import axiosHelper from '../helper/axiosHelper';
+import * as env from '../../env';
+
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -78,7 +81,6 @@ export default class Editor extends React.Component {
               id:uuid()
             }
           }
-    this.submitCreate = this.submitCreate.bind(this)
 
     this.updateContent = this.updateContent.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -88,7 +90,8 @@ export default class Editor extends React.Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.onCreateEditor = this.onCreateEditor.bind(this)
     this.setEditorsContent = this.setEditorsContent.bind(this)
-    
+    this.submitCreate = this.submitCreate.bind(this)
+
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
     this.state = examples[0] // body footer header
@@ -96,22 +99,31 @@ export default class Editor extends React.Component {
   }
 
   submitCreate= () => {
-    const paramHeaders = {hearders: {'Content-type': 'application/json'}}
-    const paramBody = {
-       id: uuid(),
-       owner: uuid(), // id do utilizador em sessao
-       title:"title",
-       docType: "text",
-       description:"description"
-     }
-     
-     const url = "http://localhost:8000/negotiation/create";
-     
-     axios.post(url, paramBody, paramHeaders
-       ).then(function(res){
-          console.log(res.statusText);
+    const paramHeaders = {headers: {'Content-type': 'multipart/form-data'}, withCredentials: true
+                        }
+    console.log('document', htmlOptimization(this.editor.body.getData()));
+    console.log('header', htmlOptimization(this.state.header));
+    console.log('footer', htmlOptimization(this.state.footer));
    
-       })
+    
+    const data = new FormData(); 
+
+    data.append('title', 'title');
+    data.append('description', 'description');
+    data.append('data', 'data');
+     
+     const url = env.httpProtocol
+                +env.serverHost
+                +':'+env.serverPort
+                +'/negotiation/create';
+
+    let result = axiosHelper.axiosPost(url,data, paramHeaders);
+    result.then(function(rsdata){
+      
+      console.log('result', rsdata);
+      
+    });
+     
    }
 
 
@@ -200,7 +212,7 @@ export default class Editor extends React.Component {
   render () {
     const noWarningMessagesRelatedToContentEditable = true
     return (
-      <Grid className={editorBlock}>
+      <Container className={editorBlock}>
         <Row>
           <Col mdOffset={2} md={8} sm={12}>
             <CKeditorInline // header
@@ -239,7 +251,7 @@ export default class Editor extends React.Component {
              
           </Col>
         </Row>
-      </Grid>
+      </Container>
     )
   }
 }

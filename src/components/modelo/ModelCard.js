@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
 
-class Card extends React.Component {
+class ModelCard extends React.Component {
     constructor(props){
        super(props);
     }
@@ -20,4 +20,4 @@ class Card extends React.Component {
           </Card>
            )
     }
-}export default Card;
+}export default ModelCard;
