@@ -7,12 +7,9 @@ import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 import examples from './exapmples'
 import Debug from 'debug'
-import axios from 'axios'
 import uuid from 'uuid/v4'
-//import { Left, Right } from 'react-bootstrap/lib/Media'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -38,11 +35,12 @@ const footer = css`
   margin-top: 0px
 `
 
-/*const buttonStyle = css`
+const buttonStyle = css`
   font-size: x-large;
   margin-top: 50px;
-`*/
+`
 
+let negotiationId;
 function htmlOptimization (html) {
   html = html.replace(/&quot;/g, '')
   let bodyStyle = ''
@@ -58,30 +56,15 @@ function htmlOptimization (html) {
   return result
 }
 
-function sendDocumentAndGetLink (document) {
-  try {
-    return request.post({
-      url: 'https://script.google.com/macros/s/AKfycbyu0p0OFLepWOk4mULxu-AMHjAkx_HXOyqGR4JfYAUTgD9RPoA/exec',
-      followAllRedirects: true,
-      form: document
-    })
-  } catch (err) {
-    debug(err)
-  }
-}
-
 export default class Editor extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {
-            personInfo: {
-              id: ''
-            },
-            negotiation:{
-              id:uuid()
-            }
-          }
-
+    this.state = {
+        body: "",
+        header: "",
+        footer: "",
+        isOpen:true
+    }
     this.updateContent = this.updateContent.bind(this)
     this.onChange = this.onChange.bind(this)
     this.onChangeHeader = this.onChangeHeader.bind(this)
@@ -90,42 +73,12 @@ export default class Editor extends React.Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.onCreateEditor = this.onCreateEditor.bind(this)
     this.setEditorsContent = this.setEditorsContent.bind(this)
-    this.submitCreate = this.submitCreate.bind(this)
-
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
+    // fill body with exemple
     this.state = examples[0] // body footer header
     window.$ = $
   }
-
-  submitCreate= () => {
-    const paramHeaders = {headers: {'Content-type': 'multipart/form-data'}, withCredentials: true
-                        }
-    console.log('document', htmlOptimization(this.editor.body.getData()));
-    console.log('header', htmlOptimization(this.state.header));
-    console.log('footer', htmlOptimization(this.state.footer));
-   
-    
-    const data = new FormData(); 
-
-    data.append('title', 'title');
-    data.append('description', 'description');
-    data.append('data', 'data');
-     
-     const url = env.httpProtocol
-                +env.serverHost
-                +':'+env.serverPort
-                +'/negotiation/create';
-
-    let result = axiosHelper.axiosPost(url,data, paramHeaders);
-    result.then(function(rsdata){
-      
-      console.log('result', rsdata);
-      
-    });
-     
-   }
-
 
   updateContent (newContent) {
     this.setState({
@@ -137,10 +90,10 @@ export default class Editor extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.content) {
-      debug(nextProps.content)
+      //debug(nextProps.content)
       this.updateContent(nextProps.content)
       this.setEditorsContent(nextProps.content)
-      debug(this)
+      //debug(this)
       return
     }
     if (nextProps.file) {
@@ -157,7 +110,7 @@ export default class Editor extends React.Component {
   }
 
   setEditorsContent (content) {
-    debug('call setEditorsContet', content)
+    //debug('call setEditorsContet', content)
     const editors = ['header', 'body', 'footer']
     editors.map(type => {
       if (content[type] !== undefined) {
@@ -167,12 +120,39 @@ export default class Editor extends React.Component {
   }
 
   async onButtonClick () {
-    let result = await sendDocumentAndGetLink({
-      document: htmlOptimization(this.editor.body.getData()),
-      header: htmlOptimization(this.state.header),
-      footer: htmlOptimization(this.state.footer)
-    })
-    window.location.href = result
+    
+    // TODO popup a modal to enter description and title
+
+    const paramHeaders = {headers: {'Content-type': 'multipart/form-data'}
+      }
+    //console.log('document', htmlOptimization(this.editor.body.getData()));
+    //console.log('header', htmlOptimization(this.state.header));
+
+
+    const data = new FormData(); 
+
+    data.append('title', 'title');
+    data.append('description', 'description');
+    data.append('dataType', 'html');
+    data.append('data', htmlOptimization(this.editor.body.getData()));
+
+    const url = env.httpProtocol
+    +env.serverHost
+    +':'+env.serverPort
+    +'/negotiation/create';
+
+    let result = await axiosHelper.axiosPost(url,data, paramHeaders).then(function(rsdata){
+    
+    negotiationId = rsdata;
+    console.log('result', rsdata);
+
+    });
+    console.log('negotiationId', negotiationId);
+    //console.log('document', htmlOptimization(this.editor.body.getData()));
+    //console.log('header', htmlOptimization(this.state.header));
+   // console.log('footer', htmlOptimization(this.state.footer));
+
+   // window.location.href = '/gerir/rever';
   }
 
   onChange (evt) {
@@ -183,8 +163,8 @@ export default class Editor extends React.Component {
   }
 
   onCreateEditor (section, evt) {
-    debug('CREATE ' + section)
-    debug(evt.editor)
+    //debug('CREATE ' + section)
+    //debug(evt.editor)
     this.editor[section] = evt.editor
   }
 
@@ -208,7 +188,6 @@ export default class Editor extends React.Component {
     // console.log('afterPaste event called with event info: ', evt)
   }
 
-  
   render () {
     const noWarningMessagesRelatedToContentEditable = true
     return (
@@ -223,8 +202,6 @@ export default class Editor extends React.Component {
                 'change': this.onChangeHeader,
                 'configLoaded': this.onCreateEditor.bind(this, 'header')
               }}
-
-              
             >
               <p style={{'textAlign': 'right'}} >
                 <span style={{'color': '#999999'}}>
@@ -237,20 +214,23 @@ export default class Editor extends React.Component {
         <Row>
           <Col mdOffset={2} md={8} sm={12}>
             <CKEditor
-                           
+              scriptUrl={'ckeditor/ckeditor.js'}
+              suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
+              content={this.state.body}
+              events={{
+                'change': this.onChange,
+                'configLoaded': this.onCreateEditor.bind(this, 'body')
+              }} 
+            
             />
           </Col>
         </Row>
         <Row activeClass={footer}>
           <Col mdOffset={2} md={8} sm={12}><br></br>
-            <Button className="btn-warning" style= {{float: "Right"}}onClick={this.submitCreate} >Confirmar</Button>           
+            <Button className="btn-warning" style= {{float: "Right"}}onClick={this.onButtonClick} >Confirmar</Button>           
           </Col>
         </Row>
-        <Row>
-          <Col>
-             
-          </Col>
-        </Row>
+       
       </Container>
     )
   }

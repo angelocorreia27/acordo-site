@@ -10,7 +10,7 @@ import Gerir from './components/gerir';
 import Modelo from './components/modelo';
 
 import Contract from "./components/modelo/Contract";
-import Review from "./components/gerir/Review";
+import Rever from "./components/gerir/Rever";
 
 class Routes extends Component {
         constructor (props) {
@@ -57,6 +57,7 @@ return (
      <Route exact path="/auth" component={auth}/>
      <Route exact path="/contract" component={Contract}/> 
      
+     <Route exact path="/gerir/rever" component={Rever}/> 
     
     </Switch>
      </BrowserRouter>

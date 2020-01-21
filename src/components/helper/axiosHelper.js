@@ -3,9 +3,9 @@ import axios from 'axios';
 
   export default {
   
-    axiosGet (url, bodyOption,HeaderOptions ){
+    async axiosGet (url, bodyOption,HeaderOptions ){
 
-    return axios.get(url,{
+    return await axios.get(url,{
       withCredentials: true
     })
       .then(response => {
@@ -26,9 +26,9 @@ import axios from 'axios';
       });
   },
 
-  axiosPost (url, bodyOption,HeaderOptions ) {
+  async axiosPost (url, bodyOption,HeaderOptions ) {
 
-        return axios.post(url,bodyOption,HeaderOptions)
+        return await axios.post(url,bodyOption,HeaderOptions)
           .then(response => {
             console.log('response ', response.data);                          
             return response.data; 
@@ -37,13 +37,13 @@ import axios from 'axios';
               console.log('post error text', error);
               console.log('post error response', error.response.data);
               // redirect to login if user doesn't have session
-              /*
+              
               if(error.response.status ==401)
                 window.location.replace(env.httpProtocol
                   +env.serverHost + ':'
                   +env.serverPort
                   +env.serverAuth);
-              */
+              
           });
     }
   

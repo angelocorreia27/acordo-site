@@ -4,7 +4,8 @@ import { Button, OverlayTrigger} from 'react-bootstrap'
 import AddModal from "./AddModal"
 import { Card, Tooltip, ButtonToolbar} from 'reactstrap';
 import axios from "axios";
-
+import MenuHeader from '../../pages/MenuHeader';
+import Footer from '../../pages/Footer';
 
 class Rever extends Component {
 
@@ -55,7 +56,8 @@ render(){
 let AddModalClose = () => this.setState({AddModalShow:false});
 
 return (
-
+  <div>
+<MenuHeader/>
 <div className="pagina">
 <div className="col-xs-10 col-xs-offset-1">
 <link href="App.css" rel="stylesheet" type="text/css" media="all" />
@@ -95,7 +97,8 @@ return (
 </div> 
 
 </div>
-
+<Footer/>
+</div>
 )
 
 }}
