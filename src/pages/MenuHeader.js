@@ -25,9 +25,9 @@ render() {
 				</div>
 				<div id="menu">
 					<ul>
-					<li className={this.state.classNameInicio}><a href="/inicio" accessKey={1} title>Início</a></li>
-					<li className={this.state.classNameGerir}><a href="/gerir" accessKey={2} title>Gerir</a></li>
-					<li className={this.state.classNameModelo}><a href="/modelo" accessKey={3} title>Modelo</a></li>
+					<li className={this.state.classNameInicio}><a href="/inicio" accessKey={1}>Início</a></li>
+					<li className={this.state.classNameGerir}><a href="/gerir" accessKey={2}>Gerir</a></li>
+					<li className={this.state.classNameModelo}><a href="/modelo" accessKey={3}>Modelo</a></li>
 					</ul>
 				</div>
 				</div>

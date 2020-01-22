@@ -10,7 +10,7 @@ import Debug from 'debug'
 import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-
+import axios from 'axios';
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -124,7 +124,9 @@ export default class Editor extends React.Component {
     
     // TODO popup a modal to enter description and title
 
-    const paramHeaders = {headers: {'Content-type': 'multipart/form-data'}
+    const paramHeaders = {headers: {'Accept': 'application/json',
+                                   'Content-type': 'multipart/form-data'}
+    , withCredentials: true
       }
     //console.log('document', htmlOptimization(this.editor.body.getData()));
     //console.log('header', htmlOptimization(this.state.header));
@@ -142,18 +144,14 @@ export default class Editor extends React.Component {
     +':'+env.serverPort
     +'/negotiation/create';
 
-    let result = await axiosHelper.axiosPost(url,data, paramHeaders).then(function(rsdata){
-    
-    negotiationId = rsdata;
-    console.log('result', rsdata);
-
-    });
+    let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
+  
     console.log('negotiationId', negotiationId);
     //console.log('document', htmlOptimization(this.editor.body.getData()));
     //console.log('header', htmlOptimization(this.state.header));
    // console.log('footer', htmlOptimization(this.state.footer));
 
-   // window.location.href = '/gerir/rever';
+    window.location.href = '/gerir/rever?negotiationId='+negotiationId;
   }
 
   onChange (evt) {
