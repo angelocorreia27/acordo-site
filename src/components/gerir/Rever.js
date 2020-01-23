@@ -3,23 +3,31 @@ import {Link} from "react-router-dom";
 import Dropzone from '../FileEditor/Dropzone';
 import {Button, Row, Col, Card} from 'react-bootstrap';
 import AddModal from "./AddModal"
-import axios from "axios";
+import * as env from '../../env';
+import axiosHelper from '../helper/axiosHelper';
 
+const queryString = require('query-string');
 
 class AddDestinatar extends Component {
 
 constructor(props){
 super(props)
 this.state = {
-    value: '',
-    loading: 'warning',
+    id:'',
+    subject:'',
+    text:'',
+    to:'',
     enviar: ['Enviar lembretes automaticos'], AddModalShow : false
 }
 this.handleChange = this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
 this.handleChecked = this.handleChecked.bind(this);
 // set this, because you need get methods from CheckBox 
-
+const url = window.location.search;
+console.log('url', url);
+const param = queryString.parse(url);
+this.state.id=param;
+console.log('param', param);
 }
 
 handleChecked () {
@@ -35,7 +43,38 @@ alert('An essay submit:' +this.state.value);
 event.preventDefault();
 }
 
-handleEndpoint = () => {
+async handleEndpoint () {
+  
+  const paramHeaders = {headers: {'Accept': 'application/json',
+  'Content-type': 'multipart/form-data'}
+, withCredentials: true}
+
+  const data = new FormData(); 
+  /*
+    "id"  // negotiation id
+    "subject" // assunto
+    "text" // mensagem 
+    "to"  // email to separated by coma
+  */
+
+  data.append('id', this.state.id);
+  data.append('subject', this.state.subject);
+  data.append('text', this.state.text);
+  data.append('to', this.state.to);
+
+  const url = env.httpProtocol
+  +env.serverHost
+  +':'+env.serverPort
+  +'/negotiation/send';
+
+  let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
+
+  console.log('negotiationId', negotiationId);
+
+  //window.location.href = '/gerir/rever?negotiationId='+negotiationId;
+
+  /*
+  let
   axios.post("http://localhost:8000/negotiation/send ", {
     "email": "elias.lima@nosi.cv",
     "message": "teste" 
@@ -43,6 +82,7 @@ handleEndpoint = () => {
   .then(function (response) {
     console.log(response);
   })
+  */
 }
 
 render(){
@@ -59,22 +99,22 @@ return (
     
   <br></br>             
   <div>  <strong> Assunto da mensagem </strong><br></br>
-<input type="test" size="40"/>
+  <input type="text" name="subject" value={this.state.subject} onChange={this.handleChange} size="40"/>
 </div>
 <br></br>
 <div>
   <strong>Mensagem de correio eletronico</strong>
   </div>
   <br></br>
-<textarea placeholder= "introduzir mensagem"value={this.state.value} onChange={this.handleChange} cols={50} rows={3}/>
+<textarea placeholder= "introduzir mensagem" name="text"  value={this.state.text} onChange={this.handleChange} cols={50} rows={3}/>
 
 <br></br>
 
-<input className="Check" type="checkbox" onClick={this.handleEndpoint}/> Enviar lembretes automaticos  
-
 <div>
-
-</div>
+  <strong>Para</strong>
+  </div>
+  <br></br>
+<input  type="text" name="to" value={this.state.to} onChange={this.handleChange} cols={50} rows={3}/>
 
 <br></br>
 <Card>

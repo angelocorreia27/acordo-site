@@ -28,7 +28,7 @@ class LastAgreementsFromAPI extends React.Component {
 
 render() {
 	  return ( <>
-			{!this.state.acordos[0] && <div>Loading...</div>}
+			
 				<ul className="style2">
 					{this.state.acordos.length > 0 ? (
 						this.state.acordos.map(dados => (
