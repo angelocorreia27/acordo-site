@@ -297,6 +297,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 }
 #header-wrapper{
 	background: #2372DE url(/images/bg01.png) repeat;
+
 }
 
 /*********************************************************************************/
@@ -640,7 +641,18 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     box-sizing: border-box;
   }
   .pagina{
-    padding: 12px;
+	padding: 12px;
+    margin-top: 3%;
+    margin-left: 70%;
+  }
+  
+  .pagina2 {
+    
+    margin-top: 8%;
+    margin-left: 30% ;
+  }
+  .Btn-buttom {
+    padding-left: 30%;
   }
   .Check{
     padding: 8px;
@@ -752,19 +764,33 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
       color: #888;
   }
   
-  .page {
+  .pagina {
     margin-top: 2%;
-    margin-left: 40px;
+    float: right;
   }
   
-  
+  .Menu{
+    margin-top: 18%;
+    margin-left: 15%;
+  }
   /* Menu NavBar */
   .MenuNav{
     float: left;
     margin-left: 10%;
-    box-shadow: 10px;
-  } 
-  
+	box-shadow: 10px;
+	margin-top: 3%;
+  }
+/* close NavBar*/
+.subMenu {
+	align-items: flex-start;
+
+}
+
+.sub-envelopes:hover{
+	background-color: #2196F3;
+}
+	  
+   
   span{
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
@@ -789,21 +815,21 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	  color: #242424;
 	  display: flex;
 	  border-style: solid;
-	  width: 22%;
+	  width: 25%;
 	  padding: 5px;
   }
  
   .d-inline-p-2{
 	  font-size: 8px;
-	  margin-top: -12.1%;
+	  margin-top: -14%;
 	  margin-left: 53%;
 	  color: #242424;
 	  border-style: solid;
-	  width: 22%;
+	  width: 25%;
 	  margin-bottom: 8%;
 	  padding: 5px;
   }
   .editorBlook{
-	margin-top: 5%;  
+	margin-top: 5%;
 	margin-left: 20%;
   }

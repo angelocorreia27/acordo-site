@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import { Button, OverlayTrigger} from 'react-bootstrap'
+import Dropzone from '../FileEditor/Dropzone';
+import {Button, Row, Col, Card} from 'react-bootstrap';
 import AddModal from "./AddModal"
-import { Card, Tooltip, ButtonToolbar} from 'reactstrap';
 import axios from "axios";
-import MenuHeader from '../../pages/MenuHeader';
-import Footer from '../../pages/Footer';
 
-class Rever extends Component {
+
+class AddDestinatar extends Component {
 
 constructor(props){
 super(props)
@@ -18,7 +17,6 @@ this.state = {
 }
 this.handleChange = this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
-this.onChange = this.onChange.bind(this);
 this.handleChecked = this.handleChecked.bind(this);
 // set this, because you need get methods from CheckBox 
 
@@ -37,10 +35,6 @@ alert('An essay submit:' +this.state.value);
 event.preventDefault();
 }
 
-onChange() {
-return (<Link to="Review" />)
-}
-
 handleEndpoint = () => {
   axios.post("http://localhost:8000/negotiation/send ", {
     "email": "elias.lima@nosi.cv",
@@ -53,20 +47,15 @@ handleEndpoint = () => {
 
 render(){
 
-let AddModalClose = () => this.setState({AddModalShow:false});
-
 return (
-  <div>
-<MenuHeader/>
-<div className="pagina">
-<div className="col-xs-10 col-xs-offset-1">
-<link href="App.css" rel="stylesheet" type="text/css" media="all" />
-{this.props.children}
-</div>
 
-<h2>Rever e enviar</h2>
+<Row m={9}>
+  <Col>
+   <div className="pagina">
 
-<h4>Message to Recipients</h4>  <div className="mensage"><Link onClick={()=> this.setState({AddModalShow:true})}>adicionar mensagem privada</Link> <AddModal show={this.state.AddModalShow} onHide={AddModalClose}/></div>
+    <h2>Rever e enviar</h2>
+
+     <h4>Message to Recipients</h4>  <div className="mensage"> <Link><p>adicionar mensagem privada</p></Link></div>
     
   <br></br>             
   <div>  <strong> Assunto da mensagem </strong><br></br>
@@ -93,14 +82,14 @@ return (
 </Card>
 <br></br>
 <div className = "Btn-buttom">
-<Button href="/FileMenu">Voltar</Button> <Button onSubmit={this.handleChange} href= "/Review" className="warning">Enviar</Button>
+<Button variant='info' href="/">Voltar</Button> <Button className="primary" onSubmit={this.handleChange} href= "/gerir">Enviar</Button>
 </div> 
 
 </div>
-<Footer/>
-</div>
+</Col>
+</Row>
 )
 
 }}
 
-export default Rever;
+export default AddDestinatar;
