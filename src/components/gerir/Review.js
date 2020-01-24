@@ -157,14 +157,14 @@ render(){
 
   <Col>
 <div className="page">
-  
+ <div className="header">  
    <header>
-           
+      <br></br>
         <h3 style={{fontSize: '24px', fontFamily: "Maven Pro,Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif" }}> <strong>Gestão de acordos</strong></h3> <br></br>
               
  <div className= "form">
       <Form inline>
-          <FormControl type="text" placeholder="Gestao de acordos" className="mr-sm-2"/><Button className="search">Search</Button>
+          <FormControl type="text" placeholder="Ultimos acordos" className="mr-sm-2"/><Button className="search">Search</Button>
     
       </Form>
    
@@ -176,9 +176,9 @@ render(){
   <Table responsive>
   <thead>
     <tr> 
-      <th>Assunto</th>
+      <th>Titulo</th>
       <th>Estado</th>
-      <th>Ultima alteracao</th>
+      <th>Ultima revisao</th>
     </tr>
   </thead>
   <tbody>
@@ -303,7 +303,7 @@ render(){
 </tbody>
 </Table>
 
-
+    </div>
     </div>
     </Col>
 

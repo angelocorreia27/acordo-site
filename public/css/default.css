@@ -293,7 +293,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 {
 	position: relative;
 	height: 150px;
-
+	
 }
 #header-wrapper{
 	background: #2372DE url(/images/bg01.png) repeat;
@@ -613,7 +613,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     font-size: 17px;
     border: 1px solid grey;
     border-left: none; /* Prevent double borders*/
-    cursor: pointer;
+	cursor: pointer;
   }
   
   /* Style the search field */
@@ -628,7 +628,8 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     background: #f1f1f1;
   
   }
-  
+
+   
   .tbl2{
     float: left;
   }
@@ -640,10 +641,11 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     float: right;
     box-sizing: border-box;
   }
-  .pagina{
+ 
+  .formBasicEnviar {
 	padding: 12px;
     margin-top: 3%;
-    margin-left: 70%;
+    margin-left: 20%;
   }
   
   .pagina2 {
@@ -731,6 +733,9 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     cursor: pointer;
   }
   
+  Table{
+	  margin-top: 5%;
+  }
   .search {
     float: right;
     margin-right: 26%;
@@ -765,20 +770,21 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
   }
   
   .pagina {
-    margin-top: 2%;
-    float: right;
+    padding: 12px;
+    margin-top: 3%;
+    margin-right: 30%;
   }
   
   .Menu{
-    margin-top: 18%;
+    margin-top: 12%;
     margin-left: 15%;
   }
   /* Menu NavBar */
   .MenuNav{
     float: left;
-    margin-left: 10%;
+    margin-left: 3%;
 	box-shadow: 10px;
-	margin-top: 3%;
+	margin-top: 2%;
   }
 /* close NavBar*/
 .subMenu {
@@ -821,11 +827,11 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
  
   .d-inline-p-2{
 	  font-size: 8px;
-	  margin-top: -14%;
+	  margin-top: -15%;
 	  margin-left: 53%;
 	  color: #242424;
 	  border-style: solid;
-	  width: 25%;
+	  width: 26%;
 	  margin-bottom: 8%;
 	  padding: 5px;
   }

@@ -1,14 +1,13 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import Dropzone from '../FileEditor/Dropzone';
-import {Button, Row, Col, Card} from 'react-bootstrap';
+import { Button, Card, Form} from 'react-bootstrap'
 import AddModal from "./AddModal"
-import * as env from '../../env';
+import axios from "axios";
 import axiosHelper from '../helper/axiosHelper';
-
+import * as env from '../../env';
 const queryString = require('query-string');
 
-class AddDestinatar extends Component {
+class Rever extends Component {
 
 constructor(props){
 super(props)
@@ -21,6 +20,7 @@ this.state = {
 }
 this.handleChange = this.handleChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
+//this.onChange = this.onChange.bind(this);
 this.handleChecked = this.handleChecked.bind(this);
 // set this, because you need get methods from CheckBox 
 const url = window.location.search;
@@ -29,7 +29,6 @@ const param = queryString.parse(url);
 this.state.id=param;
 console.log('param', param);
 }
-
 handleChecked () {
 this.setState({isChecked: !this.state.isChecked});
 }
@@ -85,51 +84,37 @@ async handleEndpoint () {
   */
 }
 
+
 render(){
+
 
 return (
 
-<Row m={9}>
-  <Col>
-   <div className="pagina">
 
-    <h2>Rever e enviar</h2>
+ <Form className="formBasicEnviar">  
+   
+<h2>Rever e enviar</h2>
+    <br></br>    
+   <Form.Group controlId="formBasicEnviar">
+    <Form.Label>Assunto</Form.Label>
+    <Form.Control type="email" placeholder="introduzir assunto" value={this.state.subject} onChange={this.handleChange} />
+   </Form.Group>
+  
+   <Form.Group controlId="exampleForm.ControlTextarea1">
+    <Form.Label>Mensagem de correio eletronico</Form.Label>
+    <Form.Control as="textarea" placeholder= "introduzir mensagem" value={this.state.text} onChange={this.handleChange} rows="3" />
+  </Form.Group>
 
-     <h4>Message to Recipients</h4>  <div className="mensage"> <Link><p>adicionar mensagem privada</p></Link></div>
-    
-  <br></br>             
-  <div>  <strong> Assunto da mensagem </strong><br></br>
-  <input type="text" name="subject" value={this.state.subject} onChange={this.handleChange} size="40"/>
-</div>
-<br></br>
-<div>
-  <strong>Mensagem de correio eletronico</strong>
-  </div>
-  <br></br>
-<textarea placeholder= "introduzir mensagem" name="text"  value={this.state.text} onChange={this.handleChange} cols={50} rows={3}/>
+  <Form.Group controlId="exampleForm.ControlTextarea1">
+    <Form.Label>Para</Form.Label>
+    <Form.Control as="textarea" placeholder= "name@example.com, " name="to" value={this.state.to} onChange={this.handleChange} rows="3" />
+  </Form.Group> 
 
-<br></br>
-
-<div>
-  <strong>Para</strong>
-  </div>
-  <br></br>
-<input  type="text" name="to" value={this.state.to} onChange={this.handleChange} cols={50} rows={3}/>
-
-<br></br>
-<Card>
-
-</Card>
-<br></br>
-<div className = "Btn-buttom">
-<Button variant='info' href="/">Voltar</Button> <Button className="primary" onSubmit={this.handleChange} href= "/gerir">Enviar</Button>
-</div> 
-
-</div>
-</Col>
-</Row>
+<Button variant='danger'>Voltar</Button> <Button onSubmit={this.handleChange} href= "/Review" variant='primary'>Enviar</Button>
+ 
+</Form>
 )
 
 }}
 
-export default AddDestinatar;
+export default Rever;

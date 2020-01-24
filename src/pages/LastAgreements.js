@@ -10,6 +10,7 @@ render() {
 			<div className="sbox2">
 				<h2>Últimos acordos</h2>
 				<LastAgreementsFromAPI></LastAgreementsFromAPI>
+			
 				{/*
 				<ul className="style2">
 				<li><a href="#">Semper quis egetmi dolore</a></li>
