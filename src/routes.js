@@ -11,6 +11,7 @@ import Modelo from './components/modelo';
 
 import Contract from "./components/modelo/Contract";
 import Destinatar from "./components/gerir/destinatar";
+import Viewer from "./components/viewer/";
 
 
 class Routes extends Component {
@@ -51,20 +52,14 @@ return (
      <Route exact path="/inicio" component={Inicio}/> 
      <Route exact path="/gerir" component={Gerir}/> 
      <Route exact path="/modelo" component={Modelo}/> 
-    {// <Route exact path="/destinatar" component={Destinatar}/> 
-    //
-    }
+   
      <Route exact path="/rever" component={Destinatar}/>
-
      <Route exact path="/editor" component={Editor}/>
      <Route exact path="/addDoc" component={addDoc}/>     
      <Route exact path="/auth" component={auth}/>
      <Route exact path="/contract" component={Contract}/> 
-     
-     
+     <Route exact path="/viewer" component={Viewer}/> 
     
-    {// <Route exact path="/contract" component={Contract}/> 
-    }
    
     </Switch>
      </BrowserRouter>

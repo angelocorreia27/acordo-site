@@ -30,13 +30,14 @@ render() {
 	  return ( <>
 			
 				<ul className="style2">
-					{this.state.acordos.length > 0 ? (
+					{this.state.acordos && this.state.acordos.length > 0 ? (
 						this.state.acordos.map(dados => (
 							<li key={dados.id} ><a href="#"> {dados.title}</a></li>
 						)
 						)) : (
 							<li>No data </li>
 						)}
+				
 				</ul>
 				</>);
 	}

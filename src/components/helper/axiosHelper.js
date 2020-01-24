@@ -13,9 +13,8 @@ import axios from 'axios';
       })
       .catch(error => {
         console.log('get error text', error);
-        console.log('get error response', error.response.data);
           // redirect to login if user doesn't have session
-          if(error.response.status ==401)
+          if(error.response && error.response.status ==401)
             window.location.replace(env.httpProtocol
               +env.serverHost + ':'
               +env.serverPort
@@ -33,10 +32,9 @@ import axios from 'axios';
           })
           .catch(error => {
               console.log('post error text', error);
-              console.log('post error response', error.response);
               // redirect to login if user doesn't have session
               
-              if(error.response.status ==401)
+              if(error.response && error.response.status ==401)
                 window.location.replace(env.httpProtocol
                   +env.serverHost + ':'
                   +env.serverPort

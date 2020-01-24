@@ -18,11 +18,10 @@ render() {
 				<div id="page" className="container">
 						<div id="content">
 							<div className="title">
-							<h2>Welcome to our website</h2>
-							<span className="byline">Mauris vulputate dolor sit amet nibh</span> </div>
-							<p><strong>Acordo, </strong>consiste numa plataforma para criação documentos ou declarações escrita
+							<span className="byline">Plataforma eletrónica de acordos públicas, robusta e flexivel.</span> </div>
+							<p><strong>Acordo, </strong>consiste numa plataforma para criação documentos, contratos ou declarações escrita
 							, com um caracter comprovativo, de forma a garantir a integridade 
-							,autenticidade, confidencialidade e não repudio.  </p>
+							,autenticidade, confidencialidade e não repudio. Destinada a todas as entidades e particulares, para auxiliar no mecanismos de criação, submissão e publicação dos contratos   </p>
 							<a href="/Inicio" className="button-p">Propor um acordo</a>
 						</div>
 						<div id="sidebar">
@@ -32,9 +31,8 @@ render() {
 				<div id="banner-wrapper">
 						<div id="banner" className="container">
 							<div className="box-left">
-							<h2>Mauris vulputate dolor nibh</h2>
-							<span>Donec leo, vivamus fermentum praesent urna congue rutrum</span> </div>
-							<div className="box-right"> <a href="#" className="button button-big">Etiam posuere</a></div>
+							<span>Pode-se consultar acordos celebrados com a especificação dos fatores.</span> </div>
+							<div className="box-right"> <a href="#" className="button button-big">Ver acordos celebrados</a></div>
 						</div>
 				</div>
 			</div>

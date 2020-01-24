@@ -63,7 +63,9 @@
 			-o-font-feature-settings: "liga" 1, "dlig" 1;
 			font-feature-settings: "liga" 1, "dlig" 1;
 		}
-
+		.icon-hyperledger                { content: url("../images/hyperledger.png");
+			width: 20%;
+										   }
 		.icon-glass:before                { content: "\f000"; }
 		.icon-music:before                { content: "\f001"; }
 		.icon-search:before               { content: "\f002"; }

@@ -1,16 +1,11 @@
 import CKEditor from 'react-ckeditor-component'
 import React from 'react'
-import request from 'request-promise-native'
 import { css } from 'emotion'
 import {Container,Row, Col, Button} from 'react-bootstrap'
-import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
-import examples from './exapmples'
 import Debug from 'debug'
-import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-import axios from 'axios';
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -75,9 +70,12 @@ export default class Editor extends React.Component {
     this.setEditorsContent = this.setEditorsContent.bind(this)
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
-    // fill body with exemple
-    this.state = examples[0] // body footer header
+    // fill body with recivide in props
+    this.state.body = props.body
+
     window.$ = $
+
+  //  console.log('body', props.body);
   }
 
   updateContent (newContent) {
@@ -104,8 +102,8 @@ export default class Editor extends React.Component {
       this.editor['body'].setData(nextProps.file.content)
     }
     if (typeof nextProps.exampleNumber === 'number') {
-      this.setState(examples[nextProps.exampleNumber])
-      this.setEditorsContent(examples[nextProps.exampleNumber])
+      //this.setState(examples[nextProps.exampleNumber])
+      //this.setEditorsContent(examples[nextProps.exampleNumber])
     }
   }
 
@@ -191,48 +189,26 @@ export default class Editor extends React.Component {
     return (
       <div className="editorBlook">
         <Container className={editorBlock}>
-        <Row>
-          
-         { /* <Col mdOffset={2} md={8} sm={12}>
-            <CKeditorInline // header
-
-              activeClass={headerEditor}
-              suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
-              events={{
-                'change': this.onChangeHeader,
-                'configLoaded': this.onCreateEditor.bind(this, 'header')
-              }}
-            >
-             /* <p style={{'textAlign': 'right'}} >
-                <span style={{'color': '#999999'}}>
-                  Edit header here
-            </span> 
-              </p>
-
-            </CKeditorInline>
-          </Col>
-            */}
-        </Row>
-        <Row>
-          <Col md={8} sm={12}>
-            <CKEditor
-              scriptUrl={'ckeditor/ckeditor.js'}
-              suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
-              content={this.state.body}
-              events={{
-                'change': this.onChange,
-                'configLoaded': this.onCreateEditor.bind(this, 'body')
-              }} 
-            
-            />
-          </Col>
-        </Row>
-        <Row activeClass={footer}>
-          <Col mdOffset={2} md={8} sm={12}><br></br>
-            <Button className="primary" style= {{float: "Right"}}onClick={this.onButtonClick} >Confirmar</Button>           
-          </Col>
-        </Row>
-       
+          <Row>
+            <Col md={8} sm={12}>
+              <CKEditor
+                suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
+                content={this.state.body}
+                events={{
+                  'change': this.onChange,
+                  'configLoaded': this.onCreateEditor.bind(this, 'body')
+                }} 
+              
+              />
+            </Col>
+          </Row>
+          { /*
+          <Row activeClass={footer}>
+            <Col mdOffset={2} md={8} sm={12}><br></br>
+              <Button className="primary" style= {{float: "Right"}}onClick={this.onButtonClick} >Confirmar</Button>           
+            </Col>
+          </Row>*/
+          }
       </Container>
       </div>
 
