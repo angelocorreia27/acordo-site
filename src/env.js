@@ -11,5 +11,5 @@ export const serverAuth = process.env.SERVERAUTH || '/auth';
 
 // Client app
 export const clientHost = process.env.clientHost || 'localhost';
-export const clientPort = process.env.clientPort || '3000';
+export const clientPort = process.env.clientPort || '4000';
 export const clientViewer = process.env.clientViewer || '/viewer';

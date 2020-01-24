@@ -150,7 +150,7 @@ export default class Editor extends React.Component {
     //console.log('header', htmlOptimization(this.state.header));
    // console.log('footer', htmlOptimization(this.state.footer));
 
-    window.location.href = '/gerir/rever?negotiationId='+negotiationId;
+    window.location.href = '/rever?negotiationId='+negotiationId;
   }
 
   onChange (evt) {

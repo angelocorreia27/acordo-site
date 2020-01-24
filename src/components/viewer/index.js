@@ -41,7 +41,7 @@ class index extends React.Component {
      
   
       return (
-        <ViewerEditor body="teste">
+        <ViewerEditor negotiationId={this.props}>
           
         </ViewerEditor>
       );

@@ -5,41 +5,30 @@ import AddModal from "./AddModal"
 import axios from "axios";
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-const queryString = require('query-string');
 
+const queryString = require('query-string');
+let id = null;
 class Rever extends Component {
 
 constructor(props){
 super(props)
 this.state = {
-    id:'',
     subject:'',
     text:'',
-    to:'',
-    enviar: ['Enviar lembretes automaticos'], AddModalShow : false
+    to:''
 }
 this.handleChange = this.handleChange.bind(this);
-this.handleSubmit = this.handleSubmit.bind(this);
-//this.onChange = this.onChange.bind(this);
-this.handleChecked = this.handleChecked.bind(this);
-// set this, because you need get methods from CheckBox 
+this.handleEndpoint = this.handleEndpoint.bind(this);
+
 const url = window.location.search;
 console.log('url', url);
 const param = queryString.parse(url);
-this.state.id=param;
-console.log('param', param);
-}
-handleChecked () {
-this.setState({isChecked: !this.state.isChecked});
+id=param.negotiationId;
+
 }
 
 handleChange(event) {
-this.setState({value: event.target.value});
-}
-
-handleSubmit(event) {
-alert('An essay submit:' +this.state.value);
-event.preventDefault();
+  this.setState({ [event.target.name]: event.target.value })
 }
 
 async handleEndpoint () {
@@ -55,8 +44,13 @@ async handleEndpoint () {
     "text" // mensagem 
     "to"  // email to separated by coma
   */
+ console.log('id', id);
+ console.log('subject', this.state.subject);
+ console.log('text', this.state.text);
+ console.log('to', this.state.to);
 
-  data.append('id', this.state.id);
+
+  data.append('id', id);
   data.append('subject', this.state.subject);
   data.append('text', this.state.text);
   data.append('to', this.state.to);
@@ -68,20 +62,10 @@ async handleEndpoint () {
 
   let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
 
-  console.log('negotiationId', negotiationId);
 
-  //window.location.href = '/gerir/rever?negotiationId='+negotiationId;
+  window.location.href = '/gerir';
 
-  /*
-  let
-  axios.post("http://localhost:8000/negotiation/send ", {
-    "email": "elias.lima@nosi.cv",
-    "message": "teste" 
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  */
+
 }
 
 
@@ -97,20 +81,20 @@ return (
     <br></br>    
    <Form.Group controlId="formBasicEnviar">
     <Form.Label>Assunto</Form.Label>
-    <Form.Control type="email" placeholder="introduzir assunto" value={this.state.subject} onChange={this.handleChange} />
+    <Form.Control type="email" placeholder="introduzir assunto" name="subject" onChange={this.handleChange} />
    </Form.Group>
   
-   <Form.Group controlId="exampleForm.ControlTextarea1">
+   <Form.Group controlId="ControlTextArea">
     <Form.Label>Mensagem de correio eletronico</Form.Label>
-    <Form.Control as="textarea" placeholder= "introduzir mensagem" value={this.state.text} onChange={this.handleChange} rows="3" />
+    <Form.Control as="textarea" placeholder= "introduzir mensagem" name="text" onChange={this.handleChange} />
   </Form.Group>
 
-  <Form.Group controlId="exampleForm.ControlTextarea1">
+  <Form.Group controlId="ControlText">
     <Form.Label>Para</Form.Label>
-    <Form.Control as="textarea" placeholder= "name@example.com, " name="to" value={this.state.to} onChange={this.handleChange} rows="3" />
+    <Form.Control placeholder= "name1@example.com, name2@example.com " name="to" onChange={this.handleChange} />
   </Form.Group> 
 
-<Button variant='danger'>Voltar</Button> <Button onSubmit={this.handleChange} href= "/Review" variant='primary'>Enviar</Button>
+<Button variant='danger'>Voltar</Button> <Button onClick={this.handleEndpoint} variant='primary'>Enviar</Button>
  
 </Form>
 )

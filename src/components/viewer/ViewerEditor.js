@@ -6,7 +6,9 @@ import $ from 'jquery'
 import Debug from 'debug'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
+import { Base64 } from 'js-base64';
 
+const queryString = require('query-string');
 const debug = Debug('editor')
 debug.enabled = true
 
@@ -64,20 +66,24 @@ export default class Editor extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.onChangeHeader = this.onChangeHeader.bind(this)
     this.onChangeFooter = this.onChangeFooter.bind(this)
-    this.onButtonClick = this.onButtonClick.bind(this)
+    this.getLastVersion = this.getLastVersion.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.onCreateEditor = this.onCreateEditor.bind(this)
     this.setEditorsContent = this.setEditorsContent.bind(this)
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
-    // fill body with recivide in props
-    this.state.body = props.body
 
     window.$ = $
 
-  //  console.log('body', props.body);
+    const url = window.location.search;
+    console.log('url', url);
+    const param = queryString.parse(url);
+    negotiationId=param.negotiationId;
   }
+  componentDidMount(){
 
+    this.getLastVersion();
+  }
   updateContent (newContent) {
     this.setState({
       body: newContent.body,
@@ -117,38 +123,20 @@ export default class Editor extends React.Component {
     })
   }
 
-  async onButtonClick () {
+  async getLastVersion () {
     
-    // TODO popup a modal to enter description and title
-
-    const paramHeaders = {headers: {'Accept': 'application/json',
-                                   'Content-type': 'multipart/form-data'}
-    , withCredentials: true
-      }
-    //console.log('document', htmlOptimization(this.editor.body.getData()));
-    //console.log('header', htmlOptimization(this.state.header));
-
-
-    const data = new FormData(); 
-
-    data.append('title', 'title');
-    data.append('description', 'description');
-    data.append('dataType', 'html');
-    data.append('data', htmlOptimization(this.editor.body.getData()));
+    const paramHeaders = {headers: {'Accept': 'application/json'}
+    , withCredentials: true}
 
     const url = env.httpProtocol
     +env.serverHost
     +':'+env.serverPort
-    +'/negotiation/create';
+    +'/negotiation/lastVersion/'+negotiationId;
 
-    let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
+    let negotiation = await axiosHelper.axiosGet(url,null, paramHeaders);
   
-    console.log('negotiationId', negotiationId);
-    //console.log('document', htmlOptimization(this.editor.body.getData()));
-    //console.log('header', htmlOptimization(this.state.header));
-   // console.log('footer', htmlOptimization(this.state.footer));
-
-    window.location.href = '/gerir/rever?negotiationId='+negotiationId;
+    this.setState({body: Base64.decode(negotiation.data)});
+    
   }
 
   onChange (evt) {
