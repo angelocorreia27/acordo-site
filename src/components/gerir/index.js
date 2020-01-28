@@ -3,6 +3,7 @@ import Dropzone from '../FileEditor/Dropzone';
 import MenuHeader from '../../pages/MenuHeader';
 import Footer from '../../pages/Footer';
 import Inbox from "./../gerir/Inbox";
+import Recebidos from './Recebidos';
 
 class Inicio extends React.Component {
 

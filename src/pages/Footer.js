@@ -10,7 +10,7 @@ render() {
 		  
 			<div id="featured-wrapper">
 			  <div id="featured" className="container">
-				<div className="major">
+				<div className="major"><br></br>
 				  <h2>Tech Stack</h2>
 				  <span className="byline">A plataforma acordo utiliza como testemunho a técnologia Blockchain.</span> 
 				  <span className="icon icon-hyperledger" />

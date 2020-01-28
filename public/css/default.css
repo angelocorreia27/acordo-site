@@ -52,7 +52,7 @@ a:hover
 .container
 {
 	margin: 0px auto;
-	width: 1240px;
+	width: 1220px;
 }
 
 /*********************************************************************************/
@@ -389,7 +389,9 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 
 #banner .box-right
 {
-	float: right;
+	margin-left: 60%;
+	width: 50%;
+	
 }
 
 #banner h2
@@ -504,7 +506,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 #featured-wrapper
 {
 	overflow: hidden;
-	padding: 5em 0em;
+	padding: 3em 0em;
 	background: #FFF;
 	text-align: center;
 }
@@ -512,8 +514,8 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 #featured .major
 {
 	overflow: hidden;
-	margin-bottom: 3em;
-	padding-bottom: 2em;
+	margin-bottom: 1em;
+	padding-bottom: 10em;
 	border-bottom: 1px solid #E8E8E8;
 }
 
@@ -591,7 +593,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
   .warning:hover {background: #e68a00;
   }
   .primary{background-color:#2196F3;}
-  .primary:hover{color: dodgerblue;}
+  .primary:hover{color: white;}
   
   .style {
     margin:auto; 
@@ -738,7 +740,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
   }
   .search {
     float: right;
-    margin-right: 26%;
+    margin-right: 31%;
     font-family: Arial, Helvetica, sans-serif;
   }
   .search:hover{
@@ -789,6 +791,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 /* close NavBar*/
 .subMenu {
 	align-items: flex-start;
+	transition: border-radius cubic-bezier(0.4, 0.0, 0.2, 1);
 
 }
 
@@ -811,7 +814,6 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	  color: white;
   }
 
-
   /* ModelCard */
 
   .d-inline-p-1{
@@ -819,23 +821,53 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	  margin-left: 20%;
 	  margin-top: 8%;
 	  color: #242424;
-	  display: flex;
+	  display: block;
 	  border-style: solid;
 	  width: 25%;
 	  padding: 5px;
   }
- 
-  .d-inline-p-2{
+  
+ .d-inline-p-2{
 	  font-size: 8px;
-	  margin-top: -15%;
+	  margin-top: -14%;
 	  margin-left: 53%;
 	  color: #242424;
-	  border-style: solid;
+      border-style: solid;
 	  width: 26%;
 	  margin-bottom: 8%;
 	  padding: 5px;
   }
+
   .editorBlook{
 	margin-top: 5%;
 	margin-left: 20%;
+  }
+
+  /*   LoadButton*/ 
+
+  .load-button {
+    cursor: pointer;
+    margin: 1rem;
+    color: #fff;
+    text-shadow: 1px 1px 0 #888;
+    background-color: #2BAD60;
+    border-color: #14522d;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    outline: none;
+  }
+  
+  
+  
+  .load-button:hover {
+    background-color: #248f4f;
+    border-color: #1e7b43;
   }

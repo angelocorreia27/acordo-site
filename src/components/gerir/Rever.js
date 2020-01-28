@@ -5,6 +5,7 @@ import AddModal from "./AddModal"
 import axios from "axios";
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
+import {ClipLoader} from "react-spinners";
 
 const queryString = require('query-string');
 let id = null;
@@ -30,7 +31,18 @@ id=param.negotiationId;
 handleChange(event) {
   this.setState({ [event.target.name]: event.target.value })
 }
-
+onChange() {
+ this.setState(
+ <ClipLoader as="span"
+            animation="grow"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+            size="8"
+            color="white"
+            >
+            </ClipLoader>)
+}
 async handleEndpoint () {
   
   const paramHeaders = {headers: {'Accept': 'application/json',
@@ -61,7 +73,6 @@ async handleEndpoint () {
   +'/negotiation/send';
 
   let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
-
 
   window.location.href = '/gerir';
 
@@ -94,8 +105,8 @@ return (
     <Form.Control placeholder= "name1@example.com, name2@example.com " name="to" onChange={this.handleChange} />
   </Form.Group> 
 
-<Button variant='danger'>Voltar</Button> <Button onClick={this.handleEndpoint} variant='primary'>Enviar</Button>
- 
+<Button variant='danger' href="/">Voltar</Button> <Button onClick={this.handleEndpoint} className='primary' >Enviar</Button>
+
 </Form>
 )
 

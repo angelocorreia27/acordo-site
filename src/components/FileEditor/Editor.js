@@ -11,6 +11,7 @@ import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 import axios from 'axios';
+import {ClipLoader} from "react-spinners";
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -143,7 +144,7 @@ export default class Editor extends React.Component {
     +':'+env.serverPort
     +'/negotiation/create';
 
-    let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
+     negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
   
     console.log('negotiationId', negotiationId);
     //console.log('document', htmlOptimization(this.editor.body.getData()));
@@ -229,7 +230,17 @@ export default class Editor extends React.Component {
         </Row>
         <Row activeClass={footer}>
           <Col mdOffset={2} md={8} sm={12}><br></br>
-            <Button className="primary" style= {{float: "Right"}}onClick={this.onButtonClick} >Confirmar</Button>           
+            <Button className="primary" style= {{float: "Right"}}onClick={this.onButtonClick} >
+             Confirmar <ClipLoader as="span"
+            animation="grow"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+            size="8"
+            color="white"
+            />
+           
+            </Button>              
           </Col>
         </Row>
        

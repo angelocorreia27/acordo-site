@@ -1,5 +1,6 @@
 import React from 'react';
-import {Card, Button, Table} from 'react-bootstrap';
+import {Card, Table} from 'react-bootstrap';
+
 
 class ModelCard extends React.Component {
     constructor(props){
@@ -45,11 +46,12 @@ class ModelCard extends React.Component {
          </Table>
 
       </Card.Text>
-      <Card.Text></Card.Text>
+     
     </Card.Body>
   </Card>  
   
            )
+
     
 }
 

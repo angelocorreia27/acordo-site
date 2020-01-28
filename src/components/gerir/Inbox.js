@@ -3,6 +3,7 @@ import { Icon, Menu } from 'antd';
 import {Button, Form, FormControl, Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
+import { BeatLoader } from "react-spinners";
 
 const { SubMenu } = Menu;
 
@@ -11,7 +12,10 @@ class Inbox extends Component {
     constructor(props){
         super(props);
         this.state={
-          acordos:[]
+          acordos:[],
+          ...props,
+        //  loading: true
+
         }
       this.handleClick = this.handleClick.bind(this);
 } 
@@ -34,8 +38,12 @@ handleClick = e => {
   console.log('click ', e);
 };
 
+componentDidUpdate() {
+  setTimeout(() => { this.setState({ loading: !this.state.loading }) }, 1000);
+}
 
-render(){
+render(){           
+
     return ( 
 
         <Row m={9}>
@@ -63,7 +71,7 @@ render(){
             <span className="sub-envelopes">
               
               <Icon type="mail" /> 
-              <ul> <li icon="icon-sent"><a href="news.asp">Recebidos</a></li> </ul></span>
+              <ul> <li icon="icon-sent"><a href="/recebidos">Recebidos</a></li> </ul></span>
                                                  
 
             }
@@ -75,7 +83,7 @@ render(){
             key="sub2"
             title={
               <span>
-                <Icon type="appstore" /> <span> <ul> <li icon="icon-sent"><a href="news.asp">Enviados</a></li> </ul> </span>
+                <Icon type="appstore" /> <span> <ul> <li data-tooltip="Enviado" data-collapsed-nav-tooltip="true"><a href="news.asp">Enviados</a></li> </ul> </span>
               </span>
             }
           >
@@ -180,7 +188,8 @@ render(){
 
 					{this.state.acordos && this.state.acordos.length > 0 ? (
 						this.state.acordos.map(dados => (
-              <tr>
+            
+            <tr>   
                <td>{dados.title}</td>
                <td>Concluido</td>
                <td>Time Concluido
@@ -193,27 +202,34 @@ render(){
              </select>
              </div>
              </td>
-
+             
               </tr> 
+              
 						)
 						)) : (
-							<tr>No data </tr>
+							<tr><BeatLoader
+              color="#2196F3"
+              loading={this.state.loading} onLoad={this.componentDidUpdate}
+              />     </tr>
 						)}
-				
+         
 
 
 </tbody>
+  
+
 </Table>
 
     </div>
     </div>
     </Col>
 
+
 </Row>
     )
-    
+  } 
     }
-}
+
     
 
 export default Inbox;

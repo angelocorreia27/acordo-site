@@ -1,6 +1,7 @@
 import React from 'react';
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
+import { BeatLoader } from "react-spinners";
 
 class LastAgreementsFromAPI extends React.Component {
 	constructor (props) {
@@ -28,6 +29,7 @@ class LastAgreementsFromAPI extends React.Component {
 	}
 
 render() {
+
 	  return ( <>
 			
 				<ul className="style2">
@@ -36,7 +38,11 @@ render() {
 							<li key={dados.id} ><a href="#"> {dados.title}</a></li>
 						)
 						)) : (
-							<li>No data </li>
+							<li>
+								<tr><BeatLoader
+								color="#2196F3"
+								loading={this.state.loading} onLoad={this.componentDidUpdate}
+								/></tr></li>
 						)}
 				
 				</ul>

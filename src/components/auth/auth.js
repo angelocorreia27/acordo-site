@@ -15,30 +15,28 @@ class auth extends Component {
       }
   
     componentWillMount(){ 
-    
+      var session = this.state.email;
       console.log('cookie', this.state.email);
       // Caso o cookie não estar definido, faz o redirect para o login
-     // Cookies.set  ("session", session, {expires: 14}); http://localhost:8000/auth
-      var session = this.state.email;
+  
+      try{             
+    
+     
+      if(session!="undefined"){
+      Cookies.set  ("session", session, {expires: 14}); //http://localhost:8000/auth
+     // window.location.href ("http://localhost:8000/auth");
       console.log(session);
 
-      try{
-        console.log("test" + username);
-         const username = Cookies.getItem('email') && this.setState({
-         user: JSON.parse(Cookies.getItem('person'))
-                          
-      });
-     
-      if(username!=undefined){
-       
-
+      }else{
+        window.open("http://localhost:4000/");
       }
     }catch (e) {
           
            return JSON.stringify('cookies');
-         }    
+         }
+        }       
      
-        }
+        
 
         render(){
         return (
