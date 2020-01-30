@@ -5,48 +5,38 @@ import { cpus } from 'os';
 // isto deve ser chamado somente para acções que requerem login
 
 
-class auth extends Component {
+class Auth extends Component {
     constructor( props ){
         super(props);
-        this.state = { ...props,
-            email: Cookies.get('email')
+        this.state = {
+            email: Cookies.get("sessPerson")
         };
 
       }
   
-    componentWillMount(){ 
-      var session = this.state.email;
-      console.log('cookie', this.state.email);
-      // Caso o cookie não estar definido, faz o redirect para o login
-  
-      try{             
-    
-     
-      if(session!="undefined"){
-      Cookies.set  ("session", session, {expires: 14}); //http://localhost:8000/auth
-     // window.location.href ("http://localhost:8000/auth");
-      console.log(session);
+      componentDidMount() {   
+      
+         if (!undefined) {
+              
+         return this.setState({ username: 'Bem-Vindo   ' + Cookies.get("sessPerson") })
+         
+     }else{
+         console.log("teste", this.state.email);
+     }
+} 
 
-      }else{
-        window.open("http://localhost:4000/");
-      }
-    }catch (e) {
-          
-           return JSON.stringify('cookies');
-         }
-        }       
-     
-        
+    render() {
 
-        render(){
         return (
-          
-          <session>test...</session>         
+
+            <h6> Bem-Vindo {document.cookie.replace(/(?:(?:^|.*;\s*)sessPerson*\=\*([^;]*).*$)|^.*$/, "$1")}</h6>
+
         );
+
            
 
 
       }
     }
 
-export default auth;
+export default Auth;

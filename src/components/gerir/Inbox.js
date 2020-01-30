@@ -39,7 +39,7 @@ handleClick = e => {
 };
 
 componentDidUpdate() {
-  setTimeout(() => { this.setState({ loading: !this.state.loading }) }, 1000);
+  setTimeout(() => { this.setState({ loading: !this.state.loading && this.state.acordos > 0 }) }, 1000);
 }
 
 render(){           
@@ -83,7 +83,7 @@ render(){
             key="sub2"
             title={
               <span>
-                <Icon type="appstore" /> <span> <ul> <li data-tooltip="Enviado" data-collapsed-nav-tooltip="true"><a href="news.asp">Enviados</a></li> </ul> </span>
+                <Icon type="appstore" /> <span> <ul> <li data-tooltip="Enviado" data-collapsed-nav-tooltip="true"><a href="/enviados">Enviados</a></li> </ul> </span>
               </span>
             }
           >
@@ -93,7 +93,7 @@ render(){
             key="sub1"
             title={
               <span>
-                <Icon type="delete" /> <span> <ul><li><a href="about.asp">Arquivado</a></li></ul> </span>
+                <Icon type="delete" /> <span> <ul><li><a href="/arquivados">Arquivado</a></li></ul> </span>
               </span>
             }
           >        
@@ -207,8 +207,11 @@ render(){
               
 						)
 						)) : (
-							<tr><BeatLoader
+							<tr>
+                
+              <BeatLoader
               color="#2196F3"
+              size="2px"
               loading={this.state.loading} onLoad={this.componentDidUpdate}
               />     </tr>
 						)}

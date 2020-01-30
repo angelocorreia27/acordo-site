@@ -27,24 +27,34 @@ class LastAgreementsFromAPI extends React.Component {
 		let acordos = await axiosHelper.axiosGet(url,paramHeaders);
 		this.setState({acordos})
 	}
+	
+	componentDidUpdate() {
+		setTimeout(() => { this.setState({ loading: !this.state.loading && this.state.acordos > 0 }) }, 1000);
+	  }
 
 render() {
-
+	let index= 5;
 	  return ( <>
 			
 				<ul className="style2">
+				
 					{this.state.acordos && this.state.acordos.length > 0 ? (
+				
 						this.state.acordos.map(dados => (
+							
 							<li key={dados.id} ><a href="#"> {dados.title}</a></li>
+
 						)
 						)) : (
 							<li>
 								<tr><BeatLoader
 								color="#2196F3"
+								size={5}
 								loading={this.state.loading} onLoad={this.componentDidUpdate}
 								/></tr></li>
-						)}
-				
+					
+					
+					)}
 				</ul>
 				</>);
 	}

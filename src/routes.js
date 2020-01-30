@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom"
 import Editor from "./components/FileEditor";
 
 import addDoc from "./components/DocSign/addDoc";
-import auth from "./components/auth/auth"
-import logout from "./components/auth/logout"
+import Auth from './components/auth/auth'	
 import index from "./pages";
 import Inicio from './components/inicio';
 import Gerir from './components/gerir';
@@ -53,13 +52,14 @@ return (
      <Route exact path="/inicio" component={Inicio}/> 
      <Route exact path="/gerir" component={Gerir}/> 
      <Route exact path="/recebidos" component={Gerir}/> 
+     <Route exact path="/enviados" component={Gerir}/> 
+     <Route exact path="/arquivados" component={Gerir}/> 
      <Route exact path="/modelo" component={Modelo}/> 
    
      <Route exact path="/rever" component={Destinatar}/>
      <Route exact path="/editor" component={Editor}/>
      <Route exact path="/addDoc" component={addDoc}/>     
-     <Route exact path="/auth" component={auth}/>
-     <Route exact path="/auth/logout" component={logout}/>
+     <Route exact path="/auth" component={Auth}/>
      <Route exact path="/contract" component={Contract}/> 
      <Route exact path="/viewer" component={Viewer}/> 
     
