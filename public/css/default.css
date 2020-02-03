@@ -937,14 +937,6 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     background-color: #248f4f;
     border-color: #1e7b43;
   }
-
-
-  .title-Input{
-    font-size: 15px;
-	border: 1px solid grey; 
-	width: 10px;
-  }
-
-  .DescrInput{
-	width: 10px; 
-  }
+.Sessao-user{
+	margin-top:2%;
+}

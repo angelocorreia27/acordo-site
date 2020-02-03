@@ -135,7 +135,7 @@ export default class Editor extends React.Component {
 
     let negotiation = await axiosHelper.axiosGet(url,null, paramHeaders);
   
-    this.setState({body: Base64.decode(negotiation.data)});
+    this.setState({body: Base64.decode(negotiation)});
     
   }
 

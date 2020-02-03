@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import { cpus } from 'os';
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
+import { Link } from 'react-router-dom';
 // isto deve ser chamado somente para acções que requerem login
 
 
@@ -28,25 +29,21 @@ class Auth extends Component {
         }
         }
         
-        async removeCookies(){
-        Cookies.remove('sessPerson');
-        }
-        
+             
         render() {
-        var URL1 = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth ;
-        var URL = "http://localhost:8000/auth/logout"
+        var URL1 = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth;
+        var URL = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth + '/logout';
         var username = localStorage.getItem('UserSession')
-        if (username != "undefined" && username != null) {
-        return (<div>
-        <h6>Bem-Vindo {username} <a></a><a href={URL} /*onClick={this.removeCookies()}*/>Sair</a></h6>
+        console.log(username);
+        if (username != "undefined" && username != null){
+        return (<div className="Sessao-user">
+      <Link>Bem-Vindo {username}</Link>
         </div>);
-        }
-        return (
-        <div>
-        <h6> <a href={URL1}>Login</a> </h6>
+        }else
+        return (<div>
+        <h6> <a href={URL1}> <h6>Bem-Vindo {username} <a></a><a href={URL} /*onClick={this.removeCookies()}*/></a></h6></a> </h6>
         </div >);
         }
-        
-    }
+        }
 
 export default Auth;
