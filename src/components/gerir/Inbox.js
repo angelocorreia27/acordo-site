@@ -18,6 +18,8 @@ class Inbox extends Component {
 
         }
       this.handleClick = this.handleClick.bind(this);
+      this.handler = this.handler.bind(this);
+    
 } 
 
 async componentDidMount() {
@@ -41,6 +43,11 @@ handleClick = e => {
 componentDidUpdate() {
   setTimeout(() => { this.setState({ loading: !this.state.loading && this.state.acordos > 0 }) }, 1000);
 }
+
+handler(e){
+  this.props.filterUser(e.target.value);
+}
+
 
 render(){           
 
@@ -167,7 +174,7 @@ render(){
               
  <div className= "form">
       <Form inline>
-          <FormControl type="text" placeholder="Ultimos acordos" className="mr-sm-2"/><Button className="search">Search</Button>
+          <FormControl type="text" placeholder="Ultimos acordos" className="mr-sm-2"/><Button className="search" onChange={this.handler}>Search</Button>
     
       </Form>
    

@@ -16,59 +16,16 @@ class Recebidos extends React.Component {
         acordos: [],
       }
     }
-      async componentDidMount() {
-	
-		const loading = this.state.acordos;
-        if(!this.state.acordos.length || loading){
-        return (<BeatLoader
-        color="#2196F3"
-        size="5"
-        loading={this.state.loading} onLoad={this.componentDidUpdate}
-        />)
- 
-    }
-		const url = env.httpProtocol
-		+env.serverHost
-		+':'+env.serverPort
-		+'/negotiation/all/';
 
-		   const paramHeaders = {headers: {'Accept': 'application/json' //,
-                                   //'Content-type': 'application/json'
-								   }
-    , withCredentials: true
-      }
-
-		let acordos = await axiosHelper.axiosGet(url,paramHeaders);
-		this.setState({acordos})
-	}
-
-render() {
-    const loading = this.state.acordos;
-    if(!this.state.acordos.length || loading){
-        return (<BeatLoader
-        color="#2196F3"
-        size="5"
-        loading={this.state.loading} onLoad={this.componentDidUpdate}
-        />)
- 
-    }
-	  return ( <>
-			
-				<ul className="style2">
-					{this.state.acordos && this.state.acordos.length > 0 ? (
-						this.state.acordos.map(dados => (
-						<li key={dados.id} ><a href={this.props}> {this.componentDidMount} {dados.title}</a></li>
-						)
-						)) : (
-							<li>
-								<tr></tr></li>
-						)}
-				
-				</ul>
-				</>);
-
+    render(){
+    
+	  return (
+      <div>
+      <MenuHeader hearderName="recebidos"></MenuHeader>
+      
+      <Footer></Footer>
+      </div>
+    )
 
 }
-
-
 }export default Recebidos;

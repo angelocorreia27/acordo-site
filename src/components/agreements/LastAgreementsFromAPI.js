@@ -38,7 +38,7 @@ render() {
 			
 				<ul className="style2">
 				
-					{this.state.acordos && this.state.acordos.length > 0 ? (
+					{this.state.acordos && this.state.acordos.length > 0  && this.state.acordos.slice(-5) ? (
 				
 						this.state.acordos.map(dados => (
 							

@@ -2,7 +2,7 @@ import CKEditor from 'react-ckeditor-component'
 import React from 'react'
 import request from 'request-promise-native'
 import { css } from 'emotion'
-import {Container,Row, Col, Button} from 'react-bootstrap'
+import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 import examples from './exapmples'
@@ -11,7 +11,7 @@ import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 import axios from 'axios';
-import {ClipLoader} from "react-spinners";
+import { Base64 } from 'js-base64';
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -58,13 +58,25 @@ function htmlOptimization (html) {
   return result
 }
 
+const content = (
+  <div>
+    <p>Content</p>
+    <p>Content</p>
+  </div>
+);
+
 export default class Editor extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
         body: "",
         header: "",
-        footer: ""
+        footer: "",
+        loading: false,
+        showPopup: false,
+        title: "",
+        description: ""
+        
     }
     this.updateContent = this.updateContent.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -79,8 +91,11 @@ export default class Editor extends React.Component {
     // fill body with exemple
     this.state = examples[0] // body footer header
     window.$ = $
-  }
+  
+}
 
+
+/* pupup */
   updateContent (newContent) {
     this.setState({
       body: newContent.body,
@@ -120,45 +135,61 @@ export default class Editor extends React.Component {
     })
   }
 
-  async onButtonClick () {
-    
-    // TODO popup a modal to enter description and title
-
-    const paramHeaders = {headers: {'Accept': 'application/json',
-                                   'Content-type': 'multipart/form-data'}
-    , withCredentials: true
-      }
-    //console.log('document', htmlOptimization(this.editor.body.getData()));
-    //console.log('header', htmlOptimization(this.state.header));
 
 
-    const data = new FormData(); 
-
-    data.append('title', 'title');
-    data.append('description', 'description');
-    data.append('dataType', 'html');
-    data.append('data', htmlOptimization(this.editor.body.getData()));
-
-    const url = env.httpProtocol
-    +env.serverHost
-    +':'+env.serverPort
-    +'/negotiation/create';
-
-     negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
+    async onButtonClick () {
+      /* Func Loading  confirmar acordo */
+      this.setState({loading: true});
+      setTimeout(()=> {
+        this.setState({loading : false})
+      }, 9000)
+   
   
-    console.log('negotiationId', negotiationId);
-    //console.log('document', htmlOptimization(this.editor.body.getData()));
-    //console.log('header', htmlOptimization(this.state.header));
-   // console.log('footer', htmlOptimization(this.state.footer));
-
-    window.location.href = '/rever?negotiationId='+negotiationId;
-  }
+      // TODO popup a modal to enter description and title
+  
+      // fim do popup
+  
+      const paramHeaders = {headers: {'Accept': 'application/json',
+                                     'Content-type': 'multipart/form-data'}
+      , withCredentials: true
+        }
+      //console.log('document', htmlOptimization(this.editor.body.getData()));
+      //console.log('header', htmlOptimization(this.state.header));
+  
+     
+  
+      const data = new FormData(); 
+  
+      data.append('title', this.state.title);
+      data.append('description', this.state.description);
+      data.append('dataType', 'html');
+      data.append('data', htmlOptimization(this.editor.body.getData()));
+  
+      const url = env.httpProtocol
+      +env.serverHost
+      +':'+env.serverPort
+      +'/negotiation/create';
+  
+       negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
+       window.location.href = '/rever?negotiationId='+negotiationId;
+           
+      console.log('negotiationId', negotiationId);
+      //console.log('document', htmlOptimization(this.editor.body.getData()));
+      //console.log('header', htmlOptimization(this.state.header));
+     // console.log('footer', htmlOptimization(this.state.footer));
+  
+    }
+  
 
   onChange (evt) {
     const body = evt.editor.getData()
     this.setState({
       body: body
     })
+  }
+
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   onCreateEditor (section, evt) {
@@ -188,6 +219,9 @@ export default class Editor extends React.Component {
   }
 
   render () {
+    const {loading} = this.state;
+    const { title, description } = this.state;
+
     const noWarningMessagesRelatedToContentEditable = true
     return (
       <div className="editorBlook">
@@ -230,18 +264,33 @@ export default class Editor extends React.Component {
         </Row>
         <Row activeClass={footer}>
           <Col mdOffset={2} md={8} sm={12}><br></br>
-            <Button className="primary" style= {{float: "Right"}}onClick={this.onButtonClick} >
-             Confirmar <ClipLoader as="span"
-            animation="grow"
-            size="sm"
-            role="status"
-            aria-hidden="true"
-            size="8"
-            color="white"
-            />
+        
+<Form onSubmit={this.submitHandler}>
+  <Form.Group controlId="formBasicTitulo">
+    <Form.Label>Titulo</Form.Label>
+    <Form.Control type="titulo" placeholder="Entrar o titulo" name="title" value={title} onChange={this.changeHandler} />
+    <Form.Text className="text-muted">
+      titulo do documento.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group controlId="formBasicDescricao">
+    <Form.Label>Descricao</Form.Label>
+    <Form.Control type="Descricao" placeholder="Descricao" name="description" value={description} onChange={this.changeHandler}/>
+  </Form.Group>
+  <Button onClick={this.onButtonClick} 
+            disabled={loading}
+            style= {{float: "Right"}}
+            > 
+            {loading && <i className="fa fa-refresh fa-spin"></i>}
+            Confirmar 
+             </Button>
+</Form>
            
-            </Button>              
+         
+         
           </Col>
+
         </Row>
        
       </Container>
@@ -249,4 +298,6 @@ export default class Editor extends React.Component {
 
     )
   }
+
+  
 }

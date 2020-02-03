@@ -14,6 +14,63 @@ body
 	color: #6c6c6c
 }
 
+/* Modal popup */
+
+.modal {
+	font-size: 12px;
+  }
+  .modal > .header {
+	width: 100%;
+	border-bottom: 1px solid gray;
+	font-size: 18px;
+	text-align: center;
+	padding: 5px;
+  }
+  .modal > .content {
+	width: 100%;
+	padding: 10px 5px;
+  }
+  .modal > .actions {
+	margin: auto;
+  }
+  .modal > .actions {
+	width: 100%;
+	padding: 10px 5px;
+	text-align: center;
+  }
+  .modal > .close {
+	cursor: pointer;
+	position: absolute;
+	display: block;
+	padding: 2px 5px;
+	line-height: 20px;
+	right: -10px;
+	top: -10px;
+	font-size: 24px;
+	background: #ffffff;
+	border-radius: 18px;
+	border: 1px solid #cfcece;
+  }
+
+  .menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 5px;
+  height: 28px;
+  border-top: 1px solid rgb(187, 187, 187);
+}
+.menu-item:hover {
+  color: #2980b9;
+}
+
+
+
+/* fim popup */
 
 h1, h2, h3
 {
@@ -814,8 +871,14 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	  color: white;
   }
 
-  /* ModelCard */
+  /* ModelCard 
 
+
+  .Card:hover{
+	box-shadow: 5px 10px 1px rgba(#2196F3)!important;
+  }
+  */
+  
   .d-inline-p-1{
   	  font-size: 8px;
 	  margin-left: 20%;
@@ -843,6 +906,9 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	margin-left: 20%;
   }
 
+  .contentt {
+	float: right;
+  }
   /*   LoadButton*/ 
 
   .load-button {
@@ -870,4 +936,15 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
   .load-button:hover {
     background-color: #248f4f;
     border-color: #1e7b43;
+  }
+
+
+  .title-Input{
+    font-size: 15px;
+	border: 1px solid grey; 
+	width: 10px;
+  }
+
+  .DescrInput{
+	width: 10px; 
   }
