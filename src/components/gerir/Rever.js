@@ -16,7 +16,8 @@ super(props)
 this.state = {
     subject:'',
     text:'',
-    to:''
+    to:'',
+    loading: false
 }
 this.handleChange = this.handleChange.bind(this);
 this.handleEndpoint = this.handleEndpoint.bind(this);
@@ -44,6 +45,13 @@ onChange() {
             </ClipLoader>)
 }
 async handleEndpoint () {
+
+  this.setState({ loading: true });
+
+  //Faking API call here
+  setTimeout(() => {
+    this.setState({ loading: false });
+  }, 9000);
   
   const paramHeaders = {headers: {'Accept': 'application/json',
   'Content-type': 'multipart/form-data'}
@@ -81,7 +89,7 @@ async handleEndpoint () {
 
 
 render(){
-
+  const {loading} = this.state;
 
 return (
 
@@ -101,11 +109,16 @@ return (
   </Form.Group>
 
   <Form.Group controlId="ControlText">
-    <Form.Label>Para</Form.Label>
+    <Form.Label>Par<i className="fa fa-refresh fa-spin"></i>a</Form.Label>
     <Form.Control placeholder= "name1@example.com, name2@example.com " name="to" onChange={this.handleChange} />
   </Form.Group> 
 
-<Button variant='danger' href="/">Voltar</Button> <Button onClick={this.handleEndpoint} className='primary' >Enviar</Button>
+<Button variant='danger' href="/">Voltar</Button> <Button className="buttonLoad" onClick={this.handleEndpoint} 
+disable={loading} className='primary' >
+  {loading && (
+  <i className="fa fa-refresh fa-spin"></i>)}
+  {loading && <span>loading</span>}
+  {!loading && <span>Enviar</span>}</Button>
 
 </Form>
 )

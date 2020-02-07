@@ -7,6 +7,9 @@ import Debug from 'debug'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 import { Base64 } from 'js-base64';
+import FilePreview from 'react-preview-file';
+import FileViewer from 'react-file-viewer';
+import Loader from 'react-loader-spinner'
 
 const queryString = require('query-string');
 const debug = Debug('editor')
@@ -75,10 +78,10 @@ export default class Editor extends React.Component {
 
     window.$ = $
 
-    const url = window.location.search;
-    console.log('url', url);
-    const param = queryString.parse(url);
-    negotiationId=param.negotiationId;
+   // const url = window.location.search;
+   // console.log('url', url);
+   // const param = queryString.parse(url);
+    negotiationId=props.negotiationId;
   }
   componentDidMount(){
 
@@ -135,9 +138,9 @@ export default class Editor extends React.Component {
 
     let negotiation = await axiosHelper.axiosGet(url,null, paramHeaders);
   
-    this.setState({body: Base64.decode(negotiation)});
+    this.setState({body: Base64.decode(negotiation.data)});
     
-  }
+ }
 
   onChange (evt) {
     const body = evt.editor.getData()
@@ -172,13 +175,21 @@ export default class Editor extends React.Component {
     // console.log('afterPaste event called with event info: ', evt)
   }
 
+  onInputChange = e => {
+    const { currentTarget: { files } } = e;
+ 
+  }
+
+
   render () {
     const noWarningMessagesRelatedToContentEditable = true
+ 
     return (
       <div className="editorBlook">
         <Container className={editorBlock}>
           <Row>
             <Col md={8} sm={12}>
+            <Loader type="TailSpin" color="#somecolor" height={80} width={80} />
               <CKEditor
                 suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
                 content={this.state.body}
@@ -186,8 +197,11 @@ export default class Editor extends React.Component {
                   'change': this.onChange,
                   'configLoaded': this.onCreateEditor.bind(this, 'body')
                 }} 
-              
-              />
+                
+                
+                 /><br></br>
+ 
+       
             </Col>
           </Row>
           { /*
