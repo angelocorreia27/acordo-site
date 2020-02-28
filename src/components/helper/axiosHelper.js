@@ -3,7 +3,7 @@ import axios from 'axios';
 
   export default {
   
-    async axiosGet (url, bodyOption,HeaderOptions ){
+    async axiosGet (url,HeaderOptions ){
 
     return await axios.get(url,HeaderOptions)
       .then(response => {

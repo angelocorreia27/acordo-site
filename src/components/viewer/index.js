@@ -1,76 +1,86 @@
 import React from "react";
-import ViewerEditor from './ViewerEditor';
-import axiosHelper from '../helper/axiosHelper';
-import * as env from '../../env';
+import negotiationHelper from '../agreements/negotiationHelperAPI';
+import MyComponent from './MyComponent';
+
+
+import paramHelper from '../helper/paramHelper';
 import { Base64 } from 'js-base64';
 
-const queryString = require('query-string');
+const fs = require('fs')
 
-function getDocumentContent () {
-
- /* const pathurl = window.location.search;
-    
-  const param = queryString.parse(Base64.decode(pathurl));
-
-  let negotiationId= param.negotiationId
-
-  const paramHeaders = {headers: {'Accept': 'application/json',
-  'Content-type': 'multipart/form-data'}
-, withCredentials: true}
-
-    const url = env.httpProtocol
-    +env.serverHost
-    +':'+env.serverPort
-    +'/negotiation/lastVersion/'+negotiationId;
-    try {
-    
-    this.setState({body: Base64.decode(pathurl)});
-
-console.log("teste", param);
-   // let lastVersion = await axiosHelper.axiosGet(url,null, paramHeaders);
-   
-    //console.log('lastVersion ', lastVersion);
-
-      } catch (err) {
-        console.log(err);
-      }
-   
-
-    */
-}
-    let negotiationId = null
+let data = null
 class index extends React.Component {
 
     constructor(props){
       super(props);
-
-      const pathurl = window.location.search;
-      console.log("pathurl", pathurl);
-
-      const strParam = queryString.parse(pathurl);
-      console.log("strParam", strParam);
-      let param= queryString.parse(Base64.decode(strParam.r))
-
-      negotiationId = param.negotationId
-      console.log("param", param);
-  
-
-      console.log("teste", negotiationId);
-
+      this.state = {
+        file:'',
+        fileType:'',
+        lastVersion:'',
+        renderPage:false
+      }
     }  
+   
+    async getDocumentContent (negotiationId) {
+
+        let lastVersion = await negotiationHelper.lastVersion(negotiationId);
+        if (lastVersion){
+
+          data = lastVersion.data;
+
+          const buffer = Buffer.from(data.data.data);
+          
+          //console.log('buffer', buffer);
+
+         //
+         // var file = new File(buffer, "filename");
+         // var objectURL = URL.createObjectURL(file);
+         // console.log(objectURL);
+          console.log('buffer data ->', data.data.data);
+          console.log('buffer mime type', data.mimetype);
+        // const arr = new Uint8Array(data.data.data);
+       //  console.log('arr', arr);
+        // var blob = new Blob([data.data.data], { type: 'application/pdf' });
+        // var url = URL.createObjectURL(blob);
+
+        //const readable = toStream(Buffer.from(data.data.data, 'Buffer'))
+
+        // const blobUrl = await toBlobURL(readable, data.mimetype)
+
+        
+       let result =  fs.writevSync("./teste.pdf", buffer)
+
+         this.setState({file:'/teste.pdf',                       
+                           fileType:'pdf',
+                           renderPage:true
+          })
+          
+        }
+      }
 
     componentDidMount(){
-      
+      let param = paramHelper.base64ParamDecode();
+      console.log("param.negotiationId", param.negotiationId);
+
+      if (this.state.negotiationId !==null)
+        this.getDocumentContent(param.negotiationId)
 
     }
+
     render() {
-     
-  
-      return (
+
+      let pageToRender= <></>
+     // this.state.file = 'images/bg01.png';
+     // this.state.fileType = 'png';
       
-       <ViewerEditor negotiationId={negotiationId}>
+      if (this.state.renderPage)
+        pageToRender=<MyComponent file={this.state.file} fileType='pdf'/>
           
-        </ViewerEditor>
+      return (
+          <>
+          {pageToRender}
+          </>
+       
       )
     }
   }

@@ -6,8 +6,8 @@ import axios from "axios";
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 import {ClipLoader} from "react-spinners";
-
-const queryString = require('query-string');
+import paramHelper from '../helper/paramHelper';
+ 
 let id = null;
 class Rever extends Component {
 
@@ -22,9 +22,8 @@ this.state = {
 this.handleChange = this.handleChange.bind(this);
 this.handleEndpoint = this.handleEndpoint.bind(this);
 
-const url = window.location.search;
-console.log('url', url);
-const param = queryString.parse(url);
+// get param and decode
+const param = paramHelper.base64ParamDecode();
 id=param.negotiationId;
 
 }

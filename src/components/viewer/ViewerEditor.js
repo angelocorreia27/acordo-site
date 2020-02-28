@@ -7,8 +7,6 @@ import Debug from 'debug'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 import { Base64 } from 'js-base64';
-import FilePreview from 'react-preview-file';
-import FileViewer from 'react-file-viewer';
 import Loader from 'react-loader-spinner'
 
 const queryString = require('query-string');
