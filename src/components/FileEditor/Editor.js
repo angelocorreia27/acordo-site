@@ -5,7 +5,7 @@ import { css } from 'emotion'
 import {Container, Row, Col, Form, Button} from 'react-bootstrap'
 import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
-import examples from './exapmples'
+//import examples from './exapmples'
 import Debug from 'debug'
 import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
@@ -89,7 +89,7 @@ export default class Editor extends React.Component {
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
     // fill body with exemple
-    this.state = examples[0] // body footer header
+    this.state = "teste" //examples[0] // body footer header
     window.$ = $
   
 }
@@ -120,8 +120,8 @@ export default class Editor extends React.Component {
       this.editor['body'].setData(nextProps.file.content)
     }
     if (typeof nextProps.exampleNumber === 'number') {
-      this.setState(examples[nextProps.exampleNumber])
-      this.setEditorsContent(examples[nextProps.exampleNumber])
+      //this.setState(examples[nextProps.exampleNumber])
+      //this.setEditorsContent(examples[nextProps.exampleNumber])
     }
   }
 
@@ -251,7 +251,7 @@ export default class Editor extends React.Component {
         <Row>
           <Col md={8} sm={12}>
             <CKEditor
-              scriptUrl={'ckeditor/ckeditor.js'}
+              scriptUrl={'/ckeditor/ckeditor.js'}
               suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
               content={this.state.body}
               events={{

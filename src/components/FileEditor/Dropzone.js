@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
 import uuid from 'uuid/v4'
 import * as env from '../../env';
 import {useDropzone} from 'react-dropzone';
@@ -47,24 +46,23 @@ onChangeHandler = async event=>{
 
   console.log(event.target.files[0])
 
-  const data = new FormData(); 
+  const data = this.props.postData; 
 
-  data.append('owner', uuid()); // email do utilizador em sessao
-  data.append('title', 'title');
-  data.append('description', 'description');
-  data.append('dataType', 'file');
+  //data.append('owner', uuid()); // email do utilizador em sessao
+  //data.append('title', 'title');
+  //data.append('description', 'description');
+  //data.append('dataType', 'file');
   data.append('fileData', event.target.files[0]);
 
-  const url = env.httpProtocol
-  +env.serverHost
-  +':'+env.serverPort
-  +'/negotiation/upload';
+  const url = this.props.postUrl;
 
   let result = await axiosHelper.axiosPost(url, data, uploadHeaders);
       
       // redirect to review with param encoded
-  window.location.href = '/rever?r=' + paramHelper.base64ParamEncode('negotiationId='+result.id);
-
+      console.log(result);
+    if (result != "undefined"){
+      window.location.href = this.props.redirectUrl + paramHelper.base64ParamEncode('id='+result.id);
+    }
 
 }
 
@@ -74,11 +72,7 @@ onChangeHandler = async event=>{
 
     <center>
              
-  <div className="sub-hearder">
-
-<Button className="buttnovo" href="/Editor"> Iniciar edição </Button>
-
-    <br></br><br></br>
+  <div align="center">
    
    <DropzoneWithoutDrag/>
    <input type="file" name="file" onChange={this.onChangeHandler}/>

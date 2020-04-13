@@ -4,6 +4,8 @@ import * as env from '../env';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Auth from '../components/auth/auth'	
+import Nav from 'react-bootstrap/Nav'
+import NavRight from '../pages/NavRight';
 
 class MenuHeader extends React.Component {
 constructor(props){
@@ -29,22 +31,50 @@ render() {
 	
 	
 	return (
-		  <div id="header-wrapper">
-				<div id="header" className="container">
-				<div id="logo">
-					<h1><a href="/">ACORDO</a></h1>
-				</div>
-				<div id="menu">
-					<ul>
-					<li className={this.state.classNameInicio}><a href="/inicio" accessKey={1}>Início</a></li>
-					<li className={this.state.classNameGerir}><a href="/gerir" accessKey={2}>Gerir</a></li>
-					<li className={this.state.classNameModelo}><a href="/modelo" accessKey={3}>Modelo</a></li>
-					<li> <a href="/" className="displayChatbox">{this.componentDidMount}<i className="icon feather icon-mail"/><Auth/></a></li>   
-					<li> <a href="http://localhost:8000/auth/logout" className="displayChatbox"><i className="icon feather icon-mail"/>Sair</a></li>   
-         			</ul>
-				</div>
-				</div>
-		  </div>
+		<div>
+			
+		<div className="divTable">
+			<div className="divTableBody">
+				<div className="divTableRow">
+					<div className="divTableCell">
+						<Nav className="justify-content-center"
+						activeKey="/inicio"
+						>
+							<Nav.Item>
+								<Nav.Link href="/" >
+									<strong>Portal Certificados</strong>
+								</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link href="/inicio">Início</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link href="/gerir" eventKey="/gerir">Gerir</Nav.Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Nav.Link href="/modelo" eventKey="/modelo">Modelo</Nav.Link>
+							</Nav.Item>
+
+						</Nav></div>
+					<div className="divTableCell">
+						<Nav className="justify-content-end"
+						
+						//activeKey="/inicio"
+						//onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+						>
+							
+							<Nav.Item>
+								<NavRight/>
+							</Nav.Item>
+
+						</Nav></div>
+					</div>
+			</div>
+		</div>
+			<div>
+				<hr/>
+			</div>
+		</div>
 	  );
 	}
   }
