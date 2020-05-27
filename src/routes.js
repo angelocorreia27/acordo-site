@@ -9,14 +9,12 @@ import SeloEletronico from './components/selo-eletronico';
 import AssinaturaDigital from './components/assinatura-digital';
 import CertificadoSSL from './components/certificado-ssl';
 
-import addDoc from "./components/DocSign/addDoc";
 import Auth from './components/auth/auth'	
 import index from "./pages";
 import Propor from './components/assinatura-digital/propor';
 import Gerir from './components/assinatura-digital/gerir';
 import Modelo from './components/assinatura-digital/modelo';
 
-import Contract from "./components/assinatura-digital/modelo/Contract";
 import Viewer from "./components/viewer/";
 import Footer from './pages/Footer';
 import MenuHeader from './pages/MenuHeader';
@@ -73,8 +71,6 @@ return (
         <Route exact path="/assinatura-digital/arquivados" component={Gerir}/> 
         <Route exact path="/assinatura-digital/modelo" component={Modelo}/> 
         <Route exact path="/assinatura-digital/editor" component={Editor}/>
-        <Route exact path="/assinatura-digital/addDoc" component={addDoc}/> 
-        <Route exact path="/assinatura-digital/contract" component={Contract}/> 
 
         {/** routes certificado ssl**/}
         <Route exact path="/certificado-ssl" component={CertificadoSSL}/> 

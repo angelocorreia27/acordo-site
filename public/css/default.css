@@ -987,8 +987,18 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	/*background-color: #EEE;*/
 	display: table-footer-group;
 	font-weight: bold;
+	padding: 9px 18px;
+
 }
 .divTableBody {
 	display: table-row-group;
+}
+/**
+Card.img
+**/
+.card img{
+	position: relative;
+	right: 140px;
+	top: 0px;
 }
   

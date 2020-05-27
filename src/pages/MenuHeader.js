@@ -42,17 +42,14 @@ render() {
 						>
 							<Nav.Item>
 								<Nav.Link href="/" >
-									<strong>Portal Certificados</strong>
+									<strong>Portal</strong>
 								</Nav.Link>
 							</Nav.Item>
 							<Nav.Item>
-								<Nav.Link href="/inicio">Início</Nav.Link>
+	{/*	<Nav.Link href="/assinatura-digital/gerir" eventKey="/gerir">Gerir</Nav.Link>*/ }
 							</Nav.Item>
 							<Nav.Item>
-								<Nav.Link href="/gerir" eventKey="/gerir">Gerir</Nav.Link>
-							</Nav.Item>
-							<Nav.Item>
-								<Nav.Link href="/modelo" eventKey="/modelo">Modelo</Nav.Link>
+	{/*	<Nav.Link href="/assinatura-digital/modelo" eventKey="/modelo">Modelo</Nav.Link> */}
 							</Nav.Item>
 
 						</Nav></div>

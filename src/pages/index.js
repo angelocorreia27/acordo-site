@@ -22,40 +22,47 @@ render() {
 			
 			<Row>
 				
-			<div class="divTable">
-				<div class="divTableBody">
+			<div className="divTable">
+				<div className="divTableBody">
 					
-				<div class="divTableRow">
-						<div class="divTableCell"><Title/>
+				<div className="divTableRow">
+						<div className="divTableCell"><Title/>
 						</div>
-						<div class="divTableCell"><Search/>
+						<div className="divTableCell"><Search url="tsa/"/>
 						</div>
 						
 					</div>
+					<div className="divTableRow"><br/></div>
 
-					<div class="divTableRow">
-						<div class="divTableCell"><CardModel title="Selo temporal" 
-															 imsSrc="/images/selo-temporal.png"
-															 button="Ver mais.."
-															 buttonAction="/selo-temporal" />
+					<div className="divTableRow">
+						<div className="divTableCell"><CardModel title="Selo temporal" 
+															 imsSrc="/images/selo-temporal.svg"
+															 buttonText="Ver mais.."
+															 buttonAction="/selo-temporal"
+															 buttonStatus="active" />
 						</div>
-						<div class="divTableCell"><CardModel title="Selo electrónico" 
-															 imsSrc="/images/selo-eletronico.png"
-															 button="Ver mais.." 
-															 buttonAction="/selo-eletronico" />
+						<div className="divTableCell"><CardModel title="Selo digital" 
+															 imsSrc="/images/selo-eletronico.svg"
+															 buttonText="Ver mais.." 
+															 buttonAction="/selo-eletronico"
+															 buttonStatus="disabled" />
 						</div>
 						
 					</div>
-					<div class="divTableRow">
-						<div class="divTableCell"><CardModel title="Assinatura digital" 
-															 imsSrc="/images/assinatura-digital.png"
-															 button="Ver mais.." 
-															 buttonAction="/assinatura-digital" />
+					<div className="divTableRow"><br/></div>
+
+					<div className="divTableRow">
+						<div className="divTableCell"><CardModel title="Assinatura digital" 
+															 imsSrc="/images/assinatura-digital.svg"
+															 buttonText="Ver mais.." 
+															 buttonAction="/assinatura-digital"
+															 buttonStatus="disabled" />
 						</div>
-						<div class="divTableCell"><CardModel title="Certificados SSL" 
-															 imsSrc="/images/certificado-ssl.png"
-															 button="Ver mais.."
-															 buttonAction="/certificado-ssl" />
+						<div className="divTableCell"><CardModel title="Certificados SSL" 
+															 imsSrc="/images/certificado-ssl.svg"
+															 buttonText="Ver mais.."
+															 buttonAction="/certificado-ssl"
+															 buttonStatus="disabled" />
 						</div>
 						
 					</div>

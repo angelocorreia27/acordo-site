@@ -37,11 +37,11 @@
     "react-native-doc-viewer": "^2.7.8",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
-    "react-search-field": "^1.0.0",
     "react-spinners": "^0.8.0",
     "reactjs-popup": "^1.5.0",
     "reactstrap": "^8.1.1",
     "request": "^2.83.0",
+    "sha3": "^2.1.2",
     "stream-to-blob-url": "^3.0.0",
     "superagent": "^5.1.1"
   },
