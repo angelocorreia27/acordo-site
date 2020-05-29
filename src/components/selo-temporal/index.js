@@ -30,7 +30,7 @@ class Index extends React.Component {
 		fdata.append('fileData', data);
 		fdata.append('version', 'v1');
 		fdata.append('hashAlgorithm', 'SHA256');
-		//fdata.append('hashedMessage', hash.digest('hex'));
+		fdata.append('hashedMessage', 'teste');
 		fdata.append('TSAPolicyId', 1);
 		//fdata.append('nonce', '');
 		//fdata.append('certReq', '');
@@ -38,7 +38,9 @@ class Index extends React.Component {
 
 
 		let result = await axiosHelper.axiosPost(url, fdata, uploadHeaders);
-		this.setState({id:result.id});
+		if (result && result.id){
+			this.setState({id:result.id});
+		}
 		
 
 	}
