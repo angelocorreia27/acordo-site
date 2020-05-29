@@ -8,13 +8,12 @@ import Nav from 'react-bootstrap/Nav'
 var urlLogin = env.httpProtocol + env.serverHost + ':' + env.serverPort + '/' + env.serverAuth;
 var urlLogout = env.httpProtocol + env.serverHost + ':' + env.serverPort + '/' + env.serverAuth + '/logout';
 var sessPerson = null;
-var localSessPerson = null;
 export default class NavRight extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             ...props,
-            localSessPerson:{}
+            localSessPerson:{username:null}
         };
     }
     // Aqui deve verificar o cookie, caso exister:
@@ -30,19 +29,19 @@ export default class NavRight extends React.Component {
                 // replace j: to ''
                 localStorage.setItem('sessPerson', sessPerson.replace("j:", ''));
             }
-            localSessPerson = JSON.parse(localStorage.getItem('sessPerson'));
+            //const localSessPerson = JSON.parse(localStorage.getItem('sessPerson'));
 
-            this.setState({localSessPerson:localSessPerson});
+            this.setState({localSessPerson:localStorage.getItem('sessPerson')});
         } catch (e) {
             console.log('error: ', e);
         }
     }
  
     render() {
-        if (this.state.localSessPerson.username) {
+        if (this.state.localSessPerson && this.state.localSessPerson.username) {
             return (
                      <>  
-                        <p>Olá {localSessPerson.username} <a href={urlLogout}> | Sair</a></p>
+                        <p>Olá {this.state.localSessPerson.username} <a href={urlLogout}> | Sair</a></p>
                     </>
                        
                 );
