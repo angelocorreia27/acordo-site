@@ -7,13 +7,14 @@ import Nav from 'react-bootstrap/Nav'
 
 var urlLogin = env.httpProtocol + env.serverHost + ':' + env.serverPort + '/' + env.serverAuth;
 var urlLogout = env.httpProtocol + env.serverHost + ':' + env.serverPort + '/' + env.serverAuth + '/logout';
-
+var sessPerson = null;
+var localSessPerson = null;
 export default class NavRight extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             ...props,
-
+            localSessPerson:{}
         };
     }
     // Aqui deve verificar o cookie, caso exister:
@@ -22,28 +23,33 @@ export default class NavRight extends React.Component {
     // caso não mostra link de inicio de sessão
 
     componentDidMount() {
-        var session = Cookies.get('sessPerson');
+        sessPerson = Cookies.get('sessPerson');
+
         try {
-            if (session != "undefined" && session != null) {
-                localStorage.setItem('UserSession', session);
+            if (sessPerson != "undefined" && sessPerson != null) {
+                // replace j: to ''
+                localStorage.setItem('sessPerson', sessPerson.replace("j:", ''));
             }
+            localSessPerson = JSON.parse(localStorage.getItem('sessPerson'));
+
+            this.setState({localSessPerson:localSessPerson});
         } catch (e) {
+            console.log('error: ', e);
         }
     }
  
     render() {
-        var username = localStorage.getItem('UserSession')
-        if (username != "undefined" && username != null) {
+        if (this.state.localSessPerson.username) {
             return (
-                    <Nav.Item>
-                        <span>Bem-Vindo  {username}</span> <Nav.Link href={urlLogout}>Sair</Nav.Link>
-                    </Nav.Item>
+                     <>  
+                        <p>Olá {localSessPerson.username} <a href={urlLogout}> | Sair</a></p>
+                    </>
+                       
                 );
         } else
-            return (
-                    <Nav.Item>
+            return (<>
                         <Nav.Link href={urlLogin}>Login</Nav.Link>
-                    </Nav.Item>
+                    </>
                     );
 
     }

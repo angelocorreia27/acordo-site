@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Routes from "./routes";
 import 'bootstrap/dist/css/bootstrap.min.css';
+require('dotenv').config()
+
 
 
 

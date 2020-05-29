@@ -39,13 +39,17 @@ render() {
 															 imsSrc="/images/selo-temporal.svg"
 															 buttonText="Ver mais.."
 															 buttonAction="/selo-temporal"
-															 buttonStatus="active" />
+															 buttonStatus="active" 
+															 text="Atesta o momento temporal da criação de um documento no servidor."
+															 />
 						</div>
 						<div className="divTableCell"><CardModel title="Selo digital" 
 															 imsSrc="/images/selo-eletronico.svg"
 															 buttonText="Ver mais.." 
 															 buttonAction="/selo-eletronico"
-															 buttonStatus="disabled" />
+															 buttonStatus="disabled" 
+															 text="Visa criar um selo digitalmente válido, com um caracter comprovante."
+															 />
 						</div>
 						
 					</div>
@@ -56,13 +60,17 @@ render() {
 															 imsSrc="/images/assinatura-digital.svg"
 															 buttonText="Ver mais.." 
 															 buttonAction="/assinatura-digital"
-															 buttonStatus="disabled" />
+															 buttonStatus="disabled" 
+															 text="Vinculada o documento criado digitalemente, a um certificado digital."
+															 />
 						</div>
 						<div className="divTableCell"><CardModel title="Certificados SSL" 
 															 imsSrc="/images/certificado-ssl.svg"
 															 buttonText="Ver mais.."
 															 buttonAction="/certificado-ssl"
-															 buttonStatus="disabled" />
+															 buttonStatus="disabled" 
+															 text="Autentica a identidade de um site e criptografa as informações enviadas para o servidor."
+															 />
 						</div>
 						
 					</div>

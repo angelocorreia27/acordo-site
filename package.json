@@ -43,7 +43,8 @@
     "request": "^2.83.0",
     "sha3": "^2.1.2",
     "stream-to-blob-url": "^3.0.0",
-    "superagent": "^5.1.1"
+    "superagent": "^5.1.1",
+    "fs": "0.0.1-security"
   },
   "scripts": {
     "start": "PORT=4000 react-scripts start",

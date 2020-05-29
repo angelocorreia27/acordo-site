@@ -24,7 +24,6 @@ import axios from 'axios';
   },
 
   async axiosPost (url, bodyOption,HeaderOptions ) {
-
         return await axios.post(url,bodyOption,HeaderOptions
           )
           .then(response => {

@@ -24,8 +24,7 @@ class CardModal extends React.Component {
               <Card.Body>
                 <Card.Title>{this.props.title}</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk of
-                  the card's content.
+                  {this.props.text}
                 </Card.Text>
                   { toRender }
               </Card.Body>
