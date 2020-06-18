@@ -1,15 +1,4 @@
 import React from 'react';
-import LastAgreements from './../agreements/LastAgreements';
-import {BeatLoader} from "react-spinners";
-import { css } from "@emotion/core";
-import { Button } from 'react-bootstrap';
-import {ClipLoader} from "react-spinners";
-
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: #2196F3;
-`;
 
 class Home extends React.Component {
 constructor(props){

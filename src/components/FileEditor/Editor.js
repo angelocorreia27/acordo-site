@@ -1,17 +1,19 @@
 import CKEditor from 'react-ckeditor-component'
 import React from 'react'
-import request from 'request-promise-native'
+//import request from 'request-promise-native'
 import { css } from 'emotion'
-import {Container, Row, Col, Form, Button} from 'react-bootstrap'
-import CKeditorInline from './CKEditorInline'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+//import CKeditorInline from './CKEditorInline'
 import $ from 'jquery'
 //import examples from './exapmples'
 import Debug from 'debug'
-import uuid from 'uuid/v4'
+//import uuid from 'uuid/v4'
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-import axios from 'axios';
-import { Base64 } from 'js-base64';
+//import axios from 'axios';
+//import { Base64 } from 'js-base64';
+import paramHelper from '../helper/paramHelper';
+import authHelper from '../helper/authHelper';
 
 const debug = Debug('editor')
 debug.enabled = true
@@ -43,7 +45,7 @@ const buttonStyle = css`
 `
 
 let negotiationId;
-function htmlOptimization (html) {
+function htmlOptimization(html) {
   html = html.replace(/&quot;/g, '')
   let bodyStyle = ''
   let match = html.match(/<body.*?style=\\?"(.*?)\\?"/)
@@ -58,6 +60,11 @@ function htmlOptimization (html) {
   return result
 }
 
+function textOptimization(text) {
+  let result = text.replace(/<p>/g, '').replace(/<\/p>/g, '');
+  return result
+}
+
 const content = (
   <div>
     <p>Content</p>
@@ -66,18 +73,22 @@ const content = (
 );
 
 export default class Editor extends React.Component {
-  constructor (props) {
+
+  constructor(props) {
+
     super(props);
     this.state = {
-        body: "",
-        header: "",
-        footer: "",
-        loading: false,
-        showPopup: false,
-        title: "",
-        description: ""
-        
+      body: "",
+      header: "",
+      footer: "",
+      loading: false,
+      showPopup: false,
+      title: "title",
+      description: "description"
+
     }
+    authHelper.RequiredAuth(window.location.pathname);
+    //console.log(window.location.pathname);
     this.updateContent = this.updateContent.bind(this)
     this.onChange = this.onChange.bind(this)
     this.onChangeHeader = this.onChangeHeader.bind(this)
@@ -91,12 +102,12 @@ export default class Editor extends React.Component {
     // fill body with exemple
     this.state = "teste" //examples[0] // body footer header
     window.$ = $
-  
-}
+
+  }
 
 
-/* pupup */
-  updateContent (newContent) {
+  /* pupup */
+  updateContent(newContent) {
     this.setState({
       body: newContent.body,
       header: newContent.header,
@@ -104,7 +115,7 @@ export default class Editor extends React.Component {
     })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.content) {
       //debug(nextProps.content)
       this.updateContent(nextProps.content)
@@ -125,7 +136,7 @@ export default class Editor extends React.Component {
     }
   }
 
-  setEditorsContent (content) {
+  setEditorsContent(content) {
     //debug('call setEditorsContet', content)
     const editors = ['header', 'body', 'footer']
     editors.map(type => {
@@ -137,51 +148,51 @@ export default class Editor extends React.Component {
 
 
 
-    async onButtonClick () {
-      /* Func Loading  confirmar acordo */
-      this.setState({loading: true});
-      setTimeout(()=> {
-        this.setState({loading : false})
-      }, 9000)
-   
-  
-      // TODO popup a modal to enter description and title
-  
-      // fim do popup
-  
-      const paramHeaders = {headers: {'Accept': 'application/json',
-                                     'Content-type': 'multipart/form-data'}
-      , withCredentials: true
-        }
-      //console.log('document', htmlOptimization(this.editor.body.getData()));
-      //console.log('header', htmlOptimization(this.state.header));
-  
-     
-  
-      const data = new FormData(); 
-  
-      data.append('title', this.state.title);
-      data.append('description', this.state.description);
-      data.append('dataType', 'html');
-      data.append('data', htmlOptimization(this.editor.body.getData()));
-  
-      const url = env.httpProtocol
-      +env.serverHost
-      +':'+env.serverPort
-      +'/negotiation/create';
-  
-       negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
-       window.location.href = '/rever?negotiationId='+negotiationId;
-           
-      console.log('negotiationId', negotiationId);
-      //console.log('document', htmlOptimization(this.editor.body.getData()));
-      //console.log('header', htmlOptimization(this.state.header));
-     // console.log('footer', htmlOptimization(this.state.footer));
-  
-    }
-  
+  async onButtonClick() {
+    /* Func Loading  confirmar acordo */
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false })
+    }, 9000)
 
-  onChange (evt) {
+
+    // TODO popup a modal to enter description and title
+
+    // fim do popup
+
+    const paramHeaders = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'multipart/form-data'
+      }
+      , withCredentials: true
+    }
+    //console.log('document', this.editor.body.getData());
+    //console.log('header', htmlOptimization(this.state.header));
+
+
+
+    const data = new FormData();
+
+    data.append('title', this.state.title);
+    data.append('description', this.state.description);
+    data.append('dataType', 'html');
+    data.append('data', textOptimization(this.editor.body.getData()));
+
+    const url = env.httpProtocol
+      + env.serverHost
+      + ':' + env.serverPort
+      + '/negotiation/create';
+
+    negotiationId = await axiosHelper.axiosPost(url, data, paramHeaders);
+    if (negotiationId) {
+      window.location.href = '/assinatura-digital/rever?r=' + paramHelper.base64ParamEncode('id=' + negotiationId);
+      console.log('negotiationId', negotiationId);
+    }
+  }
+
+
+  onChange(evt) {
     const body = evt.editor.getData()
     this.setState({
       body: body
@@ -190,114 +201,91 @@ export default class Editor extends React.Component {
 
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value })
+
   }
 
-  onCreateEditor (section, evt) {
+  onCreateEditor(section, evt) {
     //debug('CREATE ' + section)
     //debug(evt.editor)
     this.editor[section] = evt.editor
   }
 
-  onChangeHeader (evt) {
+  onChangeHeader(evt) {
     this.setState({
       header: evt.editor.getData()
     })
   }
 
-  onChangeFooter (evt) {
+  onChangeFooter(evt) {
     this.setState({
       footer: evt.editor.getData()
     })
   }
 
-  onBlur (evt) {
+  onBlur(evt) {
     // console.log('onBlur event called with event info: ', evt)
   }
 
-  afterPaste (evt) {
+  afterPaste(evt) {
     // console.log('afterPaste event called with event info: ', evt)
   }
 
-  render () {
-    const {loading} = this.state;
+  render() {
+    const { loading } = this.state;
     const { title, description } = this.state;
 
     const noWarningMessagesRelatedToContentEditable = true
     return (
+
       <div className="editorBlook">
-        <Container className={editorBlock}>
-        <Row>
-          
-         { /* <Col mdOffset={2} md={8} sm={12}>
-            <CKeditorInline // header
-
-              activeClass={headerEditor}
-              suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
-              events={{
-                'change': this.onChangeHeader,
-                'configLoaded': this.onCreateEditor.bind(this, 'header')
-              }}
-            >
-             /* <p style={{'textAlign': 'right'}} >
-                <span style={{'color': '#999999'}}>
-                  Edit header here
-            </span> 
-              </p>
-
-            </CKeditorInline>
-          </Col>
-            */}
-        </Row>
-        <Row>
-          <Col md={8} sm={12}>
-            <CKEditor
-              scriptUrl={'/ckeditor/ckeditor.js'}
-              suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
-              content={this.state.body}
-              events={{
-                'change': this.onChange,
-                'configLoaded': this.onCreateEditor.bind(this, 'body')
-              }} 
-            
-            />
-          </Col>
-        </Row>
-        <Row activeClass={footer}>
-          <Col mdOffset={2} md={8} sm={12}><br></br>
         
-<Form onSubmit={this.submitHandler}>
-  <Form.Group controlId="formBasicTitulo">
-    <Form.Label>Titulo</Form.Label>
-    <Form.Control type="titulo" placeholder="Entrar o titulo" name="title" value={title} onChange={this.changeHandler} />
-    <Form.Text className="text-muted">
-      titulo do documento.
-    </Form.Text>
-  </Form.Group>
+        <Container className={editorBlock}>
+          <Row>
+            <Col md={8} sm={12}>
+              <h3 className="title">Escreva o seu texto</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={8} sm={12}>
+              <CKEditor
+                scriptUrl={'/ckeditor/ckeditor.js'}
+                suppressContentEditableWarning={noWarningMessagesRelatedToContentEditable}
+                content={this.state.body}
+                events={{
+                  'change': this.onChange,
+                  'configLoaded': this.onCreateEditor.bind(this, 'body')
+                }}
 
-  <Form.Group controlId="formBasicDescricao">
-    <Form.Label>Descricao</Form.Label>
-    <Form.Control type="Descricao" placeholder="Descricao" name="description" value={description} onChange={this.changeHandler}/>
-  </Form.Group>
-  <Button onClick={this.onButtonClick} 
-            disabled={loading}
-            style= {{float: "Right"}}
-            > 
-            {loading && <i className="fa fa-refresh fa-spin"></i>}
-            Confirmar 
-             </Button>
-</Form>
-           
-         
-         
-          </Col>
+              />
+            </Col>
+          </Row>
+          <Row className={footer}>
+            <Col md={2} md={8} sm={12}><br></br>
 
-        </Row>
-       
-      </Container>
+              <Form onSubmit={this.submitHandler}>
+                <Form.Group controlId="formBasicTitulo">
+                  <Form.Label>Nome documento</Form.Label>
+                  <Form.Control type="text" placeholder="Escreva um nome para o documento" name="title" onChange={this.changeHandler} />
+                </Form.Group>
+                <Form.Group controlId="formBasicDescricao">
+                  <Form.Label>Descricão documento</Form.Label>
+                  <Form.Control type="text" placeholder="Escreva uma descricão para o documento" name="description" onChange={this.changeHandler} />
+                </Form.Group>
+                <Button onClick={this.onButtonClick}
+                  disabled={loading}
+                  style={{ float: "Right" }}
+                >
+                  {loading && <i className="fa fa-refresh fa-spin"></i>}
+                        Confirmar
+                        </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
       </div>
 
     )
   }
 
-  
+
 }

@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 import * as env from '../env';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Auth from '../components/auth/auth'	
 import Nav from 'react-bootstrap/Nav'
 import NavRight from '../pages/NavRight';
 

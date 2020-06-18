@@ -23,11 +23,14 @@ class index extends React.Component {
    
     async getDocumentContent (type,id) {
         var resultData = null;
+
+        console.log('type::', type);
+
         // Handle contenty id type
         if (type ==="negotiations"){
           resultData = await negotiationHelper.lastVersion(id);
           data = resultData.data;
-          mimetype = data.mimetype;
+          mimetype = resultData.dataType;
         }
         if (type ==="TSA"){
           resultData = await TSAHelperAPI.getTSAData(id);
@@ -37,7 +40,6 @@ class index extends React.Component {
 
         if (resultData){
 
-          //const buffer = Buffer.from(data.data.data);
           const buffer = Buffer(data,'base64');
           const fileAsBlob = new Blob([buffer], {type:mimetype});
           var blobUrl = URL.createObjectURL(fileAsBlob);
@@ -46,8 +48,8 @@ class index extends React.Component {
                            renderPage:true
           });
 
-          // Download
-
+          // Download  temporary
+          if (type ==="TSA"){
           const link = document.createElement('a');
           link.href = blobUrl;
           link.setAttribute('download', `DocVeritas TSA.${this.state.file}`);
@@ -57,7 +59,7 @@ class index extends React.Component {
           link.click();
           // 5. Clean up and remove the link
           link.parentNode.removeChild(link);
-
+        }
           
         }
       }

@@ -5,6 +5,7 @@ import CardModel from './CardModal';
 import TitleSearch from '../components/titleSearch';
 import Title from '../components/title';
 import Search from '../components/search';
+import authHelper from '../components/helper/authHelper';
 
 class Home extends React.Component {
 constructor(props){
@@ -12,11 +13,14 @@ constructor(props){
  this.state = {
 	loading: false
   };
-
+  // Setting home root
+  
 }
 
 
 render() {
+	  authHelper.SetStore('originPath', '/');
+	  authHelper.BackToHistory();
 	  return (
 		<Container>
 			
@@ -60,7 +64,7 @@ render() {
 															 imsSrc="/images/assinatura-digital.svg"
 															 buttonText="Ver mais.." 
 															 buttonAction="/assinatura-digital"
-															 buttonStatus="disabled" 
+															 buttonStatus="active" 
 															 text="Vinculada o documento criado digitalemente, a um certificado digital."
 															 />
 						</div>

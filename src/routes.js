@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch} from "react-router-dom"
+import { BrowserRouter, Route,Router} from "react-router-dom"
 
 
 import Editor from "./components/FileEditor/index";
@@ -9,15 +9,16 @@ import SeloEletronico from './components/selo-eletronico';
 import AssinaturaDigital from './components/assinatura-digital';
 import CertificadoSSL from './components/certificado-ssl';
 
-import Auth from './components/auth/auth'	
 import index from "./pages";
 import Propor from './components/assinatura-digital/propor';
 import Gerir from './components/assinatura-digital/gerir';
 import Modelo from './components/assinatura-digital/modelo';
+import Rever from './components/assinatura-digital/gerir/Rever';
 
 import Viewer from "./components/viewer/";
 import Footer from './pages/Footer';
 import MenuHeader from './pages/MenuHeader';
+import history from './pages/history';
 
 class Routes extends Component {
         constructor (props) {
@@ -50,33 +51,33 @@ render () {
 
 return (
     <BrowserRouter>
-      <MenuHeader></MenuHeader>
-      <Switch>
-        <Route exact path="/" component={index}/> 
-        <Route exact path="/auth" component={Auth}/>
-        <Route exact path="/viewer" component={Viewer}/> 
+      <Router history={history}>
+        <MenuHeader></MenuHeader>
+          <Route exact path="/" component={index}/> 
+          <Route exact path="/viewer" component={Viewer}/> 
 
-        {/** routes selo temporal**/}
-        <Route exact path="/selo-temporal" component={SeloTemporal}/> 
+          {/** routes selo temporal**/}
+          <Route exact path="/selo-temporal" component={SeloTemporal}/> 
 
-        {/** routes selo eletronico**/}
-        <Route exact path="/selo-eletronico" component={SeloEletronico}/> 
+          {/** routes selo eletronico**/}
+          <Route exact path="/selo-eletronico" component={SeloEletronico}/> 
 
-        {/** routes assiatura digital**/}
-        <Route exact path="/assinatura-digital/" component={AssinaturaDigital}/> 
-        <Route exact path="/assinatura-digital/propor" component={Propor}/> 
-        <Route exact path="/assinatura-digital/gerir" component={Gerir}/> 
-        <Route exact path="/assinatura-digital/recebidos" component={Gerir}/> 
-        <Route exact path="/assinatura-digital/enviados" component={Gerir}/> 
-        <Route exact path="/assinatura-digital/arquivados" component={Gerir}/> 
-        <Route exact path="/assinatura-digital/modelo" component={Modelo}/> 
-        <Route exact path="/assinatura-digital/editor" component={Editor}/>
+          {/** routes assiatura digital**/}
+          <Route exact path="/assinatura-digital/" component={AssinaturaDigital}/> 
+          <Route exact path="/assinatura-digital/propor" component={Propor}/> 
+          <Route exact path="/assinatura-digital/gerir" component={Gerir}/> 
+          <Route exact path="/assinatura-digital/recebidos" component={Gerir}/> 
+          <Route exact path="/assinatura-digital/enviados" component={Gerir}/> 
+          <Route exact path="/assinatura-digital/arquivados" component={Gerir}/> 
+          <Route exact path="/assinatura-digital/modelo" component={Modelo}/> 
+          <Route exact path="/assinatura-digital/editor" component={Editor}/>
+          <Route exact path="/assinatura-digital/rever" component={Rever}/>
 
-        {/** routes certificado ssl**/}
-        <Route exact path="/certificado-ssl" component={CertificadoSSL}/> 
+          {/** routes certificado ssl**/}
+          <Route exact path="/certificado-ssl" component={CertificadoSSL}/> 
 
-        </Switch>
-        <Footer></Footer>
+          <Footer></Footer>
+      </Router>
      </BrowserRouter>
      
  );

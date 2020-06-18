@@ -17,7 +17,7 @@ import axios from 'axios';
           if(error.response && error.response.status ==401)
             window.location.replace(env.httpProtocol
               +env.serverHost + ':'
-              +env.serverPort
+              +env.serverPort 
               +env.serverAuth);
 
       });

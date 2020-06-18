@@ -3,10 +3,10 @@ import {Link} from "react-router-dom";
 import { Button, Card, Form} from 'react-bootstrap'
 import AddModal from "./AddModal"
 import axios from "axios";
-import axiosHelper from '../helper/axiosHelper';
+import axiosHelper from '../../helper/axiosHelper';
 import * as env from '../../../env';
 import {ClipLoader} from "react-spinners";
-import paramHelper from '../helper/paramHelper';
+import paramHelper from '../../helper/paramHelper';
  
 let id = null;
 class Rever extends Component {
@@ -24,7 +24,8 @@ this.handleEndpoint = this.handleEndpoint.bind(this);
 
 // get param and decode
 const param = paramHelper.base64ParamDecode();
-id=param.negotiationId;
+
+id=param.id;
 
 }
 
@@ -81,7 +82,7 @@ async handleEndpoint () {
 
   let negotiationId = await axiosHelper.axiosPost(url,data, paramHeaders);
 
-  window.location.href = '/gerir';
+  window.location.href = '/assinatura-digital/gerir';
 
 
 }
@@ -95,16 +96,15 @@ return (
 
  <Form className="formBasicEnviar">  
    
-<h2>Rever e enviar</h2>
-    <br></br>    
+<h2 className="title">Rever e enviar</h2>
    <Form.Group controlId="formBasicEnviar">
     <Form.Label>Assunto</Form.Label>
-    <Form.Control type="email" placeholder="introduzir assunto" name="subject" onChange={this.handleChange} />
+    <Form.Control type="email" placeholder="introduzir o assunto" name="subject" onChange={this.handleChange} />
    </Form.Group>
   
    <Form.Group controlId="ControlTextArea">
     <Form.Label>Mensagem de correio eletronico</Form.Label>
-    <Form.Control as="textarea" placeholder= "introduzir mensagem" name="text" onChange={this.handleChange} />
+    <Form.Control as="textarea" placeholder= "introduzir a mensagem" name="text" onChange={this.handleChange} />
   </Form.Group>
 
   <Form.Group controlId="ControlText">
@@ -112,8 +112,8 @@ return (
     <Form.Control placeholder= "name1@example.com, name2@example.com " name="to" onChange={this.handleChange} />
   </Form.Group> 
 
-<Button variant='danger' href="/">Voltar</Button> <Button className="buttonLoad" onClick={this.handleEndpoint} 
-disable={loading} className='primary' >
+ <Button className="buttonLoad" onClick={this.handleEndpoint} 
+ className='primary' >
   {loading && (
   <i className="fa fa-refresh fa-spin"></i>)}
   {loading && <span>loading</span>}
