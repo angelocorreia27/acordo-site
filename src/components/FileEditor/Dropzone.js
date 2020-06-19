@@ -17,7 +17,6 @@ function DropzoneWithoutDrag() {
         
       </div>
       <aside>
-        
         <ul>{files}</ul>
       </aside>
     </section>
@@ -47,11 +46,6 @@ onChangeHandler = async event=>{
   console.log(event.target.files[0])
 
   const data = this.props.postData; 
-
-  //data.append('owner', uuid()); // email do utilizador em sessao
-  data.append('title', 'title_'+d.getTime());
-  data.append('description', 'description_'+d.getTime());
-  //data.append('dataType', 'file');
   data.append('fileData', event.target.files[0]);
 
   const url = this.props.postUrl;
@@ -70,17 +64,12 @@ onChangeHandler = async event=>{
 
     return (
 
-    <center>
-             
-  <div align="center">
-   
-   <DropzoneWithoutDrag/>
-   <input type="file" name="file" onChange={this.onChangeHandler}/>
-
-
-  </div>
-
-
+    <center>     
+      <div align="center">
+      
+      {/* <DropzoneWithoutDrag/> */}
+      <input type="file" name="file" onChange={this.onChangeHandler}/>
+      </div>
     </center>
   )}
 

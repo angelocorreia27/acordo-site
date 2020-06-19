@@ -1,4 +1,5 @@
 import React from "react";
+import { Col, Row, Button } from 'react-bootstrap'
 import negotiationHelper from '../agreements/negotiationHelperAPI';
 import TSAHelperAPI from '../tsaAPI/TSAHelperAPI';
 import FileViewerComp from './FileViewerComp';
@@ -20,7 +21,21 @@ class index extends React.Component {
         renderPage:false
       }
     }  
-   
+    onButtonClick = event => {
+      event.preventDefault();
+
+      const link = document.createElement('a');
+      link.href = this.state.file;
+      link.setAttribute('download', `${this.state.file}`);
+      // 3. Append to html page
+      document.body.appendChild(link);
+      // 4. Force download
+      link.click();
+      // 5. Clean up and remove the link
+      link.parentNode.removeChild(link);
+    
+      }
+
     async getDocumentContent (type,id) {
         var resultData = null;
 
@@ -66,8 +81,6 @@ class index extends React.Component {
 
     componentDidMount(){
       let param = paramHelper.base64ParamDecode();
-      console.log("param.id", param.id);
-      console.log("param.type", param.type);
 
       if (param.id !==null)
         this.getDocumentContent(param.type, param.id)
@@ -79,14 +92,14 @@ class index extends React.Component {
       let pageToRender= <></>
      // this.state.file = 'images/bg01.png';
      // this.state.fileType = 'png';
-      
       if (this.state.renderPage)
         pageToRender=<FileViewerComp file={this.state.file} fileType={this.state.fileType}/>
           
       return (
-          <>
-          {pageToRender}
-          </>
+          <Col>
+            <Button size="sm" className="buttonCenter" onClick={this.onButtonClick}>Guardar PDF</Button>
+            {pageToRender}
+          </Col>
        
       )
     }

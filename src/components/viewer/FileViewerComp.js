@@ -18,8 +18,6 @@ class FileViewerComp extends Component {
   constructor(props){
     super(props);
     
-    console.log("type", props.fileType);
-    console.log("file", props.file);
   }  
 
   render() {

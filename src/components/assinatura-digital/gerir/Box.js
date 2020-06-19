@@ -71,7 +71,7 @@ class Inbox extends Component {
       3 - Experira em breve os que expiredData é em 1 mês  (ver se necessário)
       4 - Concluido: assinado por ambos (quando é necessario assinar) (ambos parties deal agree true)
      */
-    
+    if (acordosToFilter){
       switch (filter){
         case 'Enviados':
           // code block
@@ -101,6 +101,7 @@ class Inbox extends Component {
       // authHelper.
       
       this.setState({ acordos })
+    }
   
   }
 

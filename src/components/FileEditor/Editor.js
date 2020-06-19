@@ -15,6 +15,8 @@ import * as env from '../../env';
 import paramHelper from '../helper/paramHelper';
 import authHelper from '../helper/authHelper';
 
+const queryString = require('query-string');
+
 const debug = Debug('editor')
 debug.enabled = true
 
@@ -83,10 +85,11 @@ export default class Editor extends React.Component {
       footer: "",
       loading: false,
       showPopup: false,
-      title: "title",
-      description: "description"
+      title: "",
+      description: ""
 
     }
+
     authHelper.RequiredAuth(window.location.pathname);
     //console.log(window.location.pathname);
     this.updateContent = this.updateContent.bind(this)
@@ -97,10 +100,11 @@ export default class Editor extends React.Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.onCreateEditor = this.onCreateEditor.bind(this)
     this.setEditorsContent = this.setEditorsContent.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
     this.editor = {} // ?
     this.exampleNumber = this.props.exampleNumber
     // fill body with exemple
-    this.state = "teste" //examples[0] // body footer header
+    //this.state = "teste" //examples[0] // body footer header
     window.$ = $
 
   }
@@ -114,7 +118,18 @@ export default class Editor extends React.Component {
       footer: newContent.footer
     })
   }
+  componentDidMount(){
+    // param
+    const pathurl = window.location.search;    
+    const strParam = queryString.parse(pathurl);
+    if((strParam.description) || (strParam.title)){
+      //this.setState({title:strParam.title, description:strParam.description});
+      this.state.title = strParam.title;
+      this.state.description = strParam.description;
+    }
+    console.log('this.state.title', this.state.title);
 
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.content) {
       //debug(nextProps.content)
@@ -170,10 +185,7 @@ export default class Editor extends React.Component {
     //console.log('document', this.editor.body.getData());
     //console.log('header', htmlOptimization(this.state.header));
 
-
-
     const data = new FormData();
-
     data.append('title', this.state.title);
     data.append('description', this.state.description);
     data.append('dataType', 'html');
@@ -262,22 +274,16 @@ export default class Editor extends React.Component {
           <Row className={footer}>
             <Col md={2} md={8} sm={12}><br></br>
 
-              <Form onSubmit={this.submitHandler}>
-                <Form.Group controlId="formBasicTitulo">
-                  <Form.Label>Nome documento</Form.Label>
-                  <Form.Control type="text" placeholder="Escreva um nome para o documento" name="title" onChange={this.changeHandler} />
-                </Form.Group>
-                <Form.Group controlId="formBasicDescricao">
-                  <Form.Label>Descricão documento</Form.Label>
-                  <Form.Control type="text" placeholder="Escreva uma descricão para o documento" name="description" onChange={this.changeHandler} />
-                </Form.Group>
+              <Form >
+                
                 <Button onClick={this.onButtonClick}
                   disabled={loading}
                   style={{ float: "Right" }}
                 >
                   {loading && <i className="fa fa-refresh fa-spin"></i>}
                         Confirmar
-                        </Button>
+                </Button>
+                
               </Form>
             </Col>
           </Row>
