@@ -112,7 +112,7 @@ return (
     <Form.Control placeholder= "name1@example.com, name2@example.com " name="to" onChange={this.handleChange} />
   </Form.Group> 
 
- <Button className="buttonLoad" onClick={this.handleEndpoint} 
+ <Button variant="outline-primary" className="buttonLoad" onClick={this.handleEndpoint} 
  className='primary' >
   {loading && (
   <i className="fa fa-refresh fa-spin"></i>)}

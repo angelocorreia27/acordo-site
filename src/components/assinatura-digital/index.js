@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button} from 'react-bootstrap';
+import {ASSINATURA_DIGITAL} from '../../store/constant';
 
 class Home extends React.Component {
 constructor(props){
@@ -22,8 +24,7 @@ render() {
 								<p>Com <strong>DocVeritas Digital ID, </strong>podes criar documentos, contratos ou declarações escrita
 								, com um caracter comprovativo, de forma a garantir a integridade 
 								,autenticidade, confidencialidade e não repudio. Destinada a todas as entidades e particulares, para auxiliar no mecanismos de criação, submissão e publicação dos contratos   </p>
-								<a href="/assinatura-digital/propor" className="button-p">
-								Iniciar</a>
+								<Button variant="outline-primary" className="button-p" href={ASSINATURA_DIGITAL.propor} >Iniciar</Button>
 								<div className="sweet-loading">
 								
 					</div>

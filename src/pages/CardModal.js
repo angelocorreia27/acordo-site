@@ -12,10 +12,10 @@ class CardModal extends React.Component {
     console.log('buttonStatus: ', buttonStatus);
     var toRender=null;
     if (buttonStatus==="active"){
-      toRender = <Button variant="primary" href={this.props.buttonAction} >{this.props.buttonText} </Button>;
+      toRender = <Button variant="outline-primary" href={this.props.buttonAction} >{this.props.buttonText} </Button>;
     }
     else{
-      toRender = <Button variant="primary" href={this.props.buttonAction} disabled >{this.props.buttonText} </Button>;
+      toRender = <Button variant="outline-primary" href={this.props.buttonAction} disabled >{this.props.buttonText} </Button>;
     }
     return (
       <>

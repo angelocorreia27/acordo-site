@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import { BrowserRouter, Route,Router} from "react-router-dom"
 
 
-import Editor from "./components/FileEditor/index";
 
 import SeloTemporal from './components/selo-temporal';
-import SeloEletronico from './components/selo-eletronico';
-import AssinaturaDigital from './components/assinatura-digital';
+
+import SeloDigital from './components/selo-digital';
+import CreateBusinessFlow from './components/selo-digital/forms/CreateBusinessFlow';
+import FlexComponent from './components/selo-digital/forms/FlexComponent';
+import FlexForm from './components/selo-digital/forms/FlexForm';
+import MyFlexForm from './components/selo-digital/forms/MyFlexForm';
+
+
 import CertificadoSSL from './components/certificado-ssl';
 
-import index from "./pages";
+
+import AssinaturaDigital from './components/assinatura-digital';
 import Propor from './components/assinatura-digital/propor';
 import Gerir from './components/assinatura-digital/gerir';
 import Modelo from './components/assinatura-digital/modelo';
 import Rever from './components/assinatura-digital/gerir/Rever';
 
+import Editor from "./components/FileEditor/index";
+import index from "./pages";
 import Viewer from "./components/viewer/";
 import Footer from './pages/Footer';
 import MenuHeader from './pages/MenuHeader';
@@ -59,8 +67,12 @@ return (
           {/** routes selo temporal**/}
           <Route exact path="/selo-temporal" component={SeloTemporal}/> 
 
-          {/** routes selo eletronico**/}
-          <Route exact path="/selo-eletronico" component={SeloEletronico}/> 
+          {/** routes Selo Digital**/}
+          <Route exact path="/selo-digital" component={SeloDigital}/> 
+          <Route exact path="/selo-digital/create-business-flow" component={CreateBusinessFlow}/> 
+          <Route exact path="/selo-digital/flexcomponent" component={FlexComponent}/> 
+          <Route exact path="/selo-digital/flexform" component={FlexForm}/> 
+          <Route exact path="/selo-digital/myflexform" component={MyFlexForm}/> 
 
           {/** routes assiatura digital**/}
           <Route exact path="/assinatura-digital/" component={AssinaturaDigital}/> 

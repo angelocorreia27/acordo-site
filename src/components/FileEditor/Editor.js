@@ -161,8 +161,6 @@ export default class Editor extends React.Component {
     })
   }
 
-
-
   async onButtonClick() {
     /* Func Loading  confirmar acordo */
     this.setState({ loading: true });
@@ -276,9 +274,8 @@ export default class Editor extends React.Component {
 
               <Form >
                 
-                <Button onClick={this.onButtonClick}
-                  disabled={loading}
-                  style={{ float: "Right" }}
+                <Button variant="outline-primary" onClick={this.onButtonClick}
+                  className="Button"
                 >
                   {loading && <i className="fa fa-refresh fa-spin"></i>}
                         Confirmar

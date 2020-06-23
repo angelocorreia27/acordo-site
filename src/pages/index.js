@@ -6,6 +6,7 @@ import TitleSearch from '../components/titleSearch';
 import Title from '../components/title';
 import Search from '../components/search';
 import authHelper from '../components/helper/authHelper';
+import {CONSTANT} from '../store/constant';
 
 class Home extends React.Component {
 constructor(props){
@@ -42,7 +43,7 @@ render() {
 						<div className="divTableCell"><CardModel title="Selo temporal" 
 															 imsSrc="/images/selo-temporal.svg"
 															 buttonText="Ver mais.."
-															 buttonAction="/selo-temporal"
+															 buttonAction={CONSTANT.SELO_TEMPORAL}
 															 buttonStatus="active" 
 															 text="Atesta o momento temporal da criação de um documento no servidor."
 															 />
@@ -50,8 +51,8 @@ render() {
 						<div className="divTableCell"><CardModel title="Selo digital" 
 															 imsSrc="/images/selo-eletronico.svg"
 															 buttonText="Ver mais.." 
-															 buttonAction="/selo-eletronico"
-															 buttonStatus="disabled" 
+															 buttonAction={CONSTANT.SELO_DIGITAL}
+															 buttonStatus="active" 
 															 text="Visa criar um selo digitalmente válido, com um caracter comprovante."
 															 />
 						</div>
@@ -63,7 +64,7 @@ render() {
 						<div className="divTableCell"><CardModel title="Assinatura digital" 
 															 imsSrc="/images/assinatura-digital.svg"
 															 buttonText="Ver mais.." 
-															 buttonAction="/assinatura-digital"
+															 buttonAction={CONSTANT.ASSINATURA_DIGITAL}
 															 buttonStatus="active" 
 															 text="Vinculada o documento criado digitalemente, a um certificado digital."
 															 />
@@ -71,7 +72,7 @@ render() {
 						<div className="divTableCell"><CardModel title="Certificados SSL" 
 															 imsSrc="/images/certificado-ssl.svg"
 															 buttonText="Ver mais.."
-															 buttonAction="/certificado-ssl"
+															 buttonAction={CONSTANT.CERTIFICADO_SSL}
 															 buttonStatus="disabled" 
 															 text="Autentica a identidade de um site e criptografa as informações enviadas para o servidor."
 															 />

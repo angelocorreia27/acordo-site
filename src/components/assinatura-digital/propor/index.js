@@ -63,7 +63,7 @@ class Propor extends React.Component {
 					<Row>
 						
 						<Col md={2} md={8} sm={12}>
-							<Button size="sm" className="buttonCenter" onClick={this.submitHandler}> Iniciar edição </Button>
+							<Button variant="outline-primary" className="buttonCenter"onClick={this.submitHandler} >Iniciar edição </Button>
 							<Dropzone postUrl={url} postData={data} redirectUrl={redirectTo}/>
 						</Col>
 					</Row>

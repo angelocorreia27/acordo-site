@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav'
 import NavRight from '../pages/NavRight';
+import {CONSTANT} from '../store/constant';
 
 class MenuHeader extends React.Component {
 constructor(props){
@@ -28,7 +29,16 @@ constructor(props){
 
 render() {
 	
-	
+	const routPath = window.location.pathname.split('/');
+	var seloDigitalMenu = null;
+
+	if (routPath[1] === CONSTANT.SELO_DIGITAL){
+		seloDigitalMenu = <>
+						  <Nav.Item>
+						  		<Nav.Link href="/selo-digital/myflexform">Meus negócios</Nav.Link> 
+						  </Nav.Item>
+						  </>
+	}
 	return (
 		<div>
 			
@@ -45,13 +55,15 @@ render() {
 								</Nav.Link>
 							</Nav.Item>
 							<Nav.Item>
-	{/*	<Nav.Link href="/assinatura-digital/gerir" eventKey="/gerir">Gerir</Nav.Link>*/ }
+								{/*	<Nav.Link href="/assinatura-digital/gerir" eventKey="/gerir">Gerir</Nav.Link>*/ }
 							</Nav.Item>
 							<Nav.Item>
-	{/*	<Nav.Link href="/assinatura-digital/modelo" eventKey="/modelo">Modelo</Nav.Link> */}
+								{/*	<Nav.Link href="/assinatura-digital/modelo" eventKey="/modelo">Modelo</Nav.Link> */}
 							</Nav.Item>
+							{seloDigitalMenu}
+						</Nav>
+					</div>
 
-						</Nav></div>
 					<div className="divTableCell">
 						<Nav className="justify-content-end"
 						
