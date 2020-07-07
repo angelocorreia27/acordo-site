@@ -6,15 +6,13 @@ import axios from 'axios';
     async axiosGet (url,HeaderOptions ){
 
     return await axios.get(url,HeaderOptions)
-      .then(response => {
-        console.log('response ', response.data);
-                                    
+      .then(response => {                                    
         return response.data; 
       })
       .catch(error => {
-        console.log('get error text', error);
           // redirect to login if user doesn't have session
-          if(error.response && error.response.status ==401)
+          //console.log('response status: ', error.response.data)
+          if(error.response && error.response.status ===401)
             window.location.replace(env.httpProtocol
               +env.serverHost + ':'
               +env.serverPort 
@@ -30,14 +28,13 @@ import axios from 'axios';
             return response.data; 
           })
           .catch(error => {
-              console.log('post error text', error);
               // redirect to login if user doesn't have session
-              
-              if(error.response && error.response.status ==401)
+              //  console.log('response status: ', error.response.data)
+               if(error.response && error.response.status ===401)
                 window.location.replace(env.httpProtocol
                   +env.serverHost + ':'
                   +env.serverPort
-                  +env.serverAuth);
+                  +env.serverAuth); 
               
               
           });

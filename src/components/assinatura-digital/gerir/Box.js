@@ -3,7 +3,7 @@ import { Icon, Menu } from 'antd';
 import { Button, Form, FormControl, Row, Col, Card, Table, Tabs, Tab } from 'react-bootstrap';
 import axiosHelper from '../../helper/axiosHelper';
 import * as env from '../../../env';
-import paramHelper from './../../helper/paramHelper';
+import paramHelper from './../../helper/UtilHelper';
 import authHelper from '../../helper/authHelper';
 
 const { SubMenu } = Menu;

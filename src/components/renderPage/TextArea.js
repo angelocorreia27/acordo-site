@@ -1,5 +1,5 @@
 import React from "react";
-import {Row, Col, Card, Form, Button} from 'react-bootstrap'; 
+import {Col, Form} from 'react-bootstrap'; 
 
 export default props => (
   <Form.Group as={Col} sm={6}>

@@ -6,7 +6,7 @@ import axios from "axios";
 import axiosHelper from '../../helper/axiosHelper';
 import * as env from '../../../env';
 import {ClipLoader} from "react-spinners";
-import paramHelper from '../../helper/paramHelper';
+import paramHelper from '../../helper/UtilHelper';
  
 let id = null;
 class Rever extends Component {

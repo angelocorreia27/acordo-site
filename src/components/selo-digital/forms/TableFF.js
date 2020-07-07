@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import * as  reactBootstrap from 'react-bootstrap';
+import {Row, Col, Table} from 'react-bootstrap';
 import 'antd/dist/antd.css';
 import { Radio } from 'antd';
 import axiosHelper from '../../helper/axiosHelper';
+import authHelper from '../../helper/authHelper';
 import BeatLoader from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
+import {Base64} from 'js-base64';
+import * as env from '../../../env';
 
 let Arraychecked = [];
 const override = css`
@@ -28,12 +31,16 @@ export default class TableFF extends Component {
 
 
     async  componentDidMount() {
-        const paramHeaders = { headers: { 'Accept': 'application/json' }, withCredentials: true };
+        const token = Base64.encode(await authHelper.getHeaderToken());
+        const paramHeaders = { headers: { 'Accept': 'application/json' ,
+                                        'Authorization': 'Bearer ' +token
+                            }, withCredentials: true };
 
-        let resultForm = null; //await axiosHelper.axiosGet('/ff/list/', paramHeaders);
-        if (resultForm){
+        let resultForm = await axiosHelper.axiosGet(env.dataBaseEndPoint +'/ff/list/'+'undefined', paramHeaders);
+        if (resultForm && resultForm.ebit_ffs){
             this.setState({ listFf: resultForm.ebit_ffs });
-        }
+        }else
+            this.setState({loading:false});
     }
 
     
@@ -54,12 +61,12 @@ export default class TableFF extends Component {
     render() {
        
         return (
-            <reactBootstrap.Row>
-                <reactBootstrap.Col >
-                    <reactBootstrap.Table responsive>
+            <Row>
+                <Col >
+                    <Table responsive>
                         <thead>
                             <tr>
-                                <th scope="col">Flex Field</th>
+                                <th scope="col">Componentes</th>
                                 <th scope="col">Incorporar</th>
                             </tr>
                         </thead>
@@ -89,9 +96,9 @@ export default class TableFF extends Component {
                                 )}
 
                         </tbody>
-                    </reactBootstrap.Table>
-                </reactBootstrap.Col>
-            </reactBootstrap.Row>
+                    </Table>
+                </Col>
+            </Row>
 
         )
     }

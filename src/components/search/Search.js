@@ -1,7 +1,7 @@
 import React from 'react';
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-import paramHelper from '../helper/paramHelper';
+import paramHelper from '../helper/UtilHelper';
 import {InputGroup, FormControl,Button} from 'react-bootstrap'
 
 const headers = {headers: {'Content-type': 'multipart/form-data'}, withCredentials: true};
@@ -53,7 +53,7 @@ render() {
 					onChange={this.changeHandler}
 				/>
 				<InputGroup.Append>
-					<Button variant="outline-secondary" onClick={this.onSearchClick}>Search</Button>
+					<Button variant="outline-secondary" onClick={this.onSearchClick}>Procurar</Button>
 				</InputGroup.Append>
 			</InputGroup>
 		</div>

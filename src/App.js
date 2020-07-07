@@ -36,8 +36,7 @@ class App extends Component {
   render () {
     return (
     
-      <Routes/>
-
+       <Routes/>
       );
       
   }

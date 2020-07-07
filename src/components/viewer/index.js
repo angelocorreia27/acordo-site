@@ -3,7 +3,7 @@ import { Col, Row, Button } from 'react-bootstrap'
 import negotiationHelper from '../agreements/negotiationHelperAPI';
 import TSAHelperAPI from '../tsaAPI/TSAHelperAPI';
 import FileViewerComp from './FileViewerComp';
-import paramHelper from '../helper/paramHelper';
+import paramHelper from '../helper/UtilHelper';
 
 var mime = require('mime-types')
 

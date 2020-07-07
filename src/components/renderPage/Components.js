@@ -4,11 +4,14 @@ import Text from "./Text";
 import TextArea from "./TextArea";
 
 const Components = {
-  button: Button,
-  text: Text
+  Button: Button,
+  Text: Text,
+  TextArea: TextArea
 };
 
 export default block => {
+  //console.log('block: ', block);
+
   if (typeof Components[block.component] !== "undefined") {
     return React.createElement(Components[block.component], {
       key: block.id,

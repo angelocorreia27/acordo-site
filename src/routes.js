@@ -10,6 +10,8 @@ import CreateBusinessFlow from './components/selo-digital/forms/CreateBusinessFl
 import FlexComponent from './components/selo-digital/forms/FlexComponent';
 import FlexForm from './components/selo-digital/forms/FlexForm';
 import MyFlexForm from './components/selo-digital/forms/MyFlexForm';
+import RenderPage from './components/renderPage/RenderPage';
+import RenderComponent from './components/renderPage/RenderComponent';
 
 
 import CertificadoSSL from './components/certificado-ssl';
@@ -23,6 +25,7 @@ import Rever from './components/assinatura-digital/gerir/Rever';
 
 import Editor from "./components/FileEditor/index";
 import index from "./pages";
+
 import Viewer from "./components/viewer/";
 import Footer from './pages/Footer';
 import MenuHeader from './pages/MenuHeader';
@@ -61,6 +64,9 @@ return (
     <BrowserRouter>
       <Router history={history}>
         <MenuHeader></MenuHeader>
+        {/* <RenderComponent commoditieId="5" name="teste fff"/> */}
+
+
           <Route exact path="/" component={index}/> 
           <Route exact path="/viewer" component={Viewer}/> 
 

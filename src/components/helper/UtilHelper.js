@@ -25,6 +25,9 @@ const queryString = require('query-string');
 
     return strEncode;
 
+},
+initCatp(s){
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
   
   }

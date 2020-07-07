@@ -12,7 +12,7 @@ import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
 //import axios from 'axios';
 //import { Base64 } from 'js-base64';
-import paramHelper from '../helper/paramHelper';
+import paramHelper from '../helper/UtilHelper';
 import authHelper from '../helper/authHelper';
 
 const queryString = require('query-string');

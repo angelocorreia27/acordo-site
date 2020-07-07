@@ -35,7 +35,7 @@ render() {
 	if (routPath[1] === CONSTANT.SELO_DIGITAL){
 		seloDigitalMenu = <>
 						  <Nav.Item>
-						  		<Nav.Link href="/selo-digital/myflexform">Meus negócios</Nav.Link> 
+						  		<Nav.Link href="/selo-digital/myflexform">Meus API's</Nav.Link> 
 						  </Nav.Item>
 						  </>
 	}

@@ -2,7 +2,7 @@ import React from 'react';
 import uuid from 'uuid/v4'
 import * as env from '../../env';
 import {useDropzone} from 'react-dropzone';
-import paramHelper from '../helper/paramHelper';
+import paramHelper from '../helper/UtilHelper';
 import axiosHelper from '../helper/axiosHelper';
 
 function DropzoneWithoutDrag() {
