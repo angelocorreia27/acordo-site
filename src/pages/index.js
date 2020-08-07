@@ -40,7 +40,7 @@ render() {
 					<div className="divTableRow"><br/></div>
 
 					<div className="divTableRow">
-						<div className="divTableCell"><CardModel title="Selo temporal" 
+						<div className="divTableCell"><CardModel title="DocTime" 
 															 imsSrc="/images/selo-temporal.svg"
 															 buttonText="Ver mais.."
 															 buttonAction={CONSTANT.SELO_TEMPORAL}
@@ -48,7 +48,7 @@ render() {
 															 text="Atesta o momento temporal da criação de um documento no servidor."
 															 />
 						</div>
-						<div className="divTableCell"><CardModel title="Selo digital" 
+						<div className="divTableCell"><CardModel title="E-SealStore" 
 															 imsSrc="/images/selo-eletronico.svg"
 															 buttonText="Ver mais.." 
 															 buttonAction={CONSTANT.SELO_DIGITAL}
@@ -61,7 +61,7 @@ render() {
 					<div className="divTableRow"><br/></div>
 
 					<div className="divTableRow">
-						<div className="divTableCell"><CardModel title="Assinatura digital" 
+						<div className="divTableCell"><CardModel title="YouDoc" 
 															 imsSrc="/images/assinatura-digital.svg"
 															 buttonText="Ver mais.." 
 															 buttonAction={CONSTANT.ASSINATURA_DIGITAL}

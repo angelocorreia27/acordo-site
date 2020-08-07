@@ -77,26 +77,21 @@ class CSRComponent extends React.Component {
                             <FormWithConstraints ref="formCSR" onSubmit={this.submitHandler} noValidate >
 
                                 <Form.Group controlId="formBasicCommonName">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2}>Nome comum</Form.Label>
-                                        <Col>
+                                        <Form.Label >Nome comum</Form.Label>
                                             <Form.Control type="text"
                                                 required
                                                 placeholder="Este é o nome qualificado do seu negócio"
                                                 name="commonName"
                                                 value={this.state.commonName}
                                                 onChange={this.blurHandler} />
-                                        </Col>
                                         <FieldFeedbacks for="commonName">
                                                 <FieldFeedback when="valueMissing">Por favor o Nome comum!</FieldFeedback>
                                             </FieldFeedbacks>
-                                    </Row>
+                                   
                                 </Form.Group>
                                 
                                 <Form.Group controlId="formBasicOrganizationName">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2}>Nome da organização</Form.Label>
-                                        <Col>
+                                        <Form.Label >Nome da organização</Form.Label>
                                             <Form.Control type="text"
                                                 required
                                                 placeholder="Geralmente, o nome legal de uma empresa e deve incluir sufixos, como Ltd., Inc. ou Corp."
@@ -106,14 +101,10 @@ class CSRComponent extends React.Component {
                                             <FieldFeedbacks for="organizationName">
                                                 <FieldFeedback when="valueMissing">Por favor o Nome da organização!</FieldFeedback>
                                             </FieldFeedbacks>
-                                        </Col>
-                                    </Row>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicOrganizationalUnit">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2} >Unidade da organização</Form.Label>
-                                        <Col>
+                                        <Form.Label >Unidade da organização</Form.Label>
                                             <Form.Control type="text"
                                                 required
                                                 placeholder="por exemplo. RH, Finanças, TI"
@@ -123,14 +114,10 @@ class CSRComponent extends React.Component {
                                             <FieldFeedbacks for="organizationalUnit">
                                                 <FieldFeedback when="valueMissing">Por favor introduza a Unidade da organização!</FieldFeedback>
                                             </FieldFeedbacks>
-                                        </Col>
-                                    </Row>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicCity">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2} >Cidade</Form.Label>
-                                        <Col>
+                                        <Form.Label >Cidade</Form.Label>
                                             <Form.Control type="text"
                                                 required
                                                 name="city"
@@ -139,14 +126,10 @@ class CSRComponent extends React.Component {
                                             <FieldFeedbacks for="city">
                                                 <FieldFeedback when="valueMissing">Por favor introduza a Cidade!</FieldFeedback>
                                             </FieldFeedbacks>
-                                        </Col>
-                                    </Row>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicState">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2} >Província ou região</Form.Label>
-                                        <Col>
+                                        <Form.Label >Província ou região</Form.Label>
                                             <Form.Control type="text"
                                                 required
                                                 placeholder="Isto não deve ser abreviado, por exemplo: São Vicente, Normandia, Nova Jersey"
@@ -156,14 +139,10 @@ class CSRComponent extends React.Component {
                                             <FieldFeedbacks for="state">
                                                 <FieldFeedback when="valueMissing">Por favor introduza a Província ou região!</FieldFeedback>
                                             </FieldFeedbacks>
-                                        </Col>
-                                    </Row>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicContry">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2}>País</Form.Label>
-                                        <Col>
+                                        <Form.Label >País</Form.Label>
                                             <Form.Control type="text"
                                                 required maxLength={2} minLength={2}
                                                 placeholder="O código ISO de duas letras para o país em que sua organização está localizada. Ex: CV"
@@ -175,14 +154,10 @@ class CSRComponent extends React.Component {
                                                 <FieldFeedback when="patternMismatch">País deve ter dois Caracteres!</FieldFeedback>
                                                 <FieldFeedback when={value => !/[A-Z]/.test(value)} warning>Deve ter letra em mauísculo</FieldFeedback>
                                             </FieldFeedbacks>
-                                        </Col>
-                                    </Row>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicEmailAddress">
-                                    <Row>
-                                        <Form.Label column="lg" lg={2}>Email</Form.Label>
-                                        <Col>
+                                        <Form.Label >Email</Form.Label>
                                             <Form.Control type="text"
                                                 required
                                                 name="emailAddress"
@@ -191,8 +166,6 @@ class CSRComponent extends React.Component {
                                             <FieldFeedbacks for="emailAddress">
                                                 <FieldFeedback when={value => !/\S+@\S+/.test(value)}>Endereço de Email inválido!.</FieldFeedback>
                                             </FieldFeedbacks>
-                                        </Col>
-                                    </Row>
                                 </Form.Group>
                             </FormWithConstraints>
                         </Card.Body>

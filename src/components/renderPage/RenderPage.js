@@ -1,14 +1,15 @@
 import React from 'react';
-import { Card, Form, Button, InputGroup, FormControl, DropdownButton, Dropdown } from 'react-bootstrap';
-import Components from "./Components.js";
+import {Card, Button } from 'react-bootstrap';
 import axiosHelper from '../helper/axiosHelper';
 import authHelper from '../helper/authHelper';
-import RenderComponent from './RenderComponent';
+import RenderComponentForm from './RenderComponentForm';
+import RenderComponentList from './RenderComponentList';
 import BeatLoader from "react-spinners/BeatLoader";
 import * as env from '../../env';
 import { css } from "@emotion/core";
 import { Base64 } from 'js-base64';
-
+import UtilHelper from '../helper/UtilHelper';
+import Pagamento from '../../components/pagamento';
 const override = css`
   display: block;
   margin: 0 px;
@@ -16,16 +17,17 @@ const override = css`
   border-color: rgb(7, 172, 238);
 `;
 
-
-let ffComponent = [];
-
 class RenderPage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      listcommoditie_ff:[]
+      commodityId:'',
+      marketId:'',
+      commodity: {},
+      data:{},
+      listcommoditie_ff: []
     };
   }
 
@@ -37,46 +39,96 @@ class RenderPage extends React.Component {
         'Authorization': 'Bearer ' + token
       }, withCredentials: true
     };
+    const param = UtilHelper.base64ParamDecode(window.location.search);
+    var commodityId = null;
+    var marketId = null;
 
+    if (this.props.commodityId) // Visualização
+    {
+      commodityId = this.props.commodityId;
+      marketId = this.props.marketId;
+    }
+    else // Execução
+    {
+      commodityId = param.commodityId;
+      marketId = param.marketId;
+     // this.setState({ allowSave: true });
+    }
+    this.setState({commodityId:commodityId, marketId:marketId});
     const userId = 1;
-    console.log('commoditieId:: ', this.props.commoditieId);
-    const result = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie_ff/list/' + this.props.commoditieId, paramHeaders);
-    console.log('result:: ', result);
-    if (result && result.ebit_commoditie_ffs)
-      this.setState({listcommoditie_ff:result.ebit_commoditie_ffs, loading:false});
+    const resultCommodity = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie/' + commodityId, paramHeaders);
 
-    // TODO => Create a handle submit to save in data/store entire form
-    /* 1. post to /data/store
-         json body: {commoditieId:
-                     ffId:}
+    const result = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie_ff/list/' + commodityId, paramHeaders);
+    if (result && result.ebit_commoditie_ffs
+      && resultCommodity && resultCommodity.ebit_commodity)
+      this.setState({ commodity: resultCommodity.ebit_commodity, listcommoditie_ff: result.ebit_commoditie_ffs, loading: false });
+    else
+      this.setState({loading:false});
 
-       2. post to /data/storeData to store entire json from page rendered
-       json body: {}
-    */
-
+    console.log('listcommoditie_ff: ', this.state.listcommoditie_ff);
   }
 
+  // send data to parent, ExecuteBusinessFlow
+  sendData = () => {
+    this.props.parentCallback(this.state);
+}
+// receive data inserted in components
+callbackFunction(data) {
+  this.setState({data:data});
+  this.sendData();
+}
+
+changeHandler = (e) => {
+  this.state.data[e.target.name]=e.target.value;
+  this.sendData();
+}
+
   render() {
-    {
-      // loop trhouth data and render all component from commoditie
-    }
     return (
-      <>
-        {!this.state.listcommoditie_ff[0] && <div><BeatLoader
+      <div className="container">
+
+        {
+          this.state.allowSave ? <Card><Card.Header>
+            <Card.Title as="h5">{this.state.commodity.name}</Card.Title>
+          </Card.Header>
+          </Card>
+            : null
+        }
+        <div><BeatLoader
           css={override}
           size={10}
           color={"#4893e9"}
-          loading={this.state.loading} /></div>}
+          loading={this.state.loading} /></div>
         {this.state.listcommoditie_ff.length > 0 ?
           (
             <Card>
-              {/* <Card.Header>
-          <Card.Title as="h5">{this.props.commodityName}</Card.Title>
-              </Card.Header> */}
+
               {
                 this.state.listcommoditie_ff.map((data, i) => {
-                  if (data && data.ebit_ff)
-                    return <RenderComponent key={data.ebit_ff.id} name={data.ebit_ff.name}> </RenderComponent>
+                  //TODO:// type: builtin // loadfrom folder path
+                  if (data && data.ebit_ff && data.ebit_ff.type === "form")
+                    return <RenderComponentForm key={data.ebit_ff.id} name={data.ebit_ff.name} 
+                            changeHandler={(e) => {this.changeHandler(e)}}
+                            parentCallback={this.callbackFunction.bind(this)}
+                            />
+                  else if (data && data.ebit_ff && data.ebit_ff.type === "list")
+                    return <RenderComponentList key={data.ebit_ff.id} name={data.ebit_ff.name}
+                            parentCallback={this.callbackFunction.bind(this)}
+                            /> 
+                  else if (data && data.ebit_ff && data.ebit_ff.type === "built-in"){
+                    var toRender = null;
+                    switch(data.ebit_ff.loadFrom){
+                      case 'Pagamento':
+                        toRender = <Pagamento key={data.ebit_ff.id} name={data.ebit_ff.name} 
+                                    changeHandler={(e) => {this.changeHandler(e)}}
+                                    parentCallback={this.callbackFunction.bind(this)}
+                                    />;
+                        break;
+                    
+                    }
+                    return toRender;
+                  }
+                    
                 })
               }
 
@@ -86,7 +138,16 @@ class RenderPage extends React.Component {
             <div colSpan={3}></div>
           )
         }
-      </>
+        {/* {
+          this.state.allowSave ? <Card>
+            <Card.Body>
+              <Button className="button-right" variant="outline-primary" onClick={this.submitHandler} >
+                Executar acção
+                </Button>
+            </Card.Body>
+          </Card> : null
+        } */}
+      </div>
 
     );
   }

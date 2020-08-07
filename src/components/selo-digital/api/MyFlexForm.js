@@ -6,8 +6,6 @@ import authHelper from '../../helper/authHelper';
 import * as  reactBootstrap from 'react-bootstrap';
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-import RenderPage from "../../renderPage/RenderPage";
-import RenderComponent from "../../renderPage/RenderComponent";
 import { SELO_DIGITAL } from '../../../store/constant';
 import { Base64 } from 'js-base64';
 import * as env from '../../../env';
@@ -20,9 +18,10 @@ export default class MyFlexForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      popup:false,
+      popup: false,
+      orgId: '',
       listCommod: [],
-      listCommoditiesFF:[]
+      listCommoditiesFF: []
     };
     this.handleSubMenuSelectionChange = this.handleSubMenuSelectionChange.bind(this);
     this.loadCommoditieFF = this.loadCommoditieFF.bind(this);
@@ -30,6 +29,11 @@ export default class MyFlexForm extends React.Component {
   }
 
   async componentDidMount() {
+    this.state.orgId = this.props.orgId;
+
+    console.log('commoditie state: ', this.state);
+    console.log('commoditie props: ', this.props);
+
     const token = Base64.encode(await authHelper.getHeaderToken());
     const paramHeaders = {
       headers: {
@@ -38,24 +42,24 @@ export default class MyFlexForm extends React.Component {
       }, withCredentials: true
     };
 
-    const resultCommodities = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie/list', paramHeaders);
-    var listCommodFF =[];
-    if (resultCommodities && resultCommodities.ebit_commodities){
+    const resultCommodities = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie/list/' +this.props.orgId, paramHeaders);
+    var listCommodFF = [];
+    if (resultCommodities && resultCommodities.ebit_commodities) {
       this.setState({ listCommod: resultCommodities.ebit_commodities });
-      for (var i=0;i<this.state.listCommod.length;i++ ){
+      for (var i = 0; i < this.state.listCommod.length; i++) {
         const result = await this.loadCommoditieFF(this.state.listCommod[i].id);
         listCommodFF.push(result);
       }
-      this.setState({listCommoditiesFF:listCommodFF});
-  }
+      this.setState({ listCommoditiesFF: listCommodFF });
+    }
   }
   handleClick = e => {
     console.log('click ', e);
-    this.setState({popup:true});
+    this.setState({ popup: true });
   };
 
   hideModal = () => {
-    this.setState({popup:false});
+    this.setState({ popup: false });
   };
 
   handleSubMenuSelectionChange(e) {
@@ -68,7 +72,9 @@ export default class MyFlexForm extends React.Component {
       });
     }
   }
-   async loadCommoditieFF(cmId) {
+  async loadCommoditieFF(cmId) {
+    console.log('loadCommoditieFF ', cmId);
+
     const token = Base64.encode(await authHelper.getHeaderToken());
     const paramHeaders = {
       headers: {
@@ -77,17 +83,17 @@ export default class MyFlexForm extends React.Component {
       }, withCredentials: true
     };
     const resultCommoditiesFF = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie_ff/list/' + cmId, paramHeaders);
-    return  resultCommoditiesFF.ebit_commoditie_ffs;
+    return resultCommoditiesFF.ebit_commoditie_ffs;
   }
 
   render() {
     var index
     return (
       <Container>
-        <Row>
-          <Col><Button className="button-right" variant="outline-primary" href={SELO_DIGITAL.CreateBusinessFlow} >Novo</Button></Col>
+        {/* <Row>
+          <Col><Button className="button-right" variant="outline-primary" href={SELO_DIGITAL.CreateAPIFlow} >Novo</Button></Col>
         </Row>
-        <br />
+        <br /> */}
         <Row>
           <Col>
             <Card>
@@ -105,29 +111,29 @@ export default class MyFlexForm extends React.Component {
                       mode="inline"
                       theme="blue">
                       {this.state.listCommod.length > 0 ? (
-                        this.state.listCommod.map((item, index) =>{
+                        this.state.listCommod.map((item, index) => {
                           return <SubMenu
-                            key={"subMenu"+index}
+                            key={"subMenu" + index}
                             title={
-                                <span key={index}>{item.name}</span>
-                              }>
-                              <Menu.ItemGroup key={"menuGroup"+index} >
-                                <Menu.Item key={"menuItemVer"+index}> Ver API {item.name}</Menu.Item>
-                                
-                                { this.state.popup? 
-                                    <ModalPageRander commoditieId={item.id} commodityName={item.name}
-                                                    showModal={this.state.popup} hideModal={this.hideModal}/>
-                                    : null}
-                                
-                                {this.state.listCommoditiesFF.length > 0 ? (
-                                  this.state.listCommoditiesFF.map((innerItems, i) => {
-                                    if (innerItems[i] && innerItems[i].commoditieId===item.id)
-                                      return <Menu.Item key={"menuItem"+i}>{innerItems[i].ebit_commodity.name}</Menu.Item>;
-                                  }
-                                  )) : (
-                                    <></>
-                                  )}
-                              </Menu.ItemGroup>
+                              <span key={index}>{item.name}</span>
+                            }>
+                            <Menu.ItemGroup key={"menuGroup" + index} >
+                              <Menu.Item key={"menuItemVer" + index}> Ver API {item.name}</Menu.Item>
+
+                              {this.state.popup ?
+                                <ModalPageRander commoditieId={item.id} commodityName={item.name}
+                                  showModal={this.state.popup} hideModal={this.hideModal} />
+                                : null}
+
+                              {this.state.listCommoditiesFF.length > 0 ? (
+                                this.state.listCommoditiesFF.map((innerItems, i) => {
+                                  if (innerItems[i] && innerItems[i].commoditieId === item.id)
+                                    return <Menu.Item key={"menuItem" + i}>{innerItems[i].ebit_commodity.name}</Menu.Item>;
+                                }
+                                )) : (
+                                  <></>
+                                )}
+                            </Menu.ItemGroup>
                           </SubMenu>
                         }
                         )) : (
@@ -140,7 +146,7 @@ export default class MyFlexForm extends React.Component {
             </Card>
           </Col>
         </Row>
-        
+
       </Container>
     );
   }

@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 import * as env from '../../env';
 import history from '../../pages/history';
 import axiosHelper from './axiosHelper';
+import {Base64} from 'js-base64';
 
 export default {
 
@@ -41,6 +42,15 @@ export default {
       this.Auth();
     }
 
+  },
+  async getHeaderWithToken(){
+    const token = Base64.encode(await this.getHeaderToken());
+            return  {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }, withCredentials: true
+            };
   },
   // value suposed to be an object
   SetStore(key, value) {

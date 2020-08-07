@@ -15,18 +15,20 @@ const override = css`
   border-color: rgb(7, 172, 238);
 `;
 
-const loading = true;
-
 class ListFlexComponent extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
             id: '',
-            dados: [],
+            orgId:'',
+            formName: '',
             editing: false,
+            adding: false,
+            loading: true,
             fformData: {},
-            formName: ''
+            dados: [],
+
         }
         this.componentDidMount = this.componentDidMount.bind(this);
         this.addDados = this.addDados.bind(this);
@@ -40,13 +42,11 @@ class ListFlexComponent extends React.Component {
 
     // same as componentDidUpdate https://daveceddia.com/useeffect-hook-examples/
     async componentDidMount() {
-        console.log('componentDidMount');
-        const result = await this.loadData();
-        console.log('result: ', result);
 
-        if (result && result.ebit_ffs) {
-            this.setState({ dados: result.ebit_ffs });
-        }
+        this.state.orgId = this.props.orgId;
+       // this.setState({orgId:this.props.orgId});
+        const result = await this.loadData();
+
     };
     async loadData(formName) {
         const token = Base64.encode(await authHelper.getHeaderToken());
@@ -56,20 +56,22 @@ class ListFlexComponent extends React.Component {
                 'Authorization': 'Bearer ' + token
             }, withCredentials: true
         };
-        console.log('token: ', token);
-        const url = env.dataBaseEndPoint + '/ff/list/' + formName;
+        const url = env.dataBaseEndPoint + '/ff/list/' + formName+'/'+this.state.orgId;
         const resultFF = await axiosHelper.axiosGet(url, paramHeaders);
+        if (resultFF && resultFF.ebit_ffs) {
+            this.setState({ dados: resultFF.ebit_ffs });
+        }else   
+            this.setState({loading:false});
         return resultFF;
     }
 
     //add data to list Operations
     addDados() {
-        //setEditing(true)
-        this.setState({ editing: true });
+        this.setState({ adding: true });
     }
     // editar 
-    editDados(id, name) {
-        this.setState({ fformData: { id: id, name: name }, editing: true });
+    editDados(id, name, type, loadFrom) {
+        this.setState({ fformData: { id: id, name: name,type:type, loadFrom:loadFrom }, editing: true });
     }
 
     // del ff
@@ -90,14 +92,14 @@ class ListFlexComponent extends React.Component {
         window.location.reload();
     }
     // force reload
-    async upHandler(id) {
-        window.location.reload();
+    async upHandler() {
+        const result = await this.loadData();
+       // this.forceUpdate();
     }
     callbackFunction(data) {
-        //console.log('data: ', data);
-        //setEditing(false);
-        this.setState({ editing: false });
-        this.upHandler(1200);
+
+       this.setState({ adding: false,editing:false });
+       this.upHandler();
     }
     changeHandler(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -110,6 +112,10 @@ class ListFlexComponent extends React.Component {
             this.setState({ dados: result.ebit_ffs });
         }
     }
+    // when finish loading, send data to flow
+    sendData = () => {
+        //this.props.parentCallback(this.state);
+    }
     render() {
 
         return (
@@ -117,14 +123,16 @@ class ListFlexComponent extends React.Component {
                 <Row>
                     <Col>
                         <div className="flex-large">
-                            {this.state.editing ? (
+                            {this.state.adding || this.state.editing ? (
                                 <Fragment>
                                     <FlexComponent
                                         fformData={this.state.fformData}
                                         editing={this.state.editing}
                                         parentCallback={this.callbackFunction.bind(this)}
+                                        orgId={this.state.orgId}
                                     />
                                 </Fragment>
+                                
                             ) : (
                                     <Fragment>
                                         <Row>
@@ -132,7 +140,7 @@ class ListFlexComponent extends React.Component {
                                             <Col>
                                                 <InputGroup className="mb-3">
                                                     <FormControl
-                                                        placeholder="Nome formulário"
+                                                        placeholder="Nome componente"
                                                         aria-label="id"
                                                         aria-describedby="basic-addon2"
                                                         name="formName"
@@ -167,6 +175,7 @@ class ListFlexComponent extends React.Component {
                                 <tr>
                                     <th>List componentes</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,7 +188,10 @@ class ListFlexComponent extends React.Component {
                                                 </Form.Control>
                                             </td>
                                             <td>
-                                                <Button variant="outline-primary" onClick={() => this.editDados(item.id, item.name)}>Ed</Button>
+                                                <Button variant="outline-primary" onClick={() => this.editDados(item.id, item.name, item.type, item.loadFrom)}>Ed</Button>
+
+                                            </td>
+                                            <td>
                                                 <Button variant="danger" onClick={() => this.delHandler(item.id)}>Ex</Button>
 
                                             </td>
@@ -192,7 +204,7 @@ class ListFlexComponent extends React.Component {
                                                 css={override}
                                                 size={10}
                                                 color={"#4893e9"}
-                                                loading={loading} /></td>
+                                                loading={this.state.loading} /></td>
                                         </tr>
                                     )}
                             </tbody>

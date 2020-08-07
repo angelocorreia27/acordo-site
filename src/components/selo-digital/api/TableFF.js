@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Row, Col, Table} from 'react-bootstrap';
+import { Row, Col, Table } from 'react-bootstrap';
 import 'antd/dist/antd.css';
 import { Radio } from 'antd';
 import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
 import BeatLoader from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
-import {Base64} from 'js-base64';
+import { Base64 } from 'js-base64';
 import * as env from '../../../env';
 
 let Arraychecked = [];
@@ -22,29 +22,19 @@ export default class TableFF extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            orgId: '',
+            loading: true,
             listFf: [],
-            listChecked: [],
-            loading: true
+            listChecked: []
         };
         this.onChange = this.onChange.bind(this);
     }
 
 
-    async  componentDidMount() {
-        const token = Base64.encode(await authHelper.getHeaderToken());
-        const paramHeaders = { headers: { 'Accept': 'application/json' ,
-                                        'Authorization': 'Bearer ' +token
-                            }, withCredentials: true };
-
-        let resultForm = await axiosHelper.axiosGet(env.dataBaseEndPoint +'/ff/list/'+'undefined', paramHeaders);
-        if (resultForm && resultForm.ebit_ffs){
-            this.setState({ listFf: resultForm.ebit_ffs });
-        }else
-            this.setState({loading:false});
+    componentDidMount() {
+        this.load();
     }
 
-    
-   
     onChange = e => {
 
         if (e.target.value != '0')
@@ -58,8 +48,19 @@ export default class TableFF extends Component {
     };
 
 
+    async load() {
+        const name = 'undefined';
+        const paramHeaders = await authHelper.getHeaderWithToken();
+        var resultForm = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/ff/list/' + name+ '/' +this.props.orgId, paramHeaders);
+        if (resultForm && resultForm.ebit_ffs) {
+            this.setState({ listFf: resultForm.ebit_ffs });
+        }
+        else
+            this.setState({ loading: false });
+    }
+
     render() {
-       
+
         return (
             <Row>
                 <Col >

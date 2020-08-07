@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import * as env from '../../src/env';
 import Nav from 'react-bootstrap/Nav'
 import authHelper from '../components/helper/authHelper';
-
+import ModalGridMenu from './ModalGridMenu';
 
 var urlLogin = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth;
 var urlLogout = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth + '/logout';
@@ -13,12 +13,16 @@ export default class NavRight extends React.Component {
         super(props);
         this.state = {
             ...props,
-            localSessPerson:{isAuthenticated: null,
-                            username: null,
-                            email: null,
-                            expirationDate: null,
-                            locale: null}
+            localSessPerson: {
+                isAuthenticated: null,
+                username: null,
+                email: null,
+                expirationDate: null,
+                locale: null
+            },
+            popup: false
         };
+        this.hideModal = this.hideModal.bind(this);
     }
     // Aqui deve verificar o cookie, caso exister:
     //     mostra o nome da pessoa em sessão
@@ -31,34 +35,55 @@ export default class NavRight extends React.Component {
             if (sessPerson != "undefined" && sessPerson != null) {
                 // replace j: to ''
                 const jsonResult = JSON.parse(sessPerson.replace("j:", ''));
-                
-                authHelper.SetStore('isAuthenticated',jsonResult.isAuthenticated );
-                authHelper.SetStore('username',jsonResult.username );
-                authHelper.SetStore('email',jsonResult.email );
-                authHelper.SetStore('expirationDate',jsonResult.expirationDate );
-                authHelper.SetStore('locale',jsonResult.locale );
 
-                this.setState({localSessPerson:jsonResult});
+                authHelper.SetStore('isAuthenticated', jsonResult.isAuthenticated);
+                authHelper.SetStore('username', jsonResult.username);
+                authHelper.SetStore('email', jsonResult.email);
+                authHelper.SetStore('expirationDate', jsonResult.expirationDate);
+                authHelper.SetStore('locale', jsonResult.locale);
+
+                this.setState({ localSessPerson: jsonResult });
             }
 
         } catch (e) {
             console.log('error: ', e);
         }
     }
- 
+    handleClick = e => {
+        console.log('click ', e);
+        this.setState({ popup: true });
+      };
+    
+      hideModal = () => {
+        this.setState({ popup: false });
+      };
     render() {
         if (this.state.localSessPerson && this.state.localSessPerson.username) {
-            return (
-                     <>  
-                        <p>Olá {this.state.localSessPerson.username} <a href={urlLogout}> | Sair</a></p>
-                    </>
-                       
-                );
+            return (<>
+                    <Nav.Item>
+                        <p>Olá {this.state.localSessPerson.username}</p>
+                    </Nav.Item>
+                    &nbsp;&nbsp;
+                    <Nav.Item>
+                        <Nav.Link onClick={this.handleClick}>
+                         <i className="gg-menu-grid-r"></i>
+                        </Nav.Link>
+                    </Nav.Item>
+                    {this.state.popup ?
+                                <ModalGridMenu showModal={this.state.popup} hideModal={this.hideModal} />
+                     : null}
+
+                    &nbsp;
+                    <Nav.Item>
+                        <Nav.Link href={urlLogout}>Sair</Nav.Link>
+                    </Nav.Item>
+                    </>);
         } else
             return (<>
-                        <Nav.Link href={urlLogin}>Login</Nav.Link>
-                    </>
-                    );
+                <Nav.Item>
+                    <Nav.Link href={urlLogin}>Login</Nav.Link>
+                </Nav.Item>
+                    </>);
 
     }
 }

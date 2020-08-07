@@ -1,13 +1,13 @@
 import React from 'react';
-import { Row, Col, Card, Form } from 'react-bootstrap';
-import Components from "./Components.js";
+import Table  from '../../pages/Table';
+
 import BeatLoader from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
 import { Base64 } from 'js-base64';
 import authHelper from '../helper/authHelper';
 import axiosHelper from '../helper/axiosHelper';
 import * as env from '../../env';
-
+import UtilHelper from '../helper/UtilHelper';
 const override = css`
   display: block;
   margin: 0 px;
@@ -17,16 +17,18 @@ const override = css`
 
 var ff = {};
 
-class RenderComponent extends React.Component {
+class RenderComponentList extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
       structure: [],
-      listSegments: []
+      listSegments: [],
+      dataFromURL: [],
+      columns:[]
     };
-    this.changeHandler = this.changeHandler.bind(this);
+
   }
   async componentDidMount() {
     const token = Base64.encode(await authHelper.getHeaderToken());
@@ -36,7 +38,7 @@ class RenderComponent extends React.Component {
         'Authorization': 'Bearer ' + token
       }, withCredentials: true
     };
-   
+
     const result = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/structure/listff/' + this.props.name, paramHeaders);
     if (result && result.ebit_ff_structures) {
       const ebit_ff_structures = result.ebit_ff_structures;
@@ -50,48 +52,49 @@ class RenderComponent extends React.Component {
 
     if (this.state.structure[0] && this.state.structure[0].ebit_ff)
       ff = this.state.structure[0].ebit_ff;
+    
+    if (ff && ff.loadFrom) {
+      const resultFromURL = await this.loader(paramHeaders, ff.loadFrom);
+      this.setState({ dataFromURL: resultFromURL });
+    }
+
+    // Create Header and acessor element
+    var headerObject = []
+    for(var i=0;i<this.state.listSegments.length;i++){
+      var obj = {};
+      obj.Header= UtilHelper.initCatp(this.state.listSegments[i].name);
+      obj.accessor= this.state.listSegments[i].name;
+
+      headerObject.push(obj);
+    }
+    console.log('headerObject:: ', headerObject);
+
+    var mainHeaderObject={};
+    mainHeaderObject.Header=UtilHelper.initCatp(ff.name);
+    mainHeaderObject.columns= headerObject;
+    const columns = [mainHeaderObject];
+    this.setState({ columns });
+
+    console.log('ff:: ', this.state);
 
   }
 
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
-    console.log('change handler');
+  async loader(header, ffLoadFrom) {
+    return await axiosHelper.axiosGet(ffLoadFrom, header);
   }
 
+  
+// https://github.com/learnwithparam/logrocket-smart-table
+// Include filter
+  
   render() {
 
     return (
       <>
-        <Card>
-          <Card.Header>
-            <Card.Title as="h5">{ff.name}</Card.Title>
-          </Card.Header>
-          <Card.Body>
-            <Row>
-              <Col>
-                <Form>
-                  <Form.Row key={ff.id}>
-                    {this.state.listSegments.map(block =>{
-                      const newBlock = block;
-                      newBlock.changeHandler = this.changeHandler;
-                      return Components(block)
-                    })}
-                  </Form.Row>
-                </Form>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-        {
-          !this.state.listSegments[0] && <div><BeatLoader
-            css={override}
-            size={10}
-            color={"#4893e9"}
-            loading={this.state.loading} /></div>
-        }
+        <Table columns={this.state.columns} data={this.state.dataFromURL} />
       </>
     );
   }
 }
 
-export default RenderComponent;
+export default RenderComponentList;

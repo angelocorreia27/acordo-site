@@ -2,26 +2,35 @@ import React, { Component } from "react";
 import { BrowserRouter, Route,Router} from "react-router-dom"
 
 
+import {CONSTANT, ASSINATURA_DIGITAL, SELO_DIGITAL, 
+        CERTIFICADO_SSL, SELO_TEMPORAL, SMS_WEB_PACK} from './store/constant';
 
+// Selo temporal
 import SeloTemporal from './components/selo-temporal';
 
+// Selo digital
 import SeloDigital from './components/selo-digital';
-import CreateBusinessFlow from './components/selo-digital/forms/CreateBusinessFlow';
-import FlexComponent from './components/selo-digital/forms/FlexComponent';
-import FlexForm from './components/selo-digital/forms/FlexForm';
-import MyFlexForm from './components/selo-digital/forms/MyFlexForm';
-import RenderPage from './components/renderPage/RenderPage';
-import RenderComponent from './components/renderPage/RenderComponent';
+import CreateAPIFlow from './components/selo-digital/api/CreateAPIFlow';
+import FlexComponent from './components/selo-digital/api/FlexComponent';
+import FlexForm from './components/selo-digital/api/FlexForm';
+import MyFlexForm from './components/selo-digital/api/MyFlexForm';
+import CreateBusinessFlow from './components/selo-digital/marketplace/CreateBusinessFlow';
+import ListMyBusiness from './components/selo-digital/marketplace/ListMyBusiness';
+import ExecuteBusinessFlow from './components/selo-digital/marketplace/ExecuteBusinessFlow';
+import ListOrganization from './components/selo-digital/organization/ListOrganization';
 
-
+// Certificado SSl
 import CertificadoSSL from './components/certificado-ssl';
 
-
+// Assinatura Digital
 import AssinaturaDigital from './components/assinatura-digital';
 import Propor from './components/assinatura-digital/propor';
 import Gerir from './components/assinatura-digital/gerir';
 import Modelo from './components/assinatura-digital/modelo';
 import Rever from './components/assinatura-digital/gerir/Rever';
+
+// SMS web pack
+import SMSWebPack from './components/sms-web-pack/SMSWebPack';
 
 import Editor from "./components/FileEditor/index";
 import index from "./pages";
@@ -30,6 +39,8 @@ import Viewer from "./components/viewer/";
 import Footer from './pages/Footer';
 import MenuHeader from './pages/MenuHeader';
 import history from './pages/history';
+
+import Dashboard from './components/selo-digital/dashboard';
 
 class Routes extends Component {
         constructor (props) {
@@ -74,11 +85,17 @@ return (
           <Route exact path="/selo-temporal" component={SeloTemporal}/> 
 
           {/** routes Selo Digital**/}
-          <Route exact path="/selo-digital" component={SeloDigital}/> 
-          <Route exact path="/selo-digital/create-business-flow" component={CreateBusinessFlow}/> 
-          <Route exact path="/selo-digital/flexcomponent" component={FlexComponent}/> 
-          <Route exact path="/selo-digital/flexform" component={FlexForm}/> 
-          <Route exact path="/selo-digital/myflexform" component={MyFlexForm}/> 
+          <Route exact path={CONSTANT.SELO_DIGITAL} component={SeloDigital}/> 
+          <Route exact path={SELO_DIGITAL.CreateAPIFlow} component={CreateAPIFlow}/> 
+          <Route exact path={SELO_DIGITAL.CreateBusinessFlow} component={CreateBusinessFlow}/> 
+          <Route exact path={SELO_DIGITAL.FlexComponent} component={FlexComponent}/> 
+          <Route exact path={SELO_DIGITAL.FlexForm} component={FlexForm}/> 
+          <Route exact path={SELO_DIGITAL.MyFlexForm} component={MyFlexForm}/> 
+          <Route exact path={SELO_DIGITAL.Executar} component={ExecuteBusinessFlow}/> 
+          <Route exact path={SELO_DIGITAL.ListMyBusiness} component={ListMyBusiness}/>
+          <Route exact path={SELO_DIGITAL.ListOrganization} component={ListOrganization}/>
+          <Route exact path={SELO_DIGITAL.Dashboard} component={Dashboard}/> 
+
 
           {/** routes assiatura digital**/}
           <Route exact path="/assinatura-digital/" component={AssinaturaDigital}/> 
@@ -93,6 +110,9 @@ return (
 
           {/** routes certificado ssl**/}
           <Route exact path="/certificado-ssl" component={CertificadoSSL}/> 
+
+          {/** routes sms webpack**/}
+          <Route exact path={CONSTANT.SMS_WEB_PACK} component={SMSWebPack}/> 
 
           <Footer></Footer>
       </Router>

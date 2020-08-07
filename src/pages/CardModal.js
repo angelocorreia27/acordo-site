@@ -9,17 +9,16 @@ class CardModal extends React.Component {
    }
   render() {
     const buttonStatus = this.props.buttonStatus;
-    console.log('buttonStatus: ', buttonStatus);
     var toRender=null;
     if (buttonStatus==="active"){
-      toRender = <Button variant="outline-primary" href={this.props.buttonAction} >{this.props.buttonText} </Button>;
+      toRender = <Button variant="outline-primary" size="sm" href={this.props.buttonAction} >{this.props.buttonText} </Button>;
     }
-    else{
-      toRender = <Button variant="outline-primary" href={this.props.buttonAction} disabled >{this.props.buttonText} </Button>;
-    }
+    /* else{
+      toRender = <Button variant="outline-primary" size="sm" href={this.props.buttonAction} disabled >{this.props.buttonText} </Button>;
+    } */
     return (
       <>
-            <Card style={{ width: '25rem'  }}>
+            <Card style={this.props.divStyle?this.props.divStyle:{ width: '25rem'  }}>
             <Card.Img src={this.props.imsSrc} width="80" height="80"/>
               <Card.Body>
                 <Card.Title>{this.props.title}</Card.Title>

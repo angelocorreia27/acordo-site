@@ -1,4 +1,58 @@
-/**Div table*/
+
+/*********************************************************************************/
+/* container and content                                                         */
+/*********************************************************************************/
+.container
+{
+	margin: 0px auto;
+  	width: 1220px;
+	overflow: hidden;
+  	padding: 6em 0em;
+  	text-align: justify;
+
+}
+
+#content
+{
+	float: center;
+	width: 700px;
+	margin: auto;
+}
+
+#content .h2
+{
+	float: left;
+	width: 700px;
+}
+
+
+/*****************
+	show three columns per row
+************/
+
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-column-gap: 1px;
+	padding: 10px; 
+  }
+  .grid-item {
+	/*background-color: rgba(255, 255, 255, 0.8);
+	 border: 1px solid rgba(0, 0, 0, 0.8); */
+	 padding: 2px; 
+	font-size: 20px;
+	text-align: center;
+
+  }
+
+  .drag-drop-item div{
+	 padding: 1px; 
+	font-size: 10px;
+	text-align: center;
+
+  }
+
+  /**Div table*/
 
 .divTable{
 	display: table;
@@ -37,31 +91,6 @@
 	display: table-row-group;
 }
 
-/*********************************************************************************/
-/* container and content                                                         */
-/*********************************************************************************/
-.container
-{
-	margin: 0px auto;
-  	width: 1220px;
-	overflow: hidden;
-  	padding: 6em 0em;
-  	text-align: justify;
-
-}
-
-#content
-{
-	float: center;
-	width: 700px;
-	margin: auto;
-}
-
-#content .h2
-{
-	float: left;
-	width: 700px;
-}
 /*********************************************************************************/
 /* Heading Titles                                                                */
 /*********************************************************************************/
@@ -139,9 +168,178 @@
     padding-right: 850px;
   }
 
+/* thead {color:green;}
+tbody {color:blue;}
+table, th, td {
+ border: 1px solid black;
+}
+td, th{
+ padding: 5px;
+} */
+
 /**
 General error
 ***/
 .error {
 	color: red;
   }
+
+/**************************
+Dynamic table
+*****************************/
+table {
+	border-spacing: 0;
+	border: 1px solid #ededed;
+  }
+  table tr:last-child td {
+	border-bottom: 0;
+  }
+  table th,
+  table td {
+	margin: 0;
+	padding: 0.5rem;
+	border-bottom: 1px solid #ededed;
+	border-right: 1px solid #ededed;
+	position: relative;
+  }
+  table th:last-child,
+  table td:last-child {
+	border-right: 0;
+  }
+  table tr:nth-child(even) {
+	background-color: #fafafa;
+  }
+  
+  table th::before {
+	position: absolute;
+	right: 15px;
+	top: 16px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+  }
+  table th.sort-asc::before {
+	border-bottom: 5px solid #22543d;
+  }
+  table th.sort-desc::before {
+	border-top: 5px solid #22543d;
+  }
+  
+  /********************************
+  Timeline
+  *********************************/
+
+@import url(https://fonts.googleapis.com/css?family=Dosis:500);
+
+/* body{
+  background: #F1F1F1;
+}
+
+.container{
+  width: 1200px;
+  margin: 200px auto;
+} */
+
+.timeline{
+  counter-reset: year 2013;
+  position: relative;
+}
+
+.timeline li{
+  list-style: none;
+  float: left;
+  width: 33.3333%;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
+}
+
+ul:nth-child(1){
+  color: #4caf50;
+}
+
+.timeline li:before{
+  counter-increment: year;
+  content: counter(year);
+  width: 50px;
+  height: 50px;
+  border: 3px solid #4caf50;
+  border-radius: 50%;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  margin: 0 auto 10px auto;
+  background: #F1F1F1;
+  color: #000;
+  transition: all ease-in-out .3s;
+  cursor: pointer;
+}
+
+.timeline li:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: grey;
+  top: 25px;
+  left: -50%;
+  z-index: -999;
+  transition: all ease-in-out .3s;
+}
+
+.timeline li:first-child:after{
+  content: none;
+}
+.timeline li.active{
+  color: #555555;
+}
+.timeline li.active:before{
+  background: #4caf50;
+  color: #F1F1F1;
+}
+
+.timeline li.active + li:after{
+  background: #4caf50;
+}
+/********************
+https://css.gg/menu-grid-r
+****/
+
+.gg-menu-grid-r {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 16px;
+    height: 16px;
+}
+.gg-menu-grid-r::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: currentColor;
+    box-shadow:
+        0 6px 0,
+        6px 6px 0,
+        12px 6px 0,
+        6px 12px 0,
+        12px 12px 0,
+        6px 0 0,
+        12px 0 0,
+        0 12px 0
+    ;
+}
+/********
+Menu grid
+**/
+
+.item-menu {
+	width: 80px;
+	border: 1px;
+}

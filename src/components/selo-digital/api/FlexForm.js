@@ -17,9 +17,12 @@ class FlexForm extends React.Component {
             id: null,
             name: '',
             price: 0,
+            networkType:'',
             description: '',
             image: '',
             userId: null,
+            orgId:'',
+            showMessageTable:false,
             commoditieFF: {},
             listFfData: []
 
@@ -37,6 +40,7 @@ class FlexForm extends React.Component {
     componentDidMount() {
         const { submitFromOutside } = this.props;
         console.log('submitFromOutside: ', submitFromOutside);
+        console.log('Flex Form: ', this.state);
 
         if (submitFromOutside)
             this.submitHandler();
@@ -44,9 +48,11 @@ class FlexForm extends React.Component {
 
     // Callback the data inserted in RegistoCommodite
     callbackFunction = (commoditieData) => {
+        console.log('commoditieData: ', commoditieData);
         this.setState({
             name: commoditieData.name,
             price: commoditieData.price,
+            networkType: commoditieData.networkType,
             description: commoditieData.description,
             image: commoditieData.image
         });
@@ -62,6 +68,10 @@ class FlexForm extends React.Component {
     }
     async validate() {
         let validated = true;
+        if (this.state.listFfData.length===0){ // force to choise at least one component
+            this.setState({showMessageTable:true});
+            validated = false;
+        }
         // validate this form
         await sref.current.resetFields();
         await sref.current.validateForm();
@@ -83,24 +93,26 @@ class FlexForm extends React.Component {
             const data = new FormData();
             data.append('name', this.state.name); // id do utilizador em sessao
             data.append('price', this.state.price);
+            data.append('networkType', this.state.networkType);
             data.append('description', this.state.description);
             data.append('fileData', this.state.image);
-            
+            data.append('orgId', this.props.orgId);
+
             console.log('data to save', data);
             const resultCommoditie = await axiosHelper.axiosPost(env.dataBaseEndPoint + '/commoditie/store', data, paramHeaders);
-            console.log('commoditie save result ', resultCommoditie.ebit_commodities);
-            console.log('ListFfData ', this.state.listFfData);
+//            console.log('commoditie save result ', resultCommoditie.ebit_commodities);
+  //          console.log('ListFfData ', this.state.listFfData);
             var commoditieFF = [];
             for (var i = 0; i < this.state.listFfData.length; i++) {
                 commoditieFF.push({ commoditieId: resultCommoditie.ebit_commodities.id, ffId: this.state.listFfData[i].id });
             }
 
-            console.log('commoditieFF', commoditieFF);
+          //  console.log('commoditieFF', commoditieFF);
 
             const commoditieFFResult = await axiosHelper.axiosPost(env.dataBaseEndPoint + '/commoditie_ff/bulkStore', commoditieFF, paramHeaders);
-            console.log('commoditieFFResult', commoditieFFResult);
+         //   console.log('commoditieFFResult', commoditieFFResult);
             this.setState({ commoditieFF: commoditieFFResult });
-            //this.sendData();
+            this.sendData();
         }
     }
     render() {
@@ -126,7 +138,9 @@ class FlexForm extends React.Component {
                             <Card.Body>
                                 <Row>
                                     <Col>
-                                        <TableFF parentCallback={this.callbackFunctionII.bind(this)} />
+                                    {this.state.showMessageTable ? <p className="error">Por favor escolha pelo menos um valor na lista!</p> : <></>
+                                            }
+                                        <TableFF orgId={this.props.orgId} parentCallback={this.callbackFunctionII.bind(this)} />
                                     </Col>
                                 </Row>
                             </Card.Body>
