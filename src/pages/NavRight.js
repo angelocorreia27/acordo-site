@@ -52,38 +52,40 @@ export default class NavRight extends React.Component {
     handleClick = e => {
         console.log('click ', e);
         this.setState({ popup: true });
-      };
-    
-      hideModal = () => {
+    };
+
+    hideModal = () => {
         this.setState({ popup: false });
-      };
+    };
     render() {
         if (this.state.localSessPerson && this.state.localSessPerson.username) {
             return (<>
-                    <Nav.Item>
-                        <p>Olá {this.state.localSessPerson.username}</p>
-                    </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link href="#">
+                        Olá {this.state.localSessPerson.username}
+                    </Nav.Link>
+                </Nav.Item>
                     &nbsp;&nbsp;
-                    <Nav.Item>
-                        <Nav.Link onClick={this.handleClick}>
-                         <i className="gg-menu-grid-r"></i>
-                        </Nav.Link>
-                    </Nav.Item>
-                    {this.state.popup ?
-                                <ModalGridMenu showModal={this.state.popup} hideModal={this.hideModal} />
-                     : null}
+                <Nav.Item>
+                    <Nav.Link onClick={this.handleClick}>
+                        <i className="gg-menu-grid-r"></i>
+                    </Nav.Link>
+                </Nav.Item>
+                {this.state.popup ?
+                    <ModalGridMenu showModal={this.state.popup} hideModal={this.hideModal} />
+                    : null}
 
                     &nbsp;
-                    <Nav.Item>
-                        <Nav.Link href={urlLogout}>Sair</Nav.Link>
-                    </Nav.Item>
-                    </>);
+                <Nav.Item>
+                    <Nav.Link href={urlLogout}>Sair</Nav.Link>
+                </Nav.Item>
+            </>);
         } else
             return (<>
                 <Nav.Item>
                     <Nav.Link href={urlLogin}>Login</Nav.Link>
                 </Nav.Item>
-                    </>);
+            </>);
 
     }
 }

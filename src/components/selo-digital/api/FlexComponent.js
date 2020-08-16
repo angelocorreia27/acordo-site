@@ -252,7 +252,7 @@ class FlexComponent extends React.Component {
 
                         <Card>
                             <Card.Header>
-                                <Card.Title as="h5">Novo componente</Card.Title>
+                                <Card.Title as="h5">Novo API</Card.Title>
                             </Card.Header>
                             <Card.Body>
                                 <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
@@ -260,7 +260,7 @@ class FlexComponent extends React.Component {
                                         <Form.Label as="legend" column sm={2}>Nome</Form.Label>
                                         <Col>
                                             <Form.Control type="text"
-                                                placeholder="Entre com nome componente"
+                                                placeholder="Entre com nome API"
                                                 name="componentName" value={this.state.componentName ? this.state.componentName : ''}
                                                 required
                                                 onChange={this.changeHandler} />
@@ -309,6 +309,31 @@ class FlexComponent extends React.Component {
                                 </FormWithConstraints>
                             </Card.Body>
                         </Card>
+                        {/* <Card>
+                            <Card.Header>
+                                <Card.Title as="h5">Endpoint</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
+                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
+                                    <Form.Group as={Row} controlId="formBasiccomponentName">
+                                        <Form.Label as="legend" column sm={2}>Metodo</Form.Label>
+                                        <Col>
+                                            <Form.Control type="text"
+                                                placeholder="Entre com nome API"
+                                                name="componentName" value={this.state.componentName ? this.state.componentName : ''}
+                                                required
+                                                onChange={this.changeHandler} />
+                                          
+                                            <FieldFeedbacks for="componentName">
+                                                <FieldFeedback when="valueMissing">Por favor o Nome!</FieldFeedback>
+                                            </FieldFeedbacks>
+
+                                        </Col>
+                                    </Form.Group>
+                                   
+                                </FormWithConstraints>
+                            </Card.Body>
+                        </Card> */}
                         <Card>
                             <Card.Header>
                                 <Card.Title as="h5">Lista Input</Card.Title>
@@ -379,6 +404,60 @@ class FlexComponent extends React.Component {
                                 </Row>
                             </Card.Body>
                         </Card>
+
+                        {/* <Card>
+                            <Card.Header>
+                                <Card.Title as="h5">Request Transformação</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
+                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
+                                    <Form.Group as={Row} controlId="formBasiccomponentName">
+                                        <Form.Label as="legend" column sm={2}>Metodo</Form.Label>
+                                        <Col>
+                                            <Form.Control type="text"
+                                                placeholder="Entre com nome API"
+                                                name="componentName" value={this.state.componentName ? this.state.componentName : ''}
+                                                required
+                                                onChange={this.changeHandler} />
+                                           
+                                            }
+                                            <FieldFeedbacks for="componentName">
+                                                <FieldFeedback when="valueMissing">Por favor o Nome!</FieldFeedback>
+                                            </FieldFeedbacks>
+
+                                        </Col>
+                                    </Form.Group>
+                                   
+                                </FormWithConstraints>
+                            </Card.Body>
+                        </Card> */}
+                        {/* <Card>
+                            <Card.Header>
+                                <Card.Title as="h5">Response transformação</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
+                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
+                                    <Form.Group as={Row} controlId="formBasiccomponentName">
+                                        <Form.Label as="legend" column sm={2}>Metodo</Form.Label>
+                                        <Col>
+                                            <Form.Control type="text"
+                                                placeholder="Entre com nome API"
+                                                name="componentName" value={this.state.componentName ? this.state.componentName : ''}
+                                                required
+                                                onChange={this.changeHandler} />
+                                            
+                                            }
+                                            <FieldFeedbacks for="componentName">
+                                                <FieldFeedback when="valueMissing">Por favor o Nome!</FieldFeedback>
+                                            </FieldFeedbacks>
+
+                                        </Col>
+                                    </Form.Group>
+                                   
+                                </FormWithConstraints>
+                            </Card.Body>
+                        </Card> */}
+
                         <Card>
                             <Card.Body>
                                 <Row>

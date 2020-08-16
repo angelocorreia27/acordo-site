@@ -103,15 +103,21 @@ export default class ExecuteBusinessFlow extends React.Component {
      }
      console.log('name:', ffName);
      console.log('type:', ffType);
-     if (ffName ==='Pagamento' && ffType ==='built-in'){
+     // post to externall endpoint
+     /* if (ffName ==='Pagamento' && ffType ==='built-in'){
       console.log('state: ', this.state.rendedPage.data); 
-      console.log('paramHeaders: ', paramHeaders);
-        const result = await axiosHelper.axiosPost('http://localhost:5000/external_api/sisp-pay',
-                                                        this.state.rendedPage.data,
-                                                        paramHeaders 
-                                                        );
-        console.log('result:: ', result);
-     }
+      console.log('paramHeaders: ', paramHeaders); 
+
+      */
+     console.log('marketId:', this.state.marketId);
+    console.log('commodityId: ', this.state.rendedPage.commodityId);
+        const result = await axiosHelper.axiosPost(env.dataBaseEndPoint +
+                                                   env.dataBaseAPITransactionEndPoint,
+                                                  this.state.rendedPage,
+                                                  paramHeaders 
+                                                );
+      //  console.log('result:: ', result);
+    // }
   }
 
   toRender() {

@@ -1,0 +1,19 @@
+{
+	"page": {
+		"index": {
+			"btn-see-more": "View more",
+			"certsStore-text": "Authenticates the identity of a website and encrypts the information sent to the server",
+			"digital-signin-text": "Linked the digitally created document to a digital certificate",
+			"doc-time-text": "Certifies the time of creation of a document on the server",
+			"eseal-store-text": "Aims to create a digitally valid seal, as proof of the transactions made"
+		}
+	},
+	"selo-digital": {
+		"index": {
+			"btn-new": "Create my",
+			"execute": "Execute",
+			"text": "They are applied on behalf of legal persons, such as organizations or institutions, with guarantee of integrity and authenticity of the data source",
+			"title": "Aims to create a digitally valid seal, with a proof character, of the transactions carried out on the platform"
+		}
+	}
+}

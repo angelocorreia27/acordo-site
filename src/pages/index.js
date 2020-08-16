@@ -7,6 +7,7 @@ import Title from '../components/title';
 import Search from '../components/search';
 import authHelper from '../components/helper/authHelper';
 import {CONSTANT} from '../store/constant';
+import { withTranslation } from 'react-i18next';
 
 class Home extends React.Component {
 constructor(props){
@@ -20,13 +21,15 @@ constructor(props){
 
 
 render() {
+	const { t } = this.props;
+
 	  authHelper.SetStore('originPath', '/');
 	  authHelper.BackToHistory();
 	  return (
 		<Container>
 			
 			<Row>
-				
+
 			<div className="divTable">
 				<div className="divTableBody">
 					
@@ -42,18 +45,18 @@ render() {
 					<div className="divTableRow">
 						<div className="divTableCell"><CardModel title="DocTime" 
 															 imsSrc="/images/selo-temporal.svg"
-															 buttonText="Ver mais.."
+															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.SELO_TEMPORAL}
 															 buttonStatus="active" 
-															 text="Atesta o momento temporal da criação de um documento no servidor."
+															 text={t('common:page.index.doc-time-text')}
 															 />
 						</div>
 						<div className="divTableCell"><CardModel title="E-SealStore" 
 															 imsSrc="/images/selo-eletronico.svg"
-															 buttonText="Ver mais.." 
+															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.SELO_DIGITAL}
 															 buttonStatus="active" 
-															 text="Visa criar um selo digitalmente válido, com um caracter comprovante."
+															 text={t('common:page.index.eseal-store-text')}
 															 />
 						</div>
 						
@@ -63,18 +66,18 @@ render() {
 					<div className="divTableRow">
 						<div className="divTableCell"><CardModel title="YouDoc" 
 															 imsSrc="/images/assinatura-digital.svg"
-															 buttonText="Ver mais.." 
+															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.ASSINATURA_DIGITAL}
 															 buttonStatus="active" 
-															 text="Vinculada o documento criado digitalemente, a um certificado digital."
+															 text={t('common:page.index.digital-signin-text')}
 															 />
 						</div>
 						<div className="divTableCell"><CardModel title="Certificados SSL" 
 															 imsSrc="/images/certificado-ssl.svg"
-															 buttonText="Ver mais.."
+															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.CERTIFICADO_SSL}
 															 buttonStatus="disabled" 
-															 text="Autentica a identidade de um site e criptografa as informações enviadas para o servidor."
+															 text={t('common:page.index.eseal-store-text')}
 															 />
 						</div>
 						
@@ -86,4 +89,4 @@ render() {
 	  );
 	}
   }
-  export default Home;
+  export default withTranslation() (Home);

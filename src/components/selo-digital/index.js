@@ -7,6 +7,7 @@ import authHelper from '../helper/authHelper';
 import { Base64 } from 'js-base64';
 import * as env from '../../env';
 import UtilHelper from '../helper/UtilHelper';
+import { withTranslation } from 'react-i18next';
 
 class Index extends React.Component {
 
@@ -34,40 +35,18 @@ class Index extends React.Component {
 
 	}
 	render() {
+		const { t } = this.props;
 
-		/** 
-		 * Passos para criação da organização que irá ter selo electrónico
-		 * 	Registo de Conta no Autentika
-		 *  Login -> Validação da conta
-		 * 		após validação criar
-		 * 			DVClient
-		 * 			DVSecret
-		 * 		Criar certificado
-		 * 
-		 * POST para criação do documento
-		 * 		O utilizador faz o post para o link e deve indicar:
-		 * 			DVClient   --- Codigo do utilizador criado na  plataforma e indicado através de um canal seguro
-		 * 			DVSecret   --- Chave criado na plataforma e indicado ao utilizador através de um canal seguro
-		 * 			SPAutentikaToken  --- token do autentika para reforçar a permissão para criação do documento
-		 * 			owner  --- Associa o documento a um utilizador
-		 * 			public  --- O documento pode ser consultado publicamente
-		 
-		 * Get para visualização do documento
-		 *		o utilizador faz ao efectuar o get para o link deve indicar:
-					  SPAutentikaToken 		
-		 * 			
-		 * **/
+
 		return (
 			<div>
 				<div className="container">
 					<div id="content">
 						<div className="title">
-							<span className="byline">Visa criar um selo digitalmente válido, com um carácter comprovante, das transações realizadas na plataforma.</span>
+							<span className="byline">{t('common:selo-digital.index.title')}</span>
 						</div>
-						<p>São aplicados em nome de pessoas coletivas, como organizações ou instituições, com garantia de integridade e autenticidade da origem dos dados
-						Foi desenvolvido para superar as desvantagens e inconvenientes do sistema atual, substituir a centralização dos processos
-								por uma linha verde da desburocratização. </p>
-						<Button variant="outline-primary" className="button-p" href={SELO_DIGITAL.ListOrganization} >Criar o meu</Button>
+						<p>{t('common:selo-digital.index.text')}</p>
+						<Button variant="outline-primary" className="button-p" href={SELO_DIGITAL.ListOrganization} >{t('common:selo-digital.index.btn-new')}</Button>
 					</div>
 					<br />
 					<div className="grid-container">
@@ -77,7 +56,7 @@ class Index extends React.Component {
 									return <div key={i}>
 										<div key={"div-grid" + i} className="grid-item"><CardModel key={"api" + cc.id} divStyle={{ width: '16rem' }} title={cc.name.substr(0, 20)}
 											imsSrc={cc.image ? cc.image : "/images/api.svg"}
-											buttonText="Executar"
+											buttonText={t('common:selo-digital.index.execute')}
 											buttonAction={SELO_DIGITAL.Executar
 												+ "?r=" + UtilHelper.base64ParamEncode('marketId=' + cc.id)}
 											buttonStatus="active"
@@ -95,4 +74,4 @@ class Index extends React.Component {
 		);
 	}
 }
-export default Index;
+export default withTranslation() (Index);

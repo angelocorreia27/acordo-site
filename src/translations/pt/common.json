@@ -1,0 +1,19 @@
+{
+	"page": {
+		"index": {
+			"btn-see-more": "Ver mais",
+			"certsStore-text": "Autentica a identidade de um site e criptografia as informações enviadas para o servidor",
+			"digital-signin-text": "Vinculada o documento criado digitalmente, a um certificado digital",
+			"doc-time-text": "Atesta o momento temporal da criação de um documento no servidor",
+			"eseal-store-text": "Visa criar um selo digitalmente válido, como comprovativo das transações feitas"
+		}
+	},
+	"selo-digital": {
+		"index": {
+			"btn-new": "Criar o meu",
+			"execute": "Executar",
+			"text": "São aplicados em nome de pessoas coletivas, como organizações ou instituições, com garantia de integridade e autenticidade da origem dos dados",
+			"title": "Visa criar um selo digitalmente válido, com um carácter comprovante, das transações realizadas na plataforma"
+		}
+	}
+}

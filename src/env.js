@@ -21,3 +21,4 @@ export const clientViewer = process.env.REACT_APP_CLIENTVIEWER || '/viewer';
 
 // Database Backend Endpoint
 export const dataBaseEndPoint = process.env.DATABASEENDPOINT || httpProtocol+serverHost+':5000';
+export const dataBaseAPITransactionEndPoint = '/api/do-transaction';
