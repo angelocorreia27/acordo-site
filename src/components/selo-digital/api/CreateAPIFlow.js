@@ -1,17 +1,19 @@
-import React, { Fragment } from 'react';
-import { Container, Card, Col, Row, Button } from 'react-bootstrap';
-import CSRComponent from './CSRComponent';
-import ListFlexComponent from './ListFlexComponent';
+import React from 'react';
+import { Container, Col, Row, Button } from 'react-bootstrap';
+import FlexComponent from './FlexComponent';
 import FlexForm from './FlexForm';
 //import Customize from './Customize';
 import MyFlexForm from './MyFlexForm';
+import TimeLine from '../../time-line';
+import { withTranslation } from 'react-i18next';
+
 
 var i = 0;
-const totalComponent = 2;
+const totalComponent = 3;
 var component = {};
 var fform = {};
 
-export default class CreateAPIFlow extends React.Component {
+class CreateAPIFlow extends React.Component {
 
   constructor(props) {
     super(props);
@@ -51,6 +53,7 @@ export default class CreateAPIFlow extends React.Component {
 
   }
 
+
   goForwardHandler = (event) => {
 
     if ((i !== 0) && (i !== 2))
@@ -71,16 +74,15 @@ export default class CreateAPIFlow extends React.Component {
   }
 
   toRender() {
+    
     switch (this.state.index) {
-      /* case 0:
-       return <CSRComponent CSR={CSR} submitFromOutside={this.state.submitFromOutside} parentCallback={this.callbackFunction.bind(this)} />;
-        break; */
-      case 0:
-        return <ListFlexComponent component={component}
+       case 0:
+        return <FlexComponent component={component}
           submitFromOutside={this.state.submitFromOutside}
           parentCallback={this.callbackFunction.bind(this)}
-          orgId={this.props.orgId} />;
-        break;
+          orgId={this.props.orgId}
+          />;
+        break; 
       case 1:
         return <FlexForm fform={fform}
           submitFromOutside={this.state.submitFromOutside}
@@ -96,17 +98,28 @@ export default class CreateAPIFlow extends React.Component {
   }
 
   render() {
+
+    const { t } = this.props;
+    const dataLine = [{name:t('common:selo-digital.create-api-flow.add-new-api'), id:1}, 
+                      {name:t('common:selo-digital.create-api-flow.transformation'), id:2},
+                      {name:t('common:selo-digital.create-api-flow.definition'), id:3},
+
+                    ];
+    const currentLine = this.state.index+1;   
+
     const componentToRender = this.toRender();
     var buttonForwardToRender = null;
     var buttonBeforeToRender = null;
     if (i > 0 && i < 2) {
-      buttonForwardToRender = <><Col>
+      buttonForwardToRender = <>
+      <br/>
+      <Col>
         <Button className="button-right" variant="outline-primary" onClick={this.goBackHandler}>Anterior</Button>
       </Col></>;
-       
     }
     if ( i < 2) {
       buttonBeforeToRender = <>
+      <br/>
         <Col>
           <Button className="button-right" variant="outline-primary" onClick={this.goForwardHandler}>Seguinte</Button>
         </Col>
@@ -114,8 +127,11 @@ export default class CreateAPIFlow extends React.Component {
     }
     return (
       <Container>
+        <Row>
+          <TimeLine dataLine={dataLine} currentLine={currentLine} />
+        </Row>
+        <br/>
         {componentToRender}
-        <br />
         <Row md={6}>
           {
             buttonForwardToRender
@@ -128,3 +144,4 @@ export default class CreateAPIFlow extends React.Component {
     );
   }
 }
+export default withTranslation()(CreateAPIFlow)

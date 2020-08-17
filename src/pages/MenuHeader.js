@@ -6,8 +6,10 @@ import React from 'react';
 import { Nav } from 'react-bootstrap'
 import NavRight from '../pages/NavRight';
 import i18n from "i18next";
+import { withTranslation } from 'react-i18next';
 
-import { CONSTANT, ASSINATURA_DIGITAL, SELO_DIGITAL, CERTIFICADO_SSL, SELO_TEMPORAL } from '../store/constant';
+import { CONSTANT, SELO_DIGITAL } from '../store/constant';
+//import { CONSTANT, ASSINATURA_DIGITAL, SELO_DIGITAL, CERTIFICADO_SSL, SELO_TEMPORAL } from '../store/constant';
 
 class MenuHeader extends React.Component {
 	constructor(props) {
@@ -19,11 +21,11 @@ class MenuHeader extends React.Component {
 			classNameModelo: null,
 
 		}
-		if (this.props.hearderName == 'inicio')
+		if (this.props.hearderName === 'inicio')
 			this.state.classNameInicio = 'current_page_item'
-		if (this.props.hearderName == 'gerir')
+		if (this.props.hearderName === 'gerir')
 			this.state.classNameGerir = 'current_page_item'
-		if (this.props.hearderName == 'modelo')
+		if (this.props.hearderName === 'modelo')
 			this.state.classNameModelo = 'current_page_item'
 
 	}
@@ -97,4 +99,4 @@ class MenuHeader extends React.Component {
 		);
 	}
 }
-export default MenuHeader;
+export default withTranslation() (MenuHeader);

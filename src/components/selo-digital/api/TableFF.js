@@ -6,7 +6,6 @@ import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
 import BeatLoader from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
-import { Base64 } from 'js-base64';
 import * as env from '../../../env';
 
 let Arraychecked = [];
@@ -37,7 +36,7 @@ export default class TableFF extends Component {
 
     onChange = e => {
 
-        if (e.target.value != '0')
+        if (e.target.value !== '0')
             Arraychecked.push({ id: e.target.value });
         else // find element and remove one position
             Arraychecked.splice(Arraychecked.indexOf({ id: e.target.value }), 1);

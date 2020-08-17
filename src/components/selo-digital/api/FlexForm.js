@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Button, Container } from 'react-bootstrap';
+import React from 'react';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import RegistoCommodities from './RegistoCommodities';
 import TableFF from './TableFF';
 import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
 import * as env from '../../../env';
 import { Base64 } from 'js-base64';
+import { withTranslation } from 'react-i18next';
 
 const sref = React.createRef();
 class FlexForm extends React.Component {
@@ -116,6 +117,7 @@ class FlexForm extends React.Component {
         }
     }
     render() {
+        const { t } = this.props;
         return (
             <Row>
                 <Col>
@@ -165,4 +167,4 @@ class FlexForm extends React.Component {
 
     }
 }
-export default FlexForm;
+export default withTranslation() (FlexForm);

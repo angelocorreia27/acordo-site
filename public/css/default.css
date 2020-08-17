@@ -5,10 +5,9 @@
 .container
 {
 	margin: 0px auto;
-  	width: 1220px;
-	overflow: hidden;
-  	padding: 6em 0em;
-  	text-align: justify;
+	/* overflow: hidden; */
+  padding: 0em 0em; 
+  text-align: justify;
 
 }
 
@@ -124,8 +123,6 @@
 {
 	overflow: hidden;
 	padding: 5em 0em;
-	margin-top: 400px;
-
 }
 
 #copyright p
@@ -243,7 +240,8 @@ table {
 } */
 
 .timeline{
-  counter-reset: year 2013;
+  /* counter-reset: year 2013; */
+  counter-increment: my-sec-counter 0;
   position: relative;
 }
 
@@ -253,20 +251,20 @@ table {
   width: 33.3333%;
   position: relative;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: 'Dosis', sans-serif;
 }
 
 ul:nth-child(1){
-  color: #4caf50;
+  color: #007bff;
 }
 
 .timeline li:before{
-  counter-increment: year;
-  content: counter(year);
+  counter-increment: my-sec-counter +1;
+  content: counter(my-sec-counter);
   width: 50px;
   height: 50px;
-  border: 3px solid #4caf50;
+  border: 3px solid #007bff;
   border-radius: 50%;
   display: block;
   text-align: center;
@@ -297,12 +295,12 @@ ul:nth-child(1){
   color: #555555;
 }
 .timeline li.active:before{
-  background: #4caf50;
+  background: #007bff;
   color: #F1F1F1;
 }
 
 .timeline li.active + li:after{
-  background: #4caf50;
+  background: #007bff;
 }
 /********************
 https://css.gg/menu-grid-r
@@ -342,4 +340,16 @@ Menu grid
 .item-menu {
 	width: 80px;
 	border: 1px;
+}
+
+/** Vertical Line**/
+
+.vr {
+  width:1px;
+  background-color:#000;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:150px;
+  
 }

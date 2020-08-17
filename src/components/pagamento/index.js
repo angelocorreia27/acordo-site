@@ -67,7 +67,6 @@ class PagComp extends React.Component {
     
 
     render() {
-        const { name } = this.state
 
         return (
             <Row>

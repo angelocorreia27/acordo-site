@@ -1,5 +1,5 @@
-import React, { useState, Fragment, useEffect, useRef } from 'react';
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import React from 'react';
+import {  Row, Col, Card, Button, Form } from 'react-bootstrap';
 
 import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
@@ -7,11 +7,13 @@ import * as env from '../../../env';
 import { Base64 } from 'js-base64';
 import componentData from './componentData';
 import { FormWithConstraints, FieldFeedbacks, FieldFeedback } from 'react-form-with-constraints';
+import { withTranslation } from 'react-i18next';
+
+const sref = React.createRef();
 
 class FlexComponent extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
             id: '',
             componentName: '',
@@ -50,12 +52,12 @@ class FlexComponent extends React.Component {
 
         }
         if (this.props.editing) {
-            this.setState({ id: this.props.fformData.id, 
-                                componentName: this.props.fformData.name, 
-                                componentType:this.props.fformData.type, 
-                                componentListLoadFrom:this.props.fformData.loadFrom });
+            this.setState({ id: this.props.frefData.id, 
+                                componentName: this.props.frefData.name, 
+                                componentType:this.props.frefData.type, 
+                                componentListLoadFrom:this.props.frefData.loadFrom });
 
-            const seg = loadData(this.props.fformData.id);
+            const seg = loadData(this.props.frefData.id);
         }
     };
 
@@ -103,8 +105,8 @@ class FlexComponent extends React.Component {
     async validate() {
         let validated = true;
         // validate this form
-        await this.refs.fform.resetFields();
-        await this.refs.fform.validateForm();
+        await sref.current.resetFields();
+        await sref.current.validateForm();
         for (var i = 0; i < this.state.segment.length; i++) {
 
             if (this.state.segment[i].component === undefined 
@@ -113,7 +115,7 @@ class FlexComponent extends React.Component {
                 this.setState({showMessageComp:true});
             }
         }
-        if (!await this.refs.fform.isValid())
+        if (!await sref.current.isValid())
             validated = false;
 
         return validated;
@@ -237,6 +239,7 @@ class FlexComponent extends React.Component {
         }
     }
     render() {
+        const { t } = this.props;
         console.log('componentType:: ', this.state.componentType);
         var checkedOptList = false;
         var checkedOptForm = false;
@@ -246,16 +249,17 @@ class FlexComponent extends React.Component {
             checkedOptList = true;
 
         return (
+            
             <Row>
                 <Col>
                     <Card>
 
                         <Card>
                             <Card.Header>
-                                <Card.Title as="h5">Novo API</Card.Title>
+                            <Card.Title as="h5">{t('common:selo-digital.flex-component.new-api-definition')}</Card.Title>
                             </Card.Header>
                             <Card.Body>
-                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
+                                <FormWithConstraints ref={sref} onSubmit={this.submitHandler} noValidate>
                                     <Form.Group as={Row} controlId="formBasiccomponentName">
                                         <Form.Label as="legend" column sm={2}>Nome</Form.Label>
                                         <Col>
@@ -309,34 +313,9 @@ class FlexComponent extends React.Component {
                                 </FormWithConstraints>
                             </Card.Body>
                         </Card>
-                        {/* <Card>
-                            <Card.Header>
-                                <Card.Title as="h5">Endpoint</Card.Title>
-                            </Card.Header>
-                            <Card.Body>
-                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
-                                    <Form.Group as={Row} controlId="formBasiccomponentName">
-                                        <Form.Label as="legend" column sm={2}>Metodo</Form.Label>
-                                        <Col>
-                                            <Form.Control type="text"
-                                                placeholder="Entre com nome API"
-                                                name="componentName" value={this.state.componentName ? this.state.componentName : ''}
-                                                required
-                                                onChange={this.changeHandler} />
-                                          
-                                            <FieldFeedbacks for="componentName">
-                                                <FieldFeedback when="valueMissing">Por favor o Nome!</FieldFeedback>
-                                            </FieldFeedbacks>
-
-                                        </Col>
-                                    </Form.Group>
-                                   
-                                </FormWithConstraints>
-                            </Card.Body>
-                        </Card> */}
                         <Card>
                             <Card.Header>
-                                <Card.Title as="h5">Lista Input</Card.Title>
+                                <Card.Title as="h5">{t('common:selo-digital.flex-component.input-list')}</Card.Title>
                             </Card.Header>
                             <Card.Body>
                                 <Row>
@@ -404,60 +383,6 @@ class FlexComponent extends React.Component {
                                 </Row>
                             </Card.Body>
                         </Card>
-
-                        {/* <Card>
-                            <Card.Header>
-                                <Card.Title as="h5">Request Transformação</Card.Title>
-                            </Card.Header>
-                            <Card.Body>
-                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
-                                    <Form.Group as={Row} controlId="formBasiccomponentName">
-                                        <Form.Label as="legend" column sm={2}>Metodo</Form.Label>
-                                        <Col>
-                                            <Form.Control type="text"
-                                                placeholder="Entre com nome API"
-                                                name="componentName" value={this.state.componentName ? this.state.componentName : ''}
-                                                required
-                                                onChange={this.changeHandler} />
-                                           
-                                            }
-                                            <FieldFeedbacks for="componentName">
-                                                <FieldFeedback when="valueMissing">Por favor o Nome!</FieldFeedback>
-                                            </FieldFeedbacks>
-
-                                        </Col>
-                                    </Form.Group>
-                                   
-                                </FormWithConstraints>
-                            </Card.Body>
-                        </Card> */}
-                        {/* <Card>
-                            <Card.Header>
-                                <Card.Title as="h5">Response transformação</Card.Title>
-                            </Card.Header>
-                            <Card.Body>
-                                <FormWithConstraints ref="fform" onSubmit={this.submitHandler} noValidate>
-                                    <Form.Group as={Row} controlId="formBasiccomponentName">
-                                        <Form.Label as="legend" column sm={2}>Metodo</Form.Label>
-                                        <Col>
-                                            <Form.Control type="text"
-                                                placeholder="Entre com nome API"
-                                                name="componentName" value={this.state.componentName ? this.state.componentName : ''}
-                                                required
-                                                onChange={this.changeHandler} />
-                                            
-                                            }
-                                            <FieldFeedbacks for="componentName">
-                                                <FieldFeedback when="valueMissing">Por favor o Nome!</FieldFeedback>
-                                            </FieldFeedbacks>
-
-                                        </Col>
-                                    </Form.Group>
-                                   
-                                </FormWithConstraints>
-                            </Card.Body>
-                        </Card> */}
-
                         <Card>
                             <Card.Body>
                                 <Row>
@@ -477,4 +402,4 @@ class FlexComponent extends React.Component {
         )
     }
 }
-export default FlexComponent;
+export default withTranslation() (FlexComponent);

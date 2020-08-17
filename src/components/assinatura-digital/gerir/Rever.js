@@ -1,8 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
-import { Button, Card, Form} from 'react-bootstrap'
-import AddModal from "./AddModal"
-import axios from "axios";
+import { Button,  Form} from 'react-bootstrap'
 import axiosHelper from '../../helper/axiosHelper';
 import * as env from '../../../env';
 import {ClipLoader} from "react-spinners";

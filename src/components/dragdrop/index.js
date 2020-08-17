@@ -3,10 +3,6 @@ import React from 'react';
 import App from './App';
 
 export default class dragdrop extends React.Component {
-  constructor(props) {
-    super(props)
-
-  }
   callbackFunction(data) {
     //console.log('data: ', data);
     this.props.parentCallback(data);

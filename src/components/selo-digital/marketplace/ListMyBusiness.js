@@ -1,10 +1,9 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Table, Form, InputGroup, FormControl } from 'react-bootstrap';
+import React, { Fragment } from 'react';
+import { Container, Row, Col,  Button, Table, Form } from 'react-bootstrap';
 import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
 import BeatLoader from "react-spinners/BeatLoader";
 import * as env from '../../../env';
-import { Base64 } from 'js-base64';
 import { css } from "@emotion/core";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import CreateBusinessFlow from './CreateBusinessFlow';
@@ -57,7 +56,7 @@ class ListMyBusiness extends React.Component {
         this.setState({ id: id });
         const paramHeaders = await authHelper.getHeaderWithToken();
         const url = env.dataBaseEndPoint + '/market/visible/' + this.state.id;
-        const result = await axiosHelper.axiosGet(url, paramHeaders);
+        await axiosHelper.axiosGet(url, paramHeaders);
         //window.location.reload();
         this.loadData();
 

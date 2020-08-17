@@ -1,12 +1,8 @@
-import React, { Fragment, Button } from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal'
 import GridMenu from './GridMenu';
 
 class ModalGridMenu extends React.Component {
-    constructor(props) {
-        super(props)
-
-    }
   modelLoad(){
 
     console.log('load');

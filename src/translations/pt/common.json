@@ -6,14 +6,33 @@
 			"digital-signin-text": "Vinculada o documento criado digitalmente, a um certificado digital",
 			"doc-time-text": "Atesta o momento temporal da criação de um documento no servidor",
 			"eseal-store-text": "Visa criar um selo digitalmente válido, como comprovativo das transações feitas"
+		},
+		"nave-rigth": {
+			"log-out": "Sair",
+			"login": "Entrar"
 		}
 	},
 	"selo-digital": {
+		"create-api-flow": {
+			"add-new-api": "Add novo API",
+			"definition": "Definição",
+			"transformation": "Transformação"
+		},
+		"flex-component": {
+			"input-list": "Campos de entrada",
+			"new-api-definition": "Definição do novo API"
+		},
 		"index": {
 			"btn-new": "Criar o meu",
 			"execute": "Executar",
 			"text": "São aplicados em nome de pessoas coletivas, como organizações ou instituições, com garantia de integridade e autenticidade da origem dos dados",
 			"title": "Visa criar um selo digitalmente válido, com um carácter comprovante, das transações realizadas na plataforma"
+		},
+		"list-flex-component": {
+			"list-api": "Lista API",
+			"name-api": "Nome API",
+			"new-api": "Novo API",
+			"search": "Procurar"
 		}
 	}
 }

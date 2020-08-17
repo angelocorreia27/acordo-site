@@ -3,10 +3,6 @@ import {Card, Button} from 'react-bootstrap';
 
 class CardModal extends React.Component {
 
-  constructor(props){
-    super(props);
-   
-   }
   render() {
     const buttonStatus = this.props.buttonStatus;
     var toRender=null;

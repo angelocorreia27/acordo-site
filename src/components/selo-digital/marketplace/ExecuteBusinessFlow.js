@@ -1,16 +1,19 @@
-import React, { Fragment } from 'react';
-import { Container, Card, Col, Row, Button } from 'react-bootstrap';
+import React from 'react';
+import { Container, Col, Row, Button } from 'react-bootstrap';
 import RanderPage from '../../renderPage/RenderPage';
 import * as env from '../../../env';
 import authHelper from '../../../components/helper/authHelper';
 import axiosHelper from '../../../components/helper/axiosHelper';
 import UtilHelper from '../../../components/helper/UtilHelper';
 import TimeLine from '../../time-line';
+import { withTranslation } from 'react-i18next';
+
+
 var i = 0;
 var totalComponent = 0
 var paramHeaders = null;
 
-export default class ExecuteBusinessFlow extends React.Component {
+class ExecuteBusinessFlow extends React.Component {
 
   constructor(props) {
     super(props);
@@ -111,7 +114,7 @@ export default class ExecuteBusinessFlow extends React.Component {
       */
      console.log('marketId:', this.state.marketId);
     console.log('commodityId: ', this.state.rendedPage.commodityId);
-        const result = await axiosHelper.axiosPost(env.dataBaseEndPoint +
+     await axiosHelper.axiosPost(env.dataBaseEndPoint +
                                                    env.dataBaseAPITransactionEndPoint,
                                                   this.state.rendedPage,
                                                   paramHeaders 
@@ -160,3 +163,4 @@ export default class ExecuteBusinessFlow extends React.Component {
     );
   }
 }
+export default withTranslation() (ExecuteBusinessFlow)

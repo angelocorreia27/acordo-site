@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Button } from 'react-bootstrap'
+import { Col, Button } from 'react-bootstrap'
 import negotiationHelper from '../agreements/negotiationHelperAPI';
 import TSAHelperAPI from '../tsaAPI/TSAHelperAPI';
 import FileViewerComp from './FileViewerComp';

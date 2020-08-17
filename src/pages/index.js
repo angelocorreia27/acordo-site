@@ -2,7 +2,6 @@ import React from 'react';
 import {Container,Row } from 'react-bootstrap'
 
 import CardModel from './CardModal';
-import TitleSearch from '../components/titleSearch';
 import Title from '../components/title';
 import Search from '../components/search';
 import authHelper from '../components/helper/authHelper';
@@ -47,7 +46,7 @@ render() {
 															 imsSrc="/images/selo-temporal.svg"
 															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.SELO_TEMPORAL}
-															 buttonStatus="active" 
+															 buttonStatus="disabled" 
 															 text={t('common:page.index.doc-time-text')}
 															 />
 						</div>
@@ -68,11 +67,11 @@ render() {
 															 imsSrc="/images/assinatura-digital.svg"
 															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.ASSINATURA_DIGITAL}
-															 buttonStatus="active" 
+															 buttonStatus="disabled" 
 															 text={t('common:page.index.digital-signin-text')}
 															 />
 						</div>
-						<div className="divTableCell"><CardModel title="Certificados SSL" 
+						<div className="divTableCell"><CardModel title="CertStore" 
 															 imsSrc="/images/certificado-ssl.svg"
 															 buttonText={t('common:page.index.btn-see-more')}
 															 buttonAction={CONSTANT.CERTIFICADO_SSL}

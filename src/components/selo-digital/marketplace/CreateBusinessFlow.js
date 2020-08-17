@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'; import Dradrop from '../../dragdrop';
+import React, { useState, useEffect } from 'react'; import Dradrop from '../../dragdrop';
 import { Container, Card, Row, Form, Col, Button } from 'react-bootstrap'
 
 import axiosHelper from './../../helper/axiosHelper';
@@ -7,7 +7,7 @@ import * as env from '../../../env';
 import CardModel from '../../../pages/CardModal';
 
 import { FormWithConstraints, FieldFeedbacks, FieldFeedback } from 'react-form-with-constraints';
-import {SELO_DIGITAL} from '../../../store/constant';
+//import {SELO_DIGITAL} from '../../../store/constant';
 
 const form = React.createRef();
 const CreateBusinessFlow = props => {

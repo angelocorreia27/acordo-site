@@ -3,7 +3,7 @@ require('dotenv').config();
 // commom
 export const appName = process.env.REACT_APP_APPNAME || 'DocsVeritas';
 export const copyRightYear = process.env.REACT_APP_COPYRIGHTYEAR || '2020';
-export const webUrl = process.env.REACT_APP_WEBURL || 'www.docsveritas.cv';
+export const webUrl = process.env.REACT_APP_WEBURL || '#';
 export const CookieSessName = 'sessPerson';
 
 

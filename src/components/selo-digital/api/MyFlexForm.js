@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Card, Col, Row, Button } from 'react-bootstrap';
+import { Container, Card, Col, Row } from 'react-bootstrap';
 import 'antd/dist/antd.css';
 import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
-import * as  reactBootstrap from 'react-bootstrap';
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-import { SELO_DIGITAL } from '../../../store/constant';
 import { Base64 } from 'js-base64';
 import * as env from '../../../env';
 import ModalPageRander from './ModalPageRander';

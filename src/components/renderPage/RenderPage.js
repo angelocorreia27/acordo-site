@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button } from 'react-bootstrap';
+import {Card } from 'react-bootstrap';
 import axiosHelper from '../helper/axiosHelper';
 import authHelper from '../helper/authHelper';
 import RenderComponentForm from './RenderComponentForm';
@@ -10,6 +10,7 @@ import { css } from "@emotion/core";
 import { Base64 } from 'js-base64';
 import UtilHelper from '../helper/UtilHelper';
 import Pagamento from '../../components/pagamento';
+
 const override = css`
   display: block;
   margin: 0 px;
@@ -55,7 +56,6 @@ class RenderPage extends React.Component {
      // this.setState({ allowSave: true });
     }
     this.setState({commodityId:commodityId, marketId:marketId});
-    const userId = 1;
     const resultCommodity = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie/' + commodityId, paramHeaders);
 
     const result = await axiosHelper.axiosGet(env.dataBaseEndPoint + '/commoditie_ff/list/' + commodityId, paramHeaders);

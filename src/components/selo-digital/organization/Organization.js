@@ -81,8 +81,6 @@ class Organization extends React.Component {
     }
 
     render() {
-        const { name } = this.state
-
         return (
             <Row>
                 <Col>

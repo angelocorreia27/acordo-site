@@ -1,17 +1,17 @@
 import React from 'react';
-import { Container, Nav, Row, Col, Card, Table, Tabs, Tab } from 'react-bootstrap';
+import { Container, Nav, Row, Col } from 'react-bootstrap';
 import ListMyBusiness from '../marketplace/ListMyBusiness';
-import CreateAPIFlow from '../api/CreateAPIFlow';
+import ListFlexComponent from '../api/ListFlexComponent';
 import UtilHelper from '../../helper/UtilHelper';
 
 //import Aux from "../../hoc/_Aux";
-import { DEMO,SELO_DIGITAL } from "../../../store/constant";
+//import { DEMO,SELO_DIGITAL } from "../../../store/constant";
 
 class Dashboard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            componentToRender:'',
+            componentToRender:'APIs', // default active key
             orgId:null,
         };
     }
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
         if(this.state.componentToRender ==='Negócios')
                 tabContent = ( <ListMyBusiness orgId={this.state.orgId}/> );
         else if ( this.state.componentToRender ==='APIs')
-            tabContent =   (<CreateAPIFlow orgId={this.state.orgId}/>);
+            tabContent =   (<ListFlexComponent orgId={this.state.orgId}/>);
 
         return (
             <Container>
@@ -49,8 +49,11 @@ class Dashboard extends React.Component {
                                 <Nav.Link onClick={() => {this.handleClick('Utilizadores')}}>Utilizadores</Nav.Link>
                             </Nav.Item>
                         </Nav>
+                        <div className="vr"></div>
+
                     </Col>
                     <Col>
+        <h3 className="title">{this.state.componentToRender}</h3>
                         {tabContent}
                     </Col>
                 </Row>

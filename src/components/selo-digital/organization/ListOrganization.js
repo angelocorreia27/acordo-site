@@ -1,5 +1,5 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Table, Form, InputGroup, FormControl } from 'react-bootstrap';
+import React, {  Fragment } from 'react';
+import { Container, Row, Col, Button, Table, InputGroup, FormControl } from 'react-bootstrap';
 import axiosHelper from '../../helper/axiosHelper';
 import authHelper from '../../helper/authHelper';
 import BeatLoader from "react-spinners/BeatLoader";
@@ -116,6 +116,7 @@ class ListOrganization extends React.Component {
 
         return (
             <Container>
+                <h3 className="title">Organização</h3>
                 <Row>
                     <Col>
                         <div className="flex-large">

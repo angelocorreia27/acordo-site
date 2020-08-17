@@ -4,11 +4,13 @@ import * as env from '../../src/env';
 import Nav from 'react-bootstrap/Nav'
 import authHelper from '../components/helper/authHelper';
 import ModalGridMenu from './ModalGridMenu';
+import { withTranslation } from 'react-i18next';
 
 var urlLogin = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth;
 var urlLogout = env.httpProtocol + env.serverHost + ':' + env.serverPort + env.serverAuth + '/logout';
 var sessPerson = null;
-export default class NavRight extends React.Component {
+
+class NavRight extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -58,6 +60,7 @@ export default class NavRight extends React.Component {
         this.setState({ popup: false });
     };
     render() {
+        const { t } = this.props;
         if (this.state.localSessPerson && this.state.localSessPerson.username) {
             return (<>
                 <Nav.Item>
@@ -77,15 +80,16 @@ export default class NavRight extends React.Component {
 
                     &nbsp;
                 <Nav.Item>
-                    <Nav.Link href={urlLogout}>Sair</Nav.Link>
+                <Nav.Link href={urlLogout}>{t('common:page.nave-rigth.log-out')}</Nav.Link>
                 </Nav.Item>
             </>);
         } else
             return (<>
                 <Nav.Item>
-                    <Nav.Link href={urlLogin}>Login</Nav.Link>
+            <Nav.Link href={urlLogin}>{t('common:page.nave-rigth.login')}</Nav.Link>
                 </Nav.Item>
             </>);
 
     }
 }
+export default withTranslation() (NavRight)

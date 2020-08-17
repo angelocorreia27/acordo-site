@@ -8,8 +8,8 @@ render() {
 
 	  return (
 		<div>
-		  <div id="copyright" className="container">
-			<p>Copyright (c) {env.copyRightYear} {env.appName} All rights reserved. | Design by {env.appName} <a href={env.webUrl} rel="nofollow"></a>.</p>
+		  <div id="copyright">
+			<p>Copyright (c) {env.copyRightYear} {env.appName} All rights reserved. | Design by <a href={env.webUrl} rel="nofollow">{env.appName}</a></p>
 		  </div>
 		</div>
 	  );

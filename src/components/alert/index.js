@@ -3,11 +3,6 @@ import Alert from 'react-bootstrap/Alert';
 
 class AlertComp extends React.Component {
 
-    constructor(props){
-      super(props);
-    }  
-
-
     render() {
 
   

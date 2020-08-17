@@ -1,12 +1,9 @@
-import React, { Fragment, Button } from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal'
 import RenderPage from '../../renderPage/RenderPage';
 
 class ModalPageRander extends React.Component {
-    constructor(props) {
-        super(props)
 
-    }
   modelLoad(){
 
     console.log('load');

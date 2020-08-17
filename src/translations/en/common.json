@@ -6,14 +6,33 @@
 			"digital-signin-text": "Linked the digitally created document to a digital certificate",
 			"doc-time-text": "Certifies the time of creation of a document on the server",
 			"eseal-store-text": "Aims to create a digitally valid seal, as proof of the transactions made"
+		},
+		"nave-rigth": {
+			"log-out": "Log out",
+			"login": "Log In"
 		}
 	},
 	"selo-digital": {
+		"create-api-flow": {
+			"add-new-api": "Add new API",
+			"definition": "Definition",
+			"transformation": "Transformation"
+		},
+		"flex-component": {
+			"input-list": "Input fields",
+			"new-api-definition": "New API definition"
+		},
 		"index": {
-			"btn-new": "Create my",
+			"btn-new": "Get Started",
 			"execute": "Execute",
 			"text": "They are applied on behalf of legal persons, such as organizations or institutions, with guarantee of integrity and authenticity of the data source",
 			"title": "Aims to create a digitally valid seal, with a proof character, of the transactions carried out on the platform"
+		},
+		"list-flex-component": {
+			"list-api": "API List ",
+			"name-api": "API name",
+			"new-api": "New API",
+			"search": "Search"
 		}
 	}
 }

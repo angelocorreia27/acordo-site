@@ -15,11 +15,6 @@ Audio: mp3
 
 class FileViewerComp extends Component {
 
-  constructor(props){
-    super(props);
-    
-  }  
-
   render() {
     return (
       <FileViewer
